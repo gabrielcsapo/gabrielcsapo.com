@@ -8,14 +8,14 @@ image: ./images/IMG_7776.jpg
 
 This tutorial goes over how to control an RGB LED with an Arduino ESP8266 🚦
 
+<!-- truncate -->
+
 ## Supplies
 
 - (1) LED - RGB Diffused Common Cathode
 - (3) Resistor 220 ohm
 - (4) Jumper wires
 - (1) ESP8266 Wi-Fi Microcontroller (NodeMCU v3)
-
-<!-- truncate -->
 
 > For refrence I have included the pinout diagram for the ESP8266 Wi-Fi Microcontroller (NodeMCU v3) that I am using.
 

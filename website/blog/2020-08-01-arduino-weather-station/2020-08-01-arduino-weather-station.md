@@ -8,14 +8,14 @@ image: ./images/IMG_3362.jpeg
 
 This tutorial goes over how to use the following to make a functioning weather station! 🌦
 
+<!-- truncate -->
+
 ## Supplies
 
 - (1) ESP8266 Wi-Fi Microcontroller (NodeMCU v3)
 - (1) 0.96 " OLED 1306
 - (1) DHT11
 - (8) Jumper wires
-
-<!-- truncate -->
 
 > For reference I have included the pinout diagram for the ESP8266 Wi-Fi Microcontroller (NodeMCU v3) that I am using.
 

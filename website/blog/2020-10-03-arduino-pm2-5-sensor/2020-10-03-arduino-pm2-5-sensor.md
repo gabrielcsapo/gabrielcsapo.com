@@ -8,14 +8,14 @@ image: ./images/IMG_8148.jpg
 
 This tutorial goes over how to use the Plantower PMS7003 PM2.5 Sensor 💨!
 
+<!-- truncate -->
+
 ## Supplies
 
 - (1) PM2.5 Sensor (Plantower PMS7003)
 - (1) G7 Switch Adapter
 - (11) Jumper wires
 - (1) ESP8266 Wi-Fi Microcontroller (NodeMCU v3)
-
-<!-- truncate -->
 
 > _For refrence I have included the pinout diagram for the ESP8266 Wi-Fi Microcontroller (NodeMCU v3) that I am using._
 

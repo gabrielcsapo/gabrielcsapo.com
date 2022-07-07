@@ -9,11 +9,11 @@ image: ./images/IMG_7782-1.jpg
 
 This tutorial goes over how to use the Mega 2560 R3 built-in ESP8266 and create a web server by flashing the onboard ESP8266 with AT firmware which only requires programming the ATmega2560. 📶
 
+<!-- truncate -->
+
 ## Supplies
 
 - [Mega 2560 R3 with built-in ESP8266](https://www.banggood.com/Geekcreit-Mega-WiFi-R3-Module-ATmega2560ESP8266-32Mb-Memory-USB-TTL-CH340G-p-1205437.html?rmmds=search&cur_warehouse=CN)
-
-<!-- truncate -->
 
 This board has a lot of spotty information circulating the internet. It is important to know that this board contains two chips and because of that requires uploading two different programs to each of the chips. The onboard ESP8266 has 4MiB of flash memory, and the ATmega2560 has 256kb. For my use cases, I wanted to take advantage of only having to upload my program to one chip. The way I accomplished this is by flashing the ESP8266 chip with AT firmware so that the ATmega2560 could communicate with it using the `Mega2560+ESP8266` DIP switch configuration that provides access via the onboard `Serial3` communication.
 

@@ -9,13 +9,13 @@ image: ./images/IMG_5514-28--dragged-.png
 
 This tutorial goes over how to use an ILI9341 with a touchscreen driven by an esp32-c3-32s!
 
+<!-- truncate -->
+
 ## Supplies
 
 - (1) esp32-c3-32s
 - (13) Jumper wires
 - (1) ILI9341 with Touchscreen
-
-<!-- truncate -->
 
 > _For refrence I have included the pinout diagram for the esp32-c3-32s that I am using._
 

@@ -8,12 +8,12 @@ image: ./images/IMG_3346.jpeg
 
 This tutorial will go over how to use a Capacitive Soil Moisture Sensor 🌱
 
+<!-- truncate -->
+
 ## Supplies
 
 - (1) Arduino Mega2560
 - (1) Capacitive Soil Moisture Sensor
-
-<!-- truncate -->
 
 > For reference I have included the pinout diagram for the Arduino Mega2560
 

@@ -20,6 +20,8 @@ import BlogListPaginator from "@theme/BlogListPaginator";
 import SearchMetadata from "@theme/SearchMetadata";
 import type { Props } from "@theme/BlogListPage";
 
+import styles from "./styles.module.css";
+
 function BlogListPageMetadata(props: Props): JSX.Element {
   const { metadata } = props;
   const {
@@ -38,20 +40,47 @@ function BlogListPageMetadata(props: Props): JSX.Element {
 
 function BlogListPageContent(props: Props): JSX.Element {
   const { metadata, items, sidebar } = props;
+  const { page, postsPerPage } = metadata;
 
   return (
     <BlogLayout sidebar={sidebar}>
-      {items.map(({ content: BlogPostContent }) => (
-        <BlogPostItem
-          key={BlogPostContent.metadata.permalink}
-          frontMatter={BlogPostContent.frontMatter}
-          assets={BlogPostContent.assets}
-          metadata={BlogPostContent.metadata}
-          truncated={BlogPostContent.metadata.truncated}
-        >
-          <BlogPostContent />
-        </BlogPostItem>
-      ))}
+      {items.map(({ content: BlogPostContent }, index) => {
+        let style = {};
+
+        /**
+         * what is? `index === items.length - 1 && items.length < postsPerPage`
+         * It is handling the case where we have less posts than the page
+         * and the last post ends up defaulting to the default post but stretched 100% since it has no siblings
+         */
+        if (
+          index % 6 === 0 ||
+          index === 0 ||
+          (index === items.length - 1 && items.length < postsPerPage)
+        ) {
+          style = {
+            flex: "1 1 100%",
+          };
+        }
+
+        return (
+          <div className={styles.blogListPagePostContainer} style={style}>
+            <BlogPostItem
+              key={BlogPostContent.metadata.permalink}
+              frontMatter={BlogPostContent.frontMatter}
+              assets={BlogPostContent.assets}
+              metadata={BlogPostContent.metadata}
+              truncated={BlogPostContent.metadata.truncated}
+              largeFormat={
+                index % 6 === 0 ||
+                index === 0 ||
+                (index === items.length - 1 && items.length < postsPerPage)
+              }
+            >
+              <BlogPostContent />
+            </BlogPostItem>
+          </div>
+        );
+      })}
       <BlogListPaginator metadata={metadata} />
     </BlogLayout>
   );

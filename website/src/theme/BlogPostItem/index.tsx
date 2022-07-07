@@ -40,7 +40,99 @@ function useReadingTimePlural() {
   };
 }
 
-export default function BlogPostItem(props: Props): JSX.Element {
+interface PropsExtended extends Props {
+  largeFormat: boolean;
+}
+
+function BlogPostItemLargeFormat({
+  permalink,
+  image,
+  TitleHeading,
+  date,
+  formattedDate,
+  readingTime,
+  authors,
+  readingTimePlural,
+  assets,
+  withBaseUrl,
+  title,
+  tagsExists,
+  isBlogPostPage,
+  children,
+  truncatedPost,
+  truncated,
+  tags,
+}) {
+  return (
+    <article
+      itemProp="blogPost"
+      itemScope
+      itemType="http://schema.org/BlogPosting"
+      style={{ display: "flex", margin: "5px" }}
+    >
+      <Link
+        itemProp="url"
+        to={permalink}
+        style={{ maxWidth: "65%", marginRight: "20px" }}
+      >
+        {image ? (
+          <img
+            src={image}
+            style={{
+              borderRadius: "8px",
+              objectFit: "cover",
+            }}
+          />
+        ) : (
+          ""
+        )}
+      </Link>
+
+      <header>
+        <TitleHeading className={styles.blogPostTitle} itemProp="headline">
+          <Link itemProp="url" to={permalink}>
+            {title}
+          </Link>
+        </TitleHeading>
+        <div className={clsx(styles.blogPostData, "margin-vert--md")}>
+          <time dateTime={date} itemProp="datePublished">
+            {formattedDate}
+          </time>
+
+          {typeof readingTime !== "undefined" && (
+            <>
+              {" · "}
+              {readingTimePlural(readingTime)}
+            </>
+          )}
+        </div>
+        <BlogPostAuthors authors={authors} assets={assets} />
+
+        {image && (
+          <meta
+            itemProp="image"
+            content={withBaseUrl(image, { absolute: true })}
+          />
+        )}
+
+        <div
+          // This ID is used for the feed generation to locate the main content
+          id={isBlogPostPage ? blogPostContainerID : undefined}
+          className="markdown"
+          itemProp="articleBody"
+        >
+          <MDXContent>{children}</MDXContent>
+
+          {(tagsExists || truncated) && (
+            <div>{tagsExists && <TagsListInline tags={tags} />}</div>
+          )}
+        </div>
+      </header>
+    </article>
+  );
+}
+
+export default function BlogPostItem(props: PropsExtended): JSX.Element {
   const readingTimePlural = useReadingTimePlural();
   const { withBaseUrl } = useBaseUrlUtils();
   const {
@@ -50,17 +142,10 @@ export default function BlogPostItem(props: Props): JSX.Element {
     metadata,
     truncated,
     isBlogPostPage = false,
+    largeFormat = false,
   } = props;
-  const {
-    date,
-    formattedDate,
-    permalink,
-    tags,
-    readingTime,
-    title,
-    editUrl,
-    authors,
-  } = metadata;
+  const { date, formattedDate, permalink, tags, readingTime, title, authors } =
+    metadata;
 
   const image = assets.image ?? frontMatter.image;
   const truncatedPost = !isBlogPostPage && truncated;
@@ -74,8 +159,6 @@ export default function BlogPostItem(props: Props): JSX.Element {
       itemType="http://schema.org/BlogPosting"
     >
       <header>
-        {image ? <img src={image} /> : ""}
-
         <TitleHeading className={styles.blogPostTitle} itemProp="headline">
           {title}
         </TitleHeading>
@@ -108,56 +191,34 @@ export default function BlogPostItem(props: Props): JSX.Element {
         itemProp="articleBody"
       >
         <MDXContent>{children}</MDXContent>
+
+        {(tagsExists || truncated) && (
+          <div className={clsx("col", { "col--9": truncatedPost })}>
+            <TagsListInline tags={tags} />
+          </div>
+        )}
       </div>
-
-      {(tagsExists || truncated) && (
-        <footer
-          className={clsx("row docusaurus-mt-lg", styles.blogPostDetailsFull)}
-        >
-          {tagsExists && (
-            <div className={clsx("col", { "col--9": truncatedPost })}>
-              <TagsListInline tags={tags} />
-            </div>
-          )}
-
-          {editUrl && (
-            <div className="col margin-top--sm">
-              <EditThisPage editUrl={editUrl} />
-            </div>
-          )}
-
-          {truncatedPost && (
-            <div
-              className={clsx("col text--right", {
-                "col--3": tagsExists,
-              })}
-            >
-              <Link
-                to={metadata.permalink}
-                aria-label={translate(
-                  {
-                    message: "Read more about {title}",
-                    id: "theme.blog.post.readMoreLabel",
-                    description:
-                      "The ARIA label for the link to full blog posts from excerpts",
-                  },
-                  { title }
-                )}
-              >
-                <b>
-                  <Translate
-                    id="theme.blog.post.readMore"
-                    description="The label used in blog post item excerpts to link to full blog posts"
-                  >
-                    Read More
-                  </Translate>
-                </b>
-              </Link>
-            </div>
-          )}
-        </footer>
-      )}
     </article>
+  ) : largeFormat ? (
+    <BlogPostItemLargeFormat
+      permalink={permalink}
+      image={image}
+      TitleHeading={TitleHeading}
+      date={date}
+      formattedDate={formattedDate}
+      readingTime={readingTime}
+      authors={authors}
+      readingTimePlural={readingTimePlural}
+      assets={assets}
+      withBaseUrl={withBaseUrl}
+      title={title}
+      tagsExists={tagsExists}
+      isBlogPostPage={isBlogPostPage}
+      children={children}
+      truncatedPost={truncatedPost}
+      truncated={truncated}
+      tags={tags}
+    />
   ) : (
     <article
       className={clsx("margin-bottom--xl", styles.blogPostCard)}
@@ -166,13 +227,10 @@ export default function BlogPostItem(props: Props): JSX.Element {
       itemType="http://schema.org/BlogPosting"
     >
       <header>
-        {image ? <img className={styles.blogPostImage} src={image} /> : ""}
+        <Link itemProp="url" to={permalink}>
+          {image ? <img className={styles.blogPostImage} src={image} /> : ""}{" "}
+        </Link>
 
-        {tagsExists && (
-          <div>
-            <TagsListInline tags={tags} />
-          </div>
-        )}
         <TitleHeading className={styles.blogPostTitle} itemProp="headline">
           <Link itemProp="url" to={permalink}>
             {title}
@@ -182,6 +240,8 @@ export default function BlogPostItem(props: Props): JSX.Element {
           <time dateTime={date} itemProp="datePublished">
             {formattedDate}
           </time>
+
+          <BlogPostAuthors authors={authors} assets={assets} />
 
           {typeof readingTime !== "undefined" && (
             <>
@@ -204,10 +264,14 @@ export default function BlogPostItem(props: Props): JSX.Element {
         className="markdown"
         itemProp="articleBody"
       >
-        <MDXContent>{children}</MDXContent>...
-      </div>
+        <MDXContent>{children}</MDXContent>
 
-      <BlogPostAuthors authors={authors} assets={assets} />
+        {tagsExists && (
+          <div>
+            <TagsListInline tags={tags} />
+          </div>
+        )}
+      </div>
     </article>
   );
 }

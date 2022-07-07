@@ -9,11 +9,13 @@ authors: gabrielcsapo
 image: ./images/IMG_5623_ROTATED.gif
 ---
 
-> This article is meant to help you identify an ILI9341 screen that contains all the proper components to support touch.
-
-One of the essential things is identifying an ILI9341 capable of touch! When you buy a new display, the package might have the required information it, is it touch or not.
+:::info
+This article is meant to help you identify an ILI9341 screen that contains all the proper components to support touch.
+:::
 
 <!-- truncate -->
+
+One of the essential things is identifying an ILI9341 capable of touch! When you buy a new display, the package might have the required information it, is it touch or not.
 
 ![An ILI9341 display that is capable of touch!](./images/IMG_5508.jpeg)
 

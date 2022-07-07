@@ -3,6 +3,7 @@ title: Arduino - esp32-s2 (ILI9341) with Touchscreen
 slug: arduino-esp32-s2-ili9341-with-touchscreen
 authors: gabrielcsapo
 image: ./images/arduino-esp32-s2-ili9341-with-touchscreen_bb-2.png
+tags: [Arduino, esp32-s2, ILI9341, Touchscreen]
 ---
 
 This tutorial explains how to use an ILI9341 with a touchscreen driven by an esp32-s2!

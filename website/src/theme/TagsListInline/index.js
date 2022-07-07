@@ -7,7 +7,7 @@ import styles from "./styles.module.css";
 export default function TagsListInline({ tags }) {
   return (
     <>
-      <ul className={clsx(styles.tags, "padding--none", "margin-left--sm")}>
+      <ul className={clsx(styles.tags, "padding--none")}>
         {tags.map(({ label, permalink: tagPermalink }) => (
           <li key={tagPermalink} className={styles.tag}>
             <Tag label={label} permalink={tagPermalink} />

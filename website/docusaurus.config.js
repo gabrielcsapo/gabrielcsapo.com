@@ -23,6 +23,7 @@ const config = {
       require.resolve("docusaurus-plugin-search-local"),
       {
         hashed: true,
+        blogRouteBasePath: "/",
       },
     ],
     [
@@ -80,6 +81,10 @@ const config = {
                 label: "Twitter",
                 href: "https://twitter.com/gabrielcsapo",
               },
+              {
+                label: "GitHub",
+                href: "https://github.com/gabrielcsapo",
+              },
             ],
           },
           {
@@ -88,10 +93,6 @@ const config = {
               {
                 label: "Blog",
                 to: "/",
-              },
-              {
-                label: "GitHub",
-                href: "https://github.com/gabrielcsapo",
               },
             ],
           },

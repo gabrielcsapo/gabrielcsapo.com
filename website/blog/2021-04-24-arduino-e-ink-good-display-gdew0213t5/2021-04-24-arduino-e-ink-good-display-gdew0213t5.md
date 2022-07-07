@@ -8,14 +8,14 @@ image: ./images/IMG_1426-1.png
 
 This tutorial goes over how to use the GDEW0213T5 💨!
 
+<!-- truncate -->
+
 ## Supplies
 
 - (1) Good Display (e-paper)
 - (1) Good Display DESPI-CO2
 - (4) Jumper wires
 - (1) ESP8266 Wi-Fi Microcontroller (NodeMCU v3)
-
-<!-- truncate -->
 
 > _For refrence I have included the pinout diagram for the ESP8266 Wi-Fi Microcontroller (NodeMCU v3) that I am using._
 

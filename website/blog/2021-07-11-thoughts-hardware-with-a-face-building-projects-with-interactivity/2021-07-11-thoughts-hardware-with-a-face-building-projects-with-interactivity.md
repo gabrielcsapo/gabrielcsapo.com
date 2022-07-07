@@ -7,9 +7,7 @@ authors: gabrielcsapo
 image: ./images/IMG_2853-1.jpeg
 ---
 
-Over the last few months, I have been struggling to add a visual component to my hardware projects.
-
-I thought it might be the screen technology, so I bought e-ink displays, touchscreen TFTs, smaller screens, big screens, integrated screens. Everything I could think of to figure out what was missing from my project, and every time I ran into the same problem, UI.
+Over the last few months, I have been struggling to add a visual component to my hardware projects. I thought it might be the screen technology, so I bought e-ink displays, touchscreen TFTs, smaller screens, big screens, integrated screens. Everything I could think of to figure out what was missing from my project, and every time I ran into the same problem, UI.
 
 <!-- truncate -->
 

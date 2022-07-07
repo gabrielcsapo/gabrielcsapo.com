@@ -9,11 +9,11 @@ image: ./images/IMG_251049CF765A-1.jpeg
 
 This tutorial goes over how to create an access point and serve web pages from an esp32 ☁️!
 
+<!-- truncate -->
+
 ## Supplies
 
 - (1) esp32
-
-<!-- truncate -->
 
 ![](./images/ESP32-38-PIN-DEVBOARD.png)
 

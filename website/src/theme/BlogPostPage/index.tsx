@@ -55,9 +55,11 @@ function BlogPostPageMetadata(props: Props): JSX.Element {
 }
 
 function BlogPostPageContent(props: Props): JSX.Element {
-  const { content: BlogPostContents, sidebar } = props;
+  const { content: BlogPostContents } = props;
   const { assets, metadata } = BlogPostContents;
   const { nextItem, prevItem, frontMatter } = metadata;
+  const image = assets.image ?? frontMatter.image;
+
   const {
     hide_table_of_contents: hideTableOfContents,
     toc_min_heading_level: tocMinHeadingLevel,
@@ -74,14 +76,13 @@ function BlogPostPageContent(props: Props): JSX.Element {
           />
         ) : undefined
       }
+      hero={
+        <img
+          src={image}
+          style={{ height: "450px", objectFit: "cover", width: "100%" }}
+        />
+      }
     >
-      <div style={{ textAlign: "center" }}>
-        <b>
-          <Link to="/">Back To Posts</Link>
-        </b>
-        <hr />
-      </div>
-
       <BlogPostItem
         frontMatter={frontMatter}
         assets={assets}
