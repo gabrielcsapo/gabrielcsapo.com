@@ -8,8 +8,8 @@ const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 const config = {
   title: "Gabriel J. Csapo",
   tagline: "Stumbling through building stuff. Let's learn things together.",
-  url: "https://www.gabrielcsapo.com",
-  baseUrl: "/",
+  url: "https://gabrielcsapo.github.io",
+  baseUrl: "/gabrielcsapo.com/",
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
   favicon: "img/favicon.ico",
