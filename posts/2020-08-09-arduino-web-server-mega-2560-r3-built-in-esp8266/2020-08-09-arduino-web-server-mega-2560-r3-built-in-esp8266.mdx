@@ -7,6 +7,10 @@ authors: gabrielcsapo
 image: ./images/IMG_7782-1.jpg
 ---
 
+import CodeBlock from "@theme/CodeBlock";
+import ReadingDataSketchSource from "!!raw-loader!./files/reading_data_sketch.ino";
+import BasicWebServerSketchSource from "!!raw-loader!./files/reading_data_sketch.ino";
+
 This tutorial goes over how to use the Mega 2560 R3 built-in ESP8266 and create a web server by flashing the onboard ESP8266 with AT firmware which only requires programming the ATmega2560. 📶
 
 <!-- truncate -->
@@ -88,90 +92,9 @@ We will need to install the `WiFiEspAT` library to make communicating with AT co
 
 Once you have done that, upload the following program through Arduino IDE. Please change `NAME_OF_SSID` and `PASSWORD_OF_SSID` to your network, you are currently connected to.
 
-```cpp showLineNumber
- #include <WiFiEspAT.h>
-
- WiFiServer server(80);
-
- void setup() {
-
-   Serial.begin(115200);
-   while (!Serial);
-
-   Serial3.begin(115200);
-   WiFi.init(Serial3);
-
-   if (WiFi.status() == WL_NO_MODULE) {
-     Serial.println("Communication with WiFi module failed!");
-     // don't continue
-     while (true);
-   }
-
-   WiFi.begin(NAME_OF_SSID, PASSWORD_OF_SSID);
-   Serial.println("Waiting for connection to WiFi");
-   while (WiFi.status() != WL_CONNECTED) {
-     delay(1000);
-     Serial.print('.');
-   }
-   Serial.println();
-
-   server.begin();
-
-   IPAddress ip = WiFi.localIP();
-   Serial.println();
-   Serial.println("Connected to WiFi network.");
-   Serial.print("To access the server, enter \"http://");
-   Serial.print(ip);
-   Serial.println("/\" in web browser.");
- }
-
- void loop() {
-
-   WiFiClient client = server.available();
-   if (client) {
-     IPAddress ip = client.remoteIP();
-     Serial.print("new client ");
-     Serial.println(ip);
-
-     while (client.connected()) {
-       if (client.available()) {
-         String line = client.readStringUntil('\n');
-         line.trim();
-         Serial.println(line);
-
-         // if you've gotten to the end of the HTTP header (the line is blank),
-         // the http request has ended, so you can send a reply
-         if (line.length() == 0) {
-           // send a standard http response header
-           client.println("HTTP/1.1 200 OK");
-           client.println("Content-Type: text/html");
-           client.println("Connection: close");  // the connection will be closed after completion of the response
-           client.println("Refresh: 5");  // refresh the page automatically every 5 sec
-           client.println();
-           client.println("<!DOCTYPE HTML>");
-           client.println("<html>");
-           // output the value of analog input pins
-           for (int analogChannel = 0; analogChannel < 4; analogChannel++) {
-             int sensorReading = analogRead(analogChannel);
-             client.print("analog input ");
-             client.print(analogChannel);
-             client.print(" is ");
-             client.print(sensorReading);
-             client.println("<br />");
-           }
-           client.println("</html>");
-           client.flush();
-           break;
-         }
-       }
-     }
-
-     // close the connection:
-     client.stop();
-     Serial.println("client disconnected");
-   }
- }
-```
+<CodeBlock language="cpp" showLineNumbers={true}>
+  {BasicWebServerSketchSource}
+</CodeBlock>
 
 Once you have successfully uploaded the previous code to your mega2560, please set the DIP switches to the following positions.
 
@@ -212,110 +135,9 @@ We are using the following libraries for this example:
 
 > **For information on how to install the libraries above please visist**[**_https://www.arduino.cc/en/guide/libraries_**](https://www.arduino.cc/en/guide/libraries)**.**
 
-```cpp showLineNumber
-  #define NAME_OF_SSID "x"
-  #define PASSWORD_OF_SSID  "x"
-
-  #include <Adafruit_BMP280.h>
-  #include <WiFiEspAT.h>
-
-  Adafruit_BMP280 bme;
-
-  WiFiServer server(80);
-
-  void setup() {
-
-    Serial.begin(115200);
-    while (!Serial);
-
-    if (!bme.begin(0x76)) // depending on the chip you have the i2c address is either 0x77 or 0x77
-    {
-      Serial.println("Could not find a valid BMP280 sensor, check wiring!");
-      while (1);
-    }
-
-    Serial3.begin(115200);
-    WiFi.init(Serial3);
-
-    if (WiFi.status() == WL_NO_MODULE) {
-      Serial.println("Communication with WiFi module failed!");
-      // don't continue
-      while (true);
-    }
-
-    WiFi.begin(NAME_OF_SSID, PASSWORD_OF_SSID);
-    Serial.println("Waiting for connection to WiFi");
-    while (WiFi.status() != WL_CONNECTED) {
-      delay(1000);
-      Serial.print('.');
-    }
-    Serial.println();
-
-    server.begin();
-
-    IPAddress ip = WiFi.localIP();
-    Serial.println();
-    Serial.println("Connected to WiFi network.");
-    Serial.print("To access the server, enter \"http://");
-    Serial.print(ip);
-    Serial.println("/\" in web browser.");
-  }
-
-  void loop() {
-    float temp = (bme.readTemperature() * 1.8) + 32;
-    float pressure = bme.readPressure();
-    float altitude = bme.readAltitude(1010);
-
-    WiFiClient client = server.available();
-
-    if (client) {
-      IPAddress ip = client.remoteIP();
-      Serial.print("new client ");
-      Serial.println(ip);
-
-      while (client.connected()) {
-        if (client.available()) {
-          String line = client.readStringUntil('\n');
-          line.trim();
-          Serial.println(line);
-
-          // if you've gotten to the end of the HTTP header (the line is blank),
-          // the http request has ended, so you can send a reply
-          if (line.length() == 0) {
-            // send a standard http response header
-            client.println("HTTP/1.1 200 OK");
-            client.println("Content-Type: text/html");
-            client.println("Connection: close");  // the connection will be closed after completion of the response
-            client.println("Refresh: 5");  // refresh the page automatically every 5 sec
-            client.println();
-            client.println("<!DOCTYPE HTML>");
-            client.println("<html>");
-
-            client.print ("<h4>Tempature: ");
-            client.print (temp);client.print("F");
-            client.print("</h4>");
-
-            client.print ("<h4>Pressure: ");
-            client.print (pressure);
-            client.print("</h4>");
-
-            client.print ("<h4>Altitude: ");
-            client.print (altitude);
-            client.print("</h4>");
-
-            client.println("</html>");
-            client.flush();
-            break;
-          }
-        }
-      }
-
-      // close the connection:
-      client.stop();
-      Serial.println("client disconnected");
-    }
-  }
-```
+<CodeBlock language="cpp" showLineNumbers={true}>
+  {ReadingDataSketchSource}
+</CodeBlock>
 
 > Please ensure you change the values for `NAME_OF_SSID` and `PASSWORD_OF_SSID` as these are required to connect to your local wifi.
 

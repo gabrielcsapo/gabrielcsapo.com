@@ -18,7 +18,7 @@ export default function MDXImg(props) {
       />
       {props.alt && (
         <figcaption style={{ textAlign: "center" }}>
-          <blockquote>{props.alt}</blockquote>
+          <blockquote style={{ border: "0" }}>{props.alt}</blockquote>
         </figcaption>
       )}
     </figure>
