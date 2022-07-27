@@ -10,7 +10,7 @@ import clsx from "clsx";
 import Translate, { translate } from "@docusaurus/Translate";
 import Link from "@docusaurus/Link";
 import { useBaseUrlUtils } from "@docusaurus/useBaseUrl";
-import { usePluralForm } from "@docusaurus/theme-common";
+import { usePluralForm, useColorMode } from "@docusaurus/theme-common";
 import { blogPostContainerID } from "@docusaurus/utils-common";
 import MDXContent from "@theme/MDXContent";
 import EditThisPage from "@theme/EditThisPage";
@@ -19,6 +19,8 @@ import BlogPostAuthors from "@theme/BlogPostAuthors";
 import type { Props } from "@theme/BlogPostItem";
 
 import styles from "./styles.module.css";
+
+const utterancesSelector = "iframe.utterances-frame";
 
 // Very simple pluralization: probably good enough for now
 function useReadingTimePlural() {
@@ -135,6 +137,7 @@ function BlogPostItemLargeFormat({
 export default function BlogPostItem(props: PropsExtended): JSX.Element {
   const readingTimePlural = useReadingTimePlural();
   const { withBaseUrl } = useBaseUrlUtils();
+  const containerRef = React.useRef(null);
   const {
     children,
     frontMatter,
@@ -151,6 +154,26 @@ export default function BlogPostItem(props: PropsExtended): JSX.Element {
   const truncatedPost = !isBlogPostPage && truncated;
   const tagsExists = tags.length > 0;
   const TitleHeading = isBlogPostPage ? "h1" : "h2";
+
+  React.useEffect(() => {
+    if (!props.isBlogPostPage) return;
+
+    const createUtterancesEl = () => {
+      const script = document.createElement("script");
+
+      script.src = "https://utteranc.es/client.js";
+      script.setAttribute("repo", "gabrielcsapo/gabrielcsapo.com");
+      script.setAttribute("issue-term", "pathname");
+      script.setAttribute("label", "comment");
+      script.setAttribute("theme", "preferred-color-scheme");
+      script.crossOrigin = "anonymous";
+      script.async = true;
+
+      containerRef.current.appendChild(script);
+    };
+
+    createUtterancesEl();
+  }, []);
 
   return isBlogPostPage ? (
     <article
@@ -197,6 +220,8 @@ export default function BlogPostItem(props: PropsExtended): JSX.Element {
             <TagsListInline tags={tags} />
           </div>
         )}
+
+        <div ref={containerRef} />
       </div>
     </article>
   ) : largeFormat ? (
