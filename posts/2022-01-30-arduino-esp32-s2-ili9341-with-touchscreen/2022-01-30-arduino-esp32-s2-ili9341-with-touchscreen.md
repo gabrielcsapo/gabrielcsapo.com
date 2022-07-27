@@ -400,7 +400,9 @@ We are using the following libraries:
 
 > _For information on how to install the libraries above please visit [\_https://www.arduino.cc/en/guide/libraries_](https://www.arduino.cc/en/guide/libraries)_._
 
-We are going to be using a sketch I wrote for [https://www.gabrielcsapo.com/arduino-esp32-c3-32s-ili9341-with-touchscreen/](../2022-01-22-arduino-esp32-c3-32s-ili9341-with-touchscreen/2022-01-22-arduino-esp32-c3-32s-ili9341-with-touchscreen.md). To look at the most up-to-date [sketch you can check it out here](https://github.com/gabrielcsapo/gabrielcsapo.com/blob/main/arduino-esp32-s2-ili9341-with-touchscreen/sketch/sketch.ino).
+We are going to be using a sketch I wrote for [https://www.gabrielcsapo.com/arduino-esp32-c3-32s-ili9341-with-touchscreen/](../2022-01-22-arduino-esp32-c3-32s-ili9341-with-touchscreen/2022-01-22-arduino-esp32-c3-32s-ili9341-with-touchscreen.md).
+
+To look at the most up-to-date [sketch you can check it out here](../2022-01-22-arduino-esp32-c3-32s-ili9341-with-touchscreen/files/XPT2046_Touchscreen/sketch.ino).
 
 ```cpp showLineNumbers
  #include "Adafruit_GFX.h"

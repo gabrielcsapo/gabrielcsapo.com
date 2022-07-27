@@ -11,4 +11,4 @@ Working with the esp32-s2 has been super interesting! Like many boards produced 
 
 <!-- truncate -->
 
-If you are interested in downloading it please visit [https://github.com/gabrielcsapo/gabrielcsapo.com/blob/main/fritzing-parts/ESP32-S2-DevKit.fzpz](https://github.com/gabrielcsapo/gabrielcsapo.com/blob/main/fritzing-parts/ESP32-S2-DevKit.fzpz)! Happy Fritzing!
+If you are interested in downloading it [click here!](../files/fritzing-parts/ESP32-S2-DevKit.fzpz)! Happy Fritzing!

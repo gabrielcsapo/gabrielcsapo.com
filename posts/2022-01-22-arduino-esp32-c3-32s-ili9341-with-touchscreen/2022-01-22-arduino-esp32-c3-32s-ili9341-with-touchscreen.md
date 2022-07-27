@@ -46,7 +46,7 @@ Alright, now that we have figured out if the touchscreen you have is touch-capab
 
 ![Wiring diagram connecting ILI9341 screen to esp32-c3-32s](./images/esp32-c3-32s-spi-screen-with-touch_bb.png)
 
-[arduino-esp32-c3-32s-ili9341-with-touchscreen.fzz](../files/2022/01/arduino-esp32-c3-32s-ili9341-with-touchscreen.fzz)
+[arduino-esp32-c3-32s-ili9341-with-touchscreen.fzz](../files/fritzing-parts/arduino-esp32-c3-32s-ili9341-with-touchscreen.fzz)
 
 ## Coding
 

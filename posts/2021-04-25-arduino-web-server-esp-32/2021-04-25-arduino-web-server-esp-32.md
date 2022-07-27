@@ -404,4 +404,4 @@ Uploading the new sketch and then running the tool to upload the index.html in t
 
 ![](./images/demo.gif)
 
-The full sketch can be found at <https://github.com/gabrielcsapo/gabrielcsapo.com/tree/main/arduino-web-server-esp-32/sketch>.
+The full sketch can be found at <https://github.com/gabrielcsapo/gabrielcsapo.com/tree/main/posts/2021-04-25-arduino-web-server-esp-32/files>.
