@@ -10,23 +10,6 @@ on:
     branches: [main]
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [16.x]
-    steps:
-      - uses: actions/checkout@v2
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v2
-        with:
-          node-version: ${{ matrix.node-version }}
-          cache: "npm"
-      - run: cd website
-      - run: npm i -g npm@8
-      - run: npm ci
-      - run: npm run build --if-present
-
   gh-release:
     if: github.event_name != 'pull_request'
     runs-on: ubuntu-latest
