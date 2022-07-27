@@ -8,3 +8,9 @@
   background-size: cover;
   border-bottom: 1px solid var(--ifm-color-gray-500);
 }
+
+@media (max-width: 780px) {
+  .blogListPagePostContainer {
+    flex: 1 1 100%;
+  }
+}

@@ -1,6 +1,6 @@
 // @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
-
+const path = require("path");
 const lightCodeTheme = require("prism-react-renderer/themes/github");
 const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 
@@ -49,6 +49,7 @@ const config = {
         blog: {
           routeBasePath: "/",
           showReadingTime: true,
+          path: path.resolve(__dirname, "..", "posts"),
         },
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
