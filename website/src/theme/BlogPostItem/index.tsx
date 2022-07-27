@@ -156,7 +156,7 @@ export default function BlogPostItem(props: PropsExtended): JSX.Element {
   const TitleHeading = isBlogPostPage ? "h1" : "h2";
 
   React.useEffect(() => {
-    if (!props.isBlogPostPage) return;
+    if (!isBlogPostPage) return;
 
     const createUtterancesEl = () => {
       const script = document.createElement("script");

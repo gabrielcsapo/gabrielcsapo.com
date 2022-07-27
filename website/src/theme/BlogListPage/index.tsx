@@ -41,6 +41,13 @@ function BlogListPageMetadata(props: Props): JSX.Element {
 function BlogListPageContent(props: Props): JSX.Element {
   const { metadata, items, sidebar } = props;
   const { page, postsPerPage } = metadata;
+  const [singleSize, setSingleSize] = React.useState(false);
+
+  React.useEffect(() => {
+    if (document.body.clientWidth <= 780) {
+      setSingleSize(true);
+    }
+  }, [document.body.clientWidth]);
 
   return (
     <BlogLayout sidebar={sidebar}>
@@ -71,9 +78,11 @@ function BlogListPageContent(props: Props): JSX.Element {
               metadata={BlogPostContent.metadata}
               truncated={BlogPostContent.metadata.truncated}
               largeFormat={
-                index % 6 === 0 ||
-                index === 0 ||
-                (index === items.length - 1 && items.length < postsPerPage)
+                singleSize === false
+                  ? index % 6 === 0 ||
+                    index === 0 ||
+                    (index === items.length - 1 && items.length < postsPerPage)
+                  : false
               }
             >
               <BlogPostContent />
