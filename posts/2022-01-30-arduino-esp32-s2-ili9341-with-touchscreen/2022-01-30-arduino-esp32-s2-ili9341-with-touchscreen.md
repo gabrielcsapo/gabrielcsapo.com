@@ -22,7 +22,7 @@ This tutorial explains how to use an ILI9341 with a touchscreen driven by an esp
 
 > I have included the specsheet for this chip in case it is removed, the original source location is [https://docs.ai-thinker.com/en/12k_development_board_esp32-s2](https://docs.ai-thinker.com/en/12k_development_board_esp32-s2)
 
-[Esp-2s-12k_specsheet_en.pdf](../files/2022/01/Esp-2s-12k_specsheet_en-1.pdf)
+[Esp-2s-12k_specsheet_en.pdf](../files/spec-sheets/esp32-s2-12k/Esp-2s-12k_specsheet_en.pdf)
 
 ## Checkup
 

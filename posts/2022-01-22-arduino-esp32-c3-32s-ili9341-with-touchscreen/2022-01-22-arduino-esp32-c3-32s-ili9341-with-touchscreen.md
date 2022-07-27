@@ -19,7 +19,7 @@ This tutorial goes over how to use an ILI9341 with a touchscreen driven by an es
 
 > _For refrence I have included the pinout diagram for the esp32-c3-32s that I am using._
 
-[esp-c3-32s-kit-v1.0_specification.pdf](../files/2022/01/esp-c3-32s-kit-v1.0_specification-1.pdf)
+[esp-c3-32s-kit-v1.0_specification.pdf](../files/spec-sheets/esp32-c3-32s/esp-c3-32s-kit-v1.0_specification.pdf)
 
 ## Checkup
 
