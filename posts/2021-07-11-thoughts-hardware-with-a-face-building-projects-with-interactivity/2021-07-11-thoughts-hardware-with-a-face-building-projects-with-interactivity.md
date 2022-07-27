@@ -19,7 +19,7 @@ Building an app for phones, you have Android Studio or XCode, and for websites, 
 
 > The one thing that I have come by so far that kind of hits all the marks is <https://lvgl.io/developers> ([https://github.com/lvgl/lvgl](https://github.com/lvgl/lvgl)). I haven't seen a good set of demos for the cards that I am using so that might be something I look into trying to write about in the future.
 
-I recently wrote an article about writing a webserver with the esp32 ([https://www.gabrielcsapo.com/arduino-web-server-esp-32/](../2021-04-25-arduino-web-server-esp-32/2021-04-25-arduino-web-server-esp-32.md)), and I started to think more and more about how easy it was to write a website and how if I could get a display to show a web browser, it might be exactly what I was missing. While it would be great to have a native UI for performance, it would be even better if I could have more flexibility in the actual surface of my projects.
+I recently wrote an article about writing a webserver with the esp32 ([https://www.gabrielcsapo.com/arduino-web-server-esp-32/](../2021-04-25-arduino-web-server-esp-32/2021-04-25-arduino-web-server-esp-32.mdx)), and I started to think more and more about how easy it was to write a website and how if I could get a display to show a web browser, it might be exactly what I was missing. While it would be great to have a native UI for performance, it would be even better if I could have more flexibility in the actual surface of my projects.
 
 ## Why web?
 
