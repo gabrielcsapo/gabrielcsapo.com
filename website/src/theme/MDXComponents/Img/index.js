@@ -10,7 +10,7 @@ function transformImgClassName(className) {
 
 export default function MDXImg(props) {
   return (
-    <figure>
+    <figure style={{ textAlign: "center" }}>
       <img
         loading="lazy"
         {...props}

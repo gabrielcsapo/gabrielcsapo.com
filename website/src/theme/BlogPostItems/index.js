@@ -10,7 +10,7 @@ export default function BlogPostItems({
   metadata,
   component: BlogPostItemComponent = BlogPostItem,
 }) {
-  const { postsPerPage } = metadata;
+  const { postsPerPage = 10 } = metadata || {};
   const [singleSize, setSingleSize] = React.useState(false);
 
   if (ExecutionEnvironment.canUseDOM) {

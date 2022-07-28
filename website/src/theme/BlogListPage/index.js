@@ -27,6 +27,7 @@ function BlogListPageMetadata(props) {
 }
 function BlogListPageContent(props) {
   const { metadata, items } = props;
+
   return (
     <BlogLayout>
       <BlogPostItems items={items} metadata={metadata} />

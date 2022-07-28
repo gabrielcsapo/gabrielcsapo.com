@@ -1,0 +1,25 @@
+{
+  "name": "gabrielcsapo.com",
+  "version": "1.0.0",
+  "description": "> 📕 code samples and content mentioned on my blog https://www.gabrielcsapo.com",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gabrielcsapo/gabrielcsapo.com.git"
+  },
+  "author": "Gabriel J. Csapo <gabecsapo@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gabrielcsapo/gabrielcsapo.com/issues"
+  },
+  "homepage": "https://github.com/gabrielcsapo/gabrielcsapo.com#readme",
+  "workspaces": [
+    "./website"
+  ],
+  "devDependencies": {
+    "prettier": "^2.7.1"
+  }
+}

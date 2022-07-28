@@ -25,4 +25,4 @@ If the screen was loose, it might have the pins to support touch but missing the
 
 ["The **_XPT2046_** is a 4-wire resistive touch screen controller that incorporates a 12-bit 125 kHz sampling SAR type"](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&ved=2ahUKEwi_uZmw1sT1AhXfIEQIHXrFAncQFnoECAYQAQ&url=https%3A%2F%2Fldm-systems.ru%2Ff%2Fdoc%2Fcatalog%2FHY-TFT-2%2C8%2FXPT2046.pdf&usg=AOvVaw3zbUPXSfkIyFFoCL1HGraq) it is a small chip but unlocks being able to use the touch screen!
 
-![A close-up view of the **_[XPT2046](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&ved=2ahUKEwi_uZmw1sT1AhXfIEQIHXrFAncQFnoECAYQAQ&url=https%3A%2F%2Fldm-systems.ru%2Ff%2Fdoc%2Fcatalog%2FHY-TFT-2%2C8%2FXPT2046.pdf&usg=AOvVaw3zbUPXSfkIyFFoCL1HGraq). _**](./images/IMG_5510.jpeg)
+![A close-up view of the XPT2046](./images/IMG_5510.jpeg)
