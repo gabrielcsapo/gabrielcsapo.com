@@ -19,6 +19,7 @@ import BlogPostItem from "@theme/BlogPostItem";
 import BlogListPaginator from "@theme/BlogListPaginator";
 import SearchMetadata from "@theme/SearchMetadata";
 import type { Props } from "@theme/BlogListPage";
+import ExecutionEnvironment from "@docusaurus/ExecutionEnvironment";
 
 import styles from "./styles.module.css";
 
@@ -43,11 +44,13 @@ function BlogListPageContent(props: Props): JSX.Element {
   const { page, postsPerPage } = metadata;
   const [singleSize, setSingleSize] = React.useState(false);
 
-  React.useEffect(() => {
-    if (document.body.clientWidth <= 780) {
-      setSingleSize(true);
-    }
-  }, [document.body.clientWidth]);
+  if (ExecutionEnvironment.canUseDOM) {
+    React.useEffect(() => {
+      if (document.body.clientWidth <= 780) {
+        setSingleSize(true);
+      }
+    }, [document.body.clientWidth]);
+  }
 
   return (
     <BlogLayout sidebar={sidebar}>

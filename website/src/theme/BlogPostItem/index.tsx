@@ -17,6 +17,7 @@ import EditThisPage from "@theme/EditThisPage";
 import TagsListInline from "@theme/TagsListInline";
 import BlogPostAuthors from "@theme/BlogPostAuthors";
 import type { Props } from "@theme/BlogPostItem";
+import ExecutionEnvironment from "@docusaurus/ExecutionEnvironment";
 
 import styles from "./styles.module.css";
 
@@ -159,17 +160,19 @@ export default function BlogPostItem(props: PropsExtended): JSX.Element {
     if (!isBlogPostPage) return;
 
     const createUtterancesEl = () => {
-      const script = document.createElement("script");
+      if (ExecutionEnvironment.canUseDOM) {
+        const script = document.createElement("script");
 
-      script.src = "https://utteranc.es/client.js";
-      script.setAttribute("repo", "gabrielcsapo/gabrielcsapo.com");
-      script.setAttribute("issue-term", "pathname");
-      script.setAttribute("label", "comment");
-      script.setAttribute("theme", "preferred-color-scheme");
-      script.crossOrigin = "anonymous";
-      script.async = true;
+        script.src = "https://utteranc.es/client.js";
+        script.setAttribute("repo", "gabrielcsapo/gabrielcsapo.com");
+        script.setAttribute("issue-term", "pathname");
+        script.setAttribute("label", "comment");
+        script.setAttribute("theme", "preferred-color-scheme");
+        script.crossOrigin = "anonymous";
+        script.async = true;
 
-      containerRef.current.appendChild(script);
+        containerRef.current.appendChild(script);
+      }
     };
 
     createUtterancesEl();
