@@ -1,22 +1,13 @@
-/**
- * Copyright (c) Facebook, Inc. and its affiliates.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
 import React from "react";
 import Translate, { translate } from "@docusaurus/Translate";
 import PaginatorNavLink from "@theme/PaginatorNavLink";
-import type { Props } from "@theme/BlogListPaginator";
 import clsx from "clsx";
 
 import styles from "./styles.module.css";
 
-export default function BlogListPaginator(props: Props): JSX.Element {
+export default function BlogListPaginator(props) {
   const { metadata } = props;
   const { previousPage, nextPage } = metadata;
-
   return (
     <nav
       className={clsx("pagination-nav", styles.blogPostPaginator)}

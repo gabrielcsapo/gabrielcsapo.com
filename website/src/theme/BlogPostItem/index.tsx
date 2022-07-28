@@ -14,8 +14,9 @@ import { usePluralForm, useColorMode } from "@docusaurus/theme-common";
 import { blogPostContainerID } from "@docusaurus/utils-common";
 import MDXContent from "@theme/MDXContent";
 import EditThisPage from "@theme/EditThisPage";
+import { useBlogPost } from "@docusaurus/theme-common/internal";
 import TagsListInline from "@theme/TagsListInline";
-import BlogPostAuthors from "@theme/BlogPostAuthors";
+import BlogPostAuthors from "@theme/BlogPostItem/Header/Authors";
 import type { Props } from "@theme/BlogPostItem";
 import ExecutionEnvironment from "@docusaurus/ExecutionEnvironment";
 
@@ -139,15 +140,8 @@ export default function BlogPostItem(props: PropsExtended): JSX.Element {
   const readingTimePlural = useReadingTimePlural();
   const { withBaseUrl } = useBaseUrlUtils();
   const containerRef = React.useRef(null);
-  const {
-    children,
-    frontMatter,
-    assets,
-    metadata,
-    truncated,
-    isBlogPostPage = false,
-    largeFormat = false,
-  } = props;
+  const { children, frontMatter, truncated, largeFormat = false } = props;
+  const { metadata, assets, isBlogPostPage } = useBlogPost();
   const { date, formattedDate, permalink, tags, readingTime, title, authors } =
     metadata;
 
