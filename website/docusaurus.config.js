@@ -67,10 +67,6 @@ const config = {
           alt: "Site Logo",
           src: "img/logo.png",
         },
-        items: [
-          { to: "/", label: "Blog", position: "left" },
-          { to: "/archive", label: "All Posts", position: "left" },
-        ],
       },
       footer: {
         style: "dark",
@@ -95,6 +91,7 @@ const config = {
                 label: "Blog",
                 to: "/",
               },
+              { to: "/archive", label: "All Posts" },
             ],
           },
         ],
