@@ -42,8 +42,8 @@ const config = {
       "classic",
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
-        googleAnalytics: {
-          trackingID: "UA-49443616-3",
+        gtag: {
+          trackingID: "G-NHMDX59V6B",
         },
         docs: false,
         blog: {
