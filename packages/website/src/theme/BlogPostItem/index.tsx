@@ -13,7 +13,6 @@ import { useBaseUrlUtils } from "@docusaurus/useBaseUrl";
 import { usePluralForm, useColorMode } from "@docusaurus/theme-common";
 import { blogPostContainerID } from "@docusaurus/utils-common";
 import MDXContent from "@theme/MDXContent";
-import EditThisPage from "@theme/EditThisPage";
 import { useBlogPost } from "@docusaurus/theme-common/internal";
 import TagsListInline from "@theme/TagsListInline";
 import BlogPostAuthors from "@theme/BlogPostItem/Header/Authors";

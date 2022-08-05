@@ -17,9 +17,12 @@
   },
   "homepage": "https://github.com/gabrielcsapo/gabrielcsapo.com#readme",
   "workspaces": [
-    "./website"
+    "./packages/*"
   ],
   "devDependencies": {
     "prettier": "^2.7.1"
+  },
+  "volta": {
+    "node": "18.7.0"
   }
 }

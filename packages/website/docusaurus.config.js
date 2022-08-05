@@ -9,7 +9,7 @@ const config = {
   title: "Gabriel J. Csapo",
   tagline: "Stumbling through building stuff. Let's learn things together.",
   url: "https://gabrielcsapo.github.io",
-  baseUrl: "/gabrielcsapo.com/",
+  baseUrl: "/",
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
   favicon: "img/favicon.ico",
@@ -49,7 +49,7 @@ const config = {
         blog: {
           routeBasePath: "/",
           showReadingTime: true,
-          path: path.resolve(__dirname, "..", "posts"),
+          path: path.resolve(__dirname, "..", "..", "posts"),
         },
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
