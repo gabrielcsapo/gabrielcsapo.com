@@ -4,7 +4,7 @@
   "description": "> 📕 code samples and content mentioned on my blog https://www.gabrielcsapo.com",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "npm run start --workspace website"
   },
   "repository": {
     "type": "git",
@@ -23,6 +23,7 @@
     "prettier": "^2.7.1"
   },
   "volta": {
-    "node": "18.7.0"
+    "node": "18.7.0",
+    "npm": "9.1.2"
   }
 }

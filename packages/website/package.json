@@ -1,5 +1,5 @@
 {
-  "name": "@gabrielcsapo/website",
+  "name": "website",
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -18,7 +18,6 @@
     "@docusaurus/core": "^2.2.0",
     "@docusaurus/plugin-ideal-image": "^2.2.0",
     "@docusaurus/preset-classic": "^2.2.0",
-    "@gabrielcsapo/theme": "*",
     "@mdx-js/react": "^1.6.22",
     "clsx": "^1.1.1",
     "docusaurus-plugin-image-zoom": "^0.1.1",
