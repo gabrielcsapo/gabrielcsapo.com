@@ -7,3 +7,8 @@
 table {
   display: table;
 }
+
+.table-of-contents__left-border {
+  border-right: 1px solid var(--ifm-toc-border-color);
+  border-left: 0;
+}

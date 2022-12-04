@@ -5,6 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
+import TOC from "@theme/TOC";
 import React from "react";
 import clsx from "clsx";
 import Translate, { translate } from "@docusaurus/Translate";
@@ -109,8 +110,6 @@ function BlogPostItemLargeFormat({
             </>
           )}
         </div>
-        <BlogPostAuthors authors={authors} assets={assets} />
-
         {image && (
           <meta
             itemProp="image"
@@ -139,10 +138,23 @@ export default function BlogPostItem(props: PropsExtended): JSX.Element {
   const readingTimePlural = useReadingTimePlural();
   const { withBaseUrl } = useBaseUrlUtils();
   const containerRef = React.useRef(null);
-  const { children, frontMatter, truncated, largeFormat = false } = props;
-  const { metadata, assets, isBlogPostPage } = useBlogPost();
-  const { date, formattedDate, permalink, tags, readingTime, title, authors } =
-    metadata;
+  const { children, truncated, largeFormat = false } = props;
+  const { metadata, assets, isBlogPostPage, toc } = useBlogPost();
+  const {
+    date,
+    formattedDate,
+    permalink,
+    tags,
+    readingTime,
+    title,
+    authors,
+    frontMatter,
+  } = metadata;
+  const {
+    hide_table_of_contents: hideTableOfContents,
+    toc_min_heading_level: tocMinHeadingLevel,
+    toc_max_heading_level: tocMaxHeadingLevel,
+  } = frontMatter;
 
   const image = assets.image ?? frontMatter.image;
   const truncatedPost = !isBlogPostPage && truncated;
@@ -176,48 +188,86 @@ export default function BlogPostItem(props: PropsExtended): JSX.Element {
       itemProp="blogPost"
       itemScope
       itemType="http://schema.org/BlogPosting"
+      style={{ width: "100%" }}
     >
-      <header>
-        <TitleHeading className={styles.blogPostTitle} itemProp="headline">
-          {title}
-        </TitleHeading>
-        <div className={clsx(styles.blogPostData, "margin-vert--md")}>
-          <time dateTime={date} itemProp="datePublished">
-            {formattedDate}
-          </time>
+      <header className="row">
+        <div
+          className="col col--4"
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <div>
+            {(tagsExists || truncated) && (
+              <div className={clsx("col", { "col--9": truncatedPost })}>
+                <TagsListInline tags={tags} />
+              </div>
+            )}
 
-          {typeof readingTime !== "undefined" && (
-            <>
-              {" · "}
-              {readingTimePlural(readingTime)}
-            </>
-          )}
+            <TitleHeading className={styles.blogPostTitle} itemProp="headline">
+              {title}
+            </TitleHeading>
+            <div className={clsx(styles.blogPostData, "margin-vert--md")}>
+              <time dateTime={date} itemProp="datePublished">
+                {formattedDate}
+              </time>
+
+              {typeof readingTime !== "undefined" && (
+                <>
+                  {" · "}
+                  {readingTimePlural(readingTime)}
+                </>
+              )}
+            </div>
+            <BlogPostAuthors authors={authors} assets={assets} />
+          </div>
         </div>
-        <BlogPostAuthors authors={authors} assets={assets} />
+        <div className="col col--8">
+          <img
+            src={image}
+            style={{
+              minHeight: "450px",
+              maxWidth: "100%",
+              objectFit: "cover",
+              borderRadius: "4px",
+            }}
+          />
+        </div>
       </header>
-
-      {image && (
-        <meta
-          itemProp="image"
-          content={withBaseUrl(image, { absolute: true })}
-        />
-      )}
-
-      <div
-        // This ID is used for the feed generation to locate the main content
-        id={isBlogPostPage ? blogPostContainerID : undefined}
-        className="markdown"
-        itemProp="articleBody"
-      >
-        <MDXContent>{children}</MDXContent>
-
-        {(tagsExists || truncated) && (
-          <div className={clsx("col", { "col--9": truncatedPost })}>
-            <TagsListInline tags={tags} />
+      <br />
+      <hr />
+      <br />
+      <div className="row">
+        {hideTableOfContents ? undefined : (
+          <div className="col col--2">
+            <TOC
+              toc={toc}
+              minHeadingLevel={tocMinHeadingLevel}
+              maxHeadingLevel={tocMaxHeadingLevel}
+            />
           </div>
         )}
+        <div className={hideTableOfContents ? "col col--12" : "col col--10"}>
+          {image && (
+            <meta
+              itemProp="image"
+              content={withBaseUrl(image, { absolute: true })}
+            />
+          )}
 
-        <div ref={containerRef} />
+          <div
+            // This ID is used for the feed generation to locate the main content
+            id={isBlogPostPage ? blogPostContainerID : undefined}
+            className="markdown"
+            itemProp="articleBody"
+          >
+            <MDXContent>{children}</MDXContent>
+
+            <div ref={containerRef} />
+          </div>
+        </div>
       </div>
     </article>
   ) : largeFormat ? (
@@ -261,9 +311,6 @@ export default function BlogPostItem(props: PropsExtended): JSX.Element {
           <time dateTime={date} itemProp="datePublished">
             {formattedDate}
           </time>
-
-          <BlogPostAuthors authors={authors} assets={assets} />
-
           {typeof readingTime !== "undefined" && (
             <>
               {" · "}

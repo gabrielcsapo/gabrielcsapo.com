@@ -13,29 +13,23 @@ import type { Props } from "@theme/BlogLayout";
 
 import styles from "./styles.module.css";
 
-interface PropsExtended extends Props {
-  hero: ReactNode;
-}
-
-export default function BlogLayout(props: PropsExtended): JSX.Element {
-  const { sidebar, toc, children, hero, ...layoutProps } = props;
+export default function BlogLayout(props: Props): JSX.Element {
+  const { sidebar, children, ...layoutProps } = props;
 
   return (
     <Layout {...layoutProps}>
-      {hero && hero}
       <div className="container margin-vert--lg">
         <div className="row">
           <main
-            className={clsx(
-              "col",
-              toc ? "col--10" : { "col--12": true, [styles.blogLayout]: true }
-            )}
+            className={clsx("col", {
+              "col--12": true,
+              [styles.blogLayout]: true,
+            })}
             itemScope
             itemType="http://schema.org/Blog"
           >
             {children}
           </main>
-          {toc && <div className="col col--2">{toc}</div>}
         </div>
       </div>
     </Layout>

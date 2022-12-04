@@ -4,21 +4,21 @@ slug: arduino-i2c-discovery
 tags: [Arduino, SSD1306, GY-21P]
 excerpt: This tutorial explains how to discover i2c devices such as the SSD1306 and GY-21P.
 authors: gabrielcsapo
-image: ./images/IMG_4465.jpg
+image: ./images/arduino-i2c-discovery.jpg
 ---
 
 import CodeBlock from "@theme/CodeBlock";
 import SketchSource from "!!raw-loader!./files/sketch.ino";
 
-> This tutorial explains how to discover i2c devices such as the SSD1306 and GY-21P.
-
-:::tip
-[Sparkfun has a great in depth look at what i2c is](https://learn.sparkfun.com/tutorials/i2c/all)
-:::
+This tutorial explains how to discover i2c devices such as the SSD1306 and GY-21P.
 
 From a high level overview, i2c allows to create a signal line of communication between multiple devices without having to physically address them. This is extremely useful for projects that might not have many ports on the device, but need to manage multiple peripherals.
 
 <!-- truncate -->
+
+:::tip
+[Sparkfun has a great in depth look at what i2c is](https://learn.sparkfun.com/tutorials/i2c/all)
+:::
 
 ## Supplies
 
@@ -55,4 +55,4 @@ In the example below you can see a line for `display.begin(SSD1306_SWITCHCAPVCC,
 Once you flash you should see the following output on your SSD1306 screen.
 :::
 
-![](./images/IMG_4465.jpg)
+![](./images/arduino-i2c-discovery.jpg)

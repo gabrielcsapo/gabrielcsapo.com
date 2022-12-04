@@ -12,36 +12,13 @@ import BlogLayout from "@theme/BlogLayout";
 import BlogPostItem from "@theme/BlogPostItem";
 import BlogPostPaginator from "@theme/BlogPostPaginator";
 import BlogPostPageMetadata from "@theme/BlogPostPage/Metadata";
-import TOC from "@theme/TOC";
+
 function BlogPostPageContent({ sidebar, children }) {
-  const { metadata, toc, assets } = useBlogPost();
-  const { nextItem, prevItem, frontMatter } = metadata;
-  const {
-    hide_table_of_contents: hideTableOfContents,
-    toc_min_heading_level: tocMinHeadingLevel,
-    toc_max_heading_level: tocMaxHeadingLevel,
-  } = frontMatter;
-  const image = assets.image ?? frontMatter.image;
+  const { metadata } = useBlogPost();
+  const { nextItem, prevItem } = metadata;
 
   return (
-    <BlogLayout
-      sidebar={sidebar}
-      toc={
-        !hideTableOfContents && toc.length > 0 ? (
-          <TOC
-            toc={toc}
-            minHeadingLevel={tocMinHeadingLevel}
-            maxHeadingLevel={tocMaxHeadingLevel}
-          />
-        ) : undefined
-      }
-      hero={
-        <img
-          src={image}
-          style={{ height: "450px", objectFit: "cover", width: "100%" }}
-        />
-      }
-    >
+    <BlogLayout sidebar={sidebar}>
       <BlogPostItem>{children}</BlogPostItem>
 
       {(nextItem || prevItem) && (
