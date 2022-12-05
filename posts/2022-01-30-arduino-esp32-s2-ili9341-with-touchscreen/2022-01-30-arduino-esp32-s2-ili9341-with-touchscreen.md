@@ -2,7 +2,7 @@
 title: Arduino - esp32-s2 (ILI9341) with Touchscreen
 slug: arduino-esp32-s2-ili9341-with-touchscreen
 authors: gabrielcsapo
-image: ./images/arduino-esp32-s2-ili9341-with-touchscreen_bb-2.png
+image: ./images/arduino-esp32-s2-ili9341-with-touchscreen_bb.png
 tags: [Arduino, esp32-s2, ILI9341, Touchscreen]
 ---
 
@@ -46,7 +46,7 @@ Alright, now that we have figured out if the touchscreen you have is touch-capab
 | 11                | T_DIN      |
 | 13                | T_DO       |
 
-[](./images/arduino-esp32-s2-ili9341-with-touchscreen_bb-1.png)
+[](./images/arduino-esp32-s2-ili9341-with-touchscreen_bb.png)
 
 ## Coding
 

@@ -4,7 +4,7 @@ slug: arduino-gy-521
 tags: [Arduino, gy-521]
 excerpt: This tutorial explains how to use a GY-521 driven by an esp32-c3! This is an I2C board with a combined Gyroscope and Accelerometer.
 authors: gabrielcsapo
-image: ./images/IMG_7034.jpeg
+image: ./images/2022-02-24-arduino-gy-521-hero-image.jpeg
 ---
 
 import CodeBlock from "@theme/CodeBlock";
@@ -26,14 +26,11 @@ This board also has the ability to change the quality of the data being processe
 
 I was super interested in seeing how this chip worked based on a week Joey Castillo posted:
 
-> HOT DAMN, that&#39;s some good looking data! [#SensorWatch](https://twitter.com/hashtag/SensorWatch?src=hash&ref_src=twsrc%5Etfw)[pic.twitter.com/fH9HT91f8b](https://t.co/fH9HT91f8b) > &mdash; joey castillo (@josecastillo) [February 20, 2022](https://twitter.com/josecastillo/status/1495457090462269444?ref_src=twsrc%5Etfw)
+![`HOT DAMN, that's some good looking data! [#SensorWatch](https://twitter.com/hashtag/SensorWatch?src=hash&ref_src=twsrc%5Etfw)[pic.twitter.com/fH9HT91f8b](https://t.co/fH9HT91f8b) > — joey castillo (@josecastillo) [February 20, 2022](https://twitter.com/josecastillo/status/1495457090462269444?ref_src=twsrc%5Etfw)`](./images/tweet-fH9HT91f8b.png)
 
-Joey Castillo getting sensor data from his watch
 Even cooler he put this data through a program to see if he could train a model to recognize certain activities!
 
-> Not bad for a 30 minute run! The tool split my jogging data into two separate sets, one for training and one for testing; running the testing data against the trained model, it&#39;s 99.8% accurate for jogging. [pic.twitter.com/vcCHJWYTAX](https://t.co/vcCHJWYTAX) > &mdash; joey castillo (@josecastillo) [February 20, 2022](https://twitter.com/josecastillo/status/1495543584140976130?ref_src=twsrc%5Etfw)
-
-Joey Castillo analyzing sensor data
+![Not bad for a 30 minute run! The tool split my jogging data into two separate sets, one for training and one for testing; running the testing data against the trained model, it's 99.8% accurate for jogging. [pic.twitter.com/vcCHJWYTAX](https://t.co/vcCHJWYTAX) > — joey castillo (@josecastillo) [February 20, 2022](https://twitter.com/josecastillo/status/1495543584140976130?ref_src=twsrc%5Etfw)`](./images/tweet-vcCHJWYTAX.png)
 
 ## Supplies
 
@@ -41,11 +38,11 @@ Joey Castillo analyzing sensor data
 - (1) GY-521
 - (4)  Jumper wires
 
-![picture of gy-521 originally from <https://www.addicore.com/GY-521-MPU6050-p/170.htm>](./images/170-4.jpg)
+![picture of gy-521 originally from <https://www.addicore.com/GY-521-MPU6050-p/170.htm>](./images/gy-521.jpg)
 
 ## Setup
 
-![Fritzing diagram for gy-521](./images/arduino-gy-521_bb-1.png)
+![Fritzing diagram for gy-521](./images/arduino-gy-521_bb.png)
 
 ## Coding
 
@@ -78,15 +75,15 @@ This example just shows a basic
 Original example taken from <https://github.com/adafruit/Adafruit_MPU6050/blob/master/examples/basic_readings/basic_readings.ino> and adapted for the esp32-c3 setup above
 Once you flash this, [open up the serial plotter in the Arduino IDE](https://docs.arduino.cc/software/ide-v2/tutorials/ide-v2-serial-plotter). Upon opening it for the first time you will get the following which is the device laying flat on your desk.
 
-![](./images/Screen-Shot-2022-02-24-at-6.48.47-PM.png)
+![](./images/serial-plotter-flat.png)
 
 Now you can experiment by moving the board around and see what happens!  You can see that holding the device at a 90 degree angle and flipping it upside down will yield two different results!
 
-![](./images/Screen-Shot-2022-02-24-at-6.51.04-PM.png)
+![](./images/serial-plotter-90-degrees.png)
 
-![](./images/Screen-Shot-2022-02-24-at-6.51.14-PM.png)
+![](./images/serial-plotter-180-degrees.png)
 
 Holding the device at a 90 degree angle and flipping it upside down
 I got a longer USB cable to be able to run with my breadboard around the room, more like run in place, but the results are so interesting!
 
-![Running in place](./images/Screen-Shot-2022-02-24-at-6.52.28-PM.png)
+![Running in place](./images/serial-plotter-moving-around.png)
