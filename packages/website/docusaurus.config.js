@@ -47,6 +47,9 @@ const config = {
         },
         docs: false,
         blog: {
+          feedOptions: {
+            type: "all",
+          },
           routeBasePath: "/",
           showReadingTime: true,
           path: path.resolve(__dirname, "..", "..", "posts"),
