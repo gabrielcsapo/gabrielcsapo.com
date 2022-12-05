@@ -98,7 +98,7 @@ const config = {
         copyright: `Copyright © ${new Date().getFullYear()} Gabriel J. Csapo. Built with Docusaurus.`,
       },
       zoom: {
-        selector: ".markdown :not(em) > img",
+        selector: "[itemprop=blogPost] img",
         background: {
           light: "rgb(255, 255, 255)",
           dark: "rgb(50, 50, 50)",
