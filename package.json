@@ -5,6 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "npm run start --workspace website",
+    "build": "npm run build --workspace website",
+    "serve": "npm run serve --workspace website",
     "lint": "prettier --write .",
     "prepare": "husky install"
   },
@@ -23,7 +25,7 @@
   ],
   "devDependencies": {
     "husky": "^8.0.2",
-    "prettier": "^2.8.0"
+    "prettier": "^2.8.4"
   },
   "volta": {
     "node": "18.7.0",
