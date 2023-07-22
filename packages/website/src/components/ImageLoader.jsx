@@ -1,24 +1,52 @@
-import React, { useEffect, useState } from "react";
-
+import React, { useEffect, useState, useRef } from "react";
 import clsx from "clsx";
-
-import styles from "./ImageLoader.module.css";
 
 import { getPostImage } from "virtual:pages.jsx";
 
+import styles from "./ImageLoader.module.css";
+
 export default function ImageLoader({ slug, className, alt }) {
   const [image, setImage] = useState();
+  const imgRef = useRef();
 
   useEffect(() => {
-    async function fetchImage() {
-      const potentialImage = await getPostImage(slug);
-      setImage(potentialImage.default);
+    let observer;
+
+    if (typeof IntersectionObserver !== "undefined") {
+      observer = new IntersectionObserver(
+        (entries) => {
+          if (entries[0].isIntersecting) {
+            loadImage();
+            observer.unobserve(imgRef.current);
+          }
+        },
+        { threshold: 0.1 }
+      );
+
+      if (imgRef.current) {
+        observer.observe(imgRef.current);
+      }
+    } else {
+      loadImage();
     }
-    fetchImage();
+
+    return () => {
+      if (observer && imgRef.current) {
+        observer.unobserve(imgRef.current);
+      }
+    };
   }, [slug]);
 
+  async function loadImage() {
+    console.log("loading", slug);
+    const potentialImage = await getPostImage(slug);
+    setImage(potentialImage.default);
+  }
+
   if (!image) {
-    return <div className={clsx(className, styles.placeholder)}></div>;
+    return (
+      <div ref={imgRef} className={clsx(className, styles.placeholder)}></div>
+    );
   }
 
   return (
