@@ -59,7 +59,7 @@ const remarkImageImport = () => (tree, file) => {
         path.resolve(dir, node.url) +
         (node.url.indexOf(".gif") > -1
           ? ""
-          : "?w=300;500;700;900;1200&format=webp&as=srcset");
+          : "?w=300;500;700;900;1200&format=webp&as=picture");
       const importName = generateAlphabetHash(imagePath);
       const importNode = createImport(importName, imagePath);
 

@@ -115,7 +115,7 @@ function getFrontMatter(filePath) {
       frontmatter.image
     );
     frontmatter.image =
-      absoluteImagePath + "?w=300;500;700;900;1200&format=webp&as=srcset";
+      absoluteImagePath + "?w=300;500;700;900;1200&format=webp&as=picture";
   }
 
   if (frontmatter.layout) {
@@ -125,6 +125,15 @@ function getFrontMatter(filePath) {
     );
   } else {
     frontmatter.layout = path.resolve("./src/components/BlogLayout");
+  }
+
+  if (frontmatter.author) {
+    frontmatter.author = {
+      name: "Gabriel J. Csapo",
+      title: "Wanderer",
+      url: "https://github.com/gabrielcsapo",
+      image_url: "https://github.com/gabrielcsapo.png",
+    };
   }
 
   frontmatter.readingTime = readingTime(fileContent);

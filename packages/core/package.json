@@ -59,7 +59,7 @@
     "sharp": "^0.32.1",
     "storybook": "^7.0.24",
     "storybook-dark-mode": "^3.0.0",
-    "vite-imagetools": "^5.0.4"
+    "vite-imagetools": "^5.0.5"
   },
   "volta": {
     "extends": "../../package.json"

@@ -9,13 +9,20 @@ import { getPostImage } from "virtual:pages.jsx";
 import Layout from "../Layout";
 import CodeBlock from "./CodeBlock";
 import styles from "./BlogLayout.module.css";
+import ImageLoader from "./ImageLoader";
 
 const ResponsiveTable = ({ children }) => {
   return <table className={styles.table}>{children}</table>;
 };
 
 const FullWidthImage = (props) => {
-  const { alt, src } = props;
+  let { alt, src } = props;
+  const isFullWidth = alt && alt.indexOf('"fullWidth"') > -1;
+
+  if (isFullWidth) {
+    alt = alt.replace('"fullWidth"', "");
+  }
+
   const zoomRef = useRef(null);
 
   function getZoom() {
@@ -37,10 +44,13 @@ const FullWidthImage = (props) => {
   }
 
   return (
-    <div className={styles.fullWidthImage}>
-      <div className={styles.fullWidthImageContent}>
+    <div className={isFullWidth && styles.fullWidthImage}>
+      <div className={isFullWidth && styles.fullWidthImageContent}>
         <picture>
-          <source srcSet={src} type="image/webp" />
+          <source
+            srcSet={typeof src === "object" ? src.img.src : src}
+            type="image/webp"
+          />
           <img alt={alt} ref={attachZoom} />
         </picture>
         {alt && <figcaption className={styles.imageCaption}>{alt}</figcaption>}
@@ -104,26 +114,19 @@ const components = {
 };
 
 export default function BlogLayout(props) {
-  const [image, setImage] = useState();
   const { tags, title, author, date, slug, children, readingTime } = props;
-
-  useEffect(() => {
-    async function fetchImage() {
-      const potentialImage = await getPostImage(slug);
-      setImage(potentialImage.default);
-    }
-    fetchImage();
-  }, []);
 
   return (
     <Layout>
       <div className={styles.blogLayout}>
-        <picture className={styles.bannerImage}>
-          <source srcSet={image} type="image/webp" />
-          <img alt={`${slug} image`} />
-        </picture>
+        <ImageLoader
+          className={styles.bannerImage}
+          slug={slug}
+          alt={`${slug} image`}
+        />
         <div className={styles.heading}>
           <div className={styles.title}>{title}</div>
+          <div className={styles.author}>by {author.name}</div>
           <ul className={styles.tagsContainer}>
             {tags.map((tagName) => {
               return (
@@ -133,7 +136,10 @@ export default function BlogLayout(props) {
               );
             })}
           </ul>
-          <div className={styles.date}>{new Date(date).toDateString()}</div>
+          <div className={styles.date}>
+            {new Date(date).toDateString()} • {Math.ceil(readingTime.minutes)}{" "}
+            minutes
+          </div>
         </div>
         <div className={styles.content}>
           <MDXProvider components={components}>{children}</MDXProvider>

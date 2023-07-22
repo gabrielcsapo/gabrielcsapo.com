@@ -106,7 +106,7 @@ const SearchInput = () => {
         <span className={styles.icon}>
           <FontAwesomeIcon icon={faMagnifyingGlass} />
         </span>
-        <span>Search</span>
+        <span className={styles.placeholderText}>Search</span>
         <span className={styles.shortcut}>⌘K</span>
       </div>
 

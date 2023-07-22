@@ -71,11 +71,7 @@ h2 {
   display: flex;
   align-items: center;
   font-size: 14px;
-  left: 15px;
-}
-
-.author {
-  margin-right: 10px;
+  left: 30px;
 }
 
 .image {

@@ -1,13 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
-
-import { getPostImage } from "virtual:pages.jsx";
 
 import styles from "./FeaturedPostSlider.module.css";
 
 import ArrowRightIcon from "./Icons/ArrowRightIcon";
 import ArrowLeftIcon from "./Icons/ArrowLeftIcon";
+import ImageLoader from "./ImageLoader";
 
 const FeaturedPostSliderCard = ({
   post,
@@ -16,24 +15,16 @@ const FeaturedPostSliderCard = ({
   goForth,
   goBack,
 }) => {
-  const [image, setImage] = useState();
   const { date, readingTime, title, slug, defaultSlug } = post;
-
-  useEffect(() => {
-    async function fetchImage() {
-      const potentialImage = await getPostImage(slug);
-      setImage(potentialImage.default);
-    }
-    fetchImage();
-  }, [slug]);
 
   return (
     <>
       <div className={styles.imageOverlay}></div>
-      <picture className={styles.bannerImage}>
-        <source srcSet={image} type="image/webp" />
-        <img className={styles.bannerImage} alt={`${slug} image`} />
-      </picture>
+      <ImageLoader
+        className={styles.bannerImage}
+        alt={`${slug} image`}
+        slug={slug}
+      />
       <a className={styles.content} href={slug ?? defaultSlug}>
         <div className={styles.featured}>
           <FontAwesomeIcon icon={faStar} />
