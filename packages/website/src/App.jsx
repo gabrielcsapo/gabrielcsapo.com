@@ -41,7 +41,6 @@ const ScrollToAnchor = () => {
 const routesStatements = routes.map((route, i) => {
   const Layout = getComponent(route.layout);
   const Component = getComponent(route.component);
-
   return (
     <Route
       key={route.path}

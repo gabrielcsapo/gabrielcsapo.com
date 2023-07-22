@@ -5,14 +5,14 @@ import { getPostImage } from "virtual:pages.jsx";
 
 import styles from "./ImageLoader.module.css";
 
-export default function ImageLoader({ slug, className, alt }) {
+export default function ImageLoader({ slug, className, alt, lazy }) {
   const [image, setImage] = useState();
   const imgRef = useRef();
 
   useEffect(() => {
     let observer;
 
-    if (typeof IntersectionObserver !== "undefined") {
+    if (typeof IntersectionObserver !== "undefined" && lazy) {
       observer = new IntersectionObserver(
         (entries) => {
           if (entries[0].isIntersecting) {

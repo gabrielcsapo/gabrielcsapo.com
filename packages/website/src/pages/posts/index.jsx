@@ -8,18 +8,21 @@ import IconButton from "@components/IconButton";
 import styles from "./index.module.css";
 
 import { posts } from "virtual:pages.jsx";
+import { useTitle } from "@utils/useTitle";
 
 const ITEMS_PER_PAGE = 10;
 
 const Index = () => {
+  const searchParams = new URLSearchParams(window.location.search);
+  const currentPage = parseInt(searchParams.get("page") || "1", 10);
+
   const navigate = useNavigate();
+
+  useTitle(`Post archive: page #${currentPage}`);
 
   const sortedPosts = posts?.sort(
     (a, b) => new Date(b.date) - new Date(a.date)
   );
-
-  const searchParams = new URLSearchParams(window.location.search);
-  const currentPage = parseInt(searchParams.get("page") || "1", 10);
 
   const totalPages = Math.ceil(sortedPosts.length / ITEMS_PER_PAGE);
 

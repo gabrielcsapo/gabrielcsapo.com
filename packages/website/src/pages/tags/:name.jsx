@@ -5,9 +5,12 @@ import BlogCard from "@components/BlogCard";
 import { posts } from "virtual:pages.jsx";
 
 import styles from "./:name.module.css";
+import { useTitle } from "@utils/useTitle";
 
 export default function Tags() {
   const { name: tagName } = useParams();
+
+  useTitle(`Tag: ${tagName}`);
 
   const postsForTag = posts.filter((post) => {
     return post.tags && post.tags.indexOf(tagName) > -1;

@@ -10,6 +10,7 @@ import Layout from "../Layout";
 import CodeBlock from "./CodeBlock";
 import styles from "./BlogLayout.module.css";
 import ImageLoader from "./ImageLoader";
+import { useTitle } from "@utils/useTitle";
 
 const ResponsiveTable = ({ children }) => {
   return <table className={styles.table}>{children}</table>;
@@ -117,10 +118,13 @@ const components = {
 };
 
 export default function BlogLayout(props) {
-  const { tags, title, author, date, slug, children, readingTime } = props;
+  const { tags, excerpt, title, author, date, slug, children, readingTime } =
+    props;
+
+  useTitle(`Post: ${title}`, excerpt);
 
   return (
-    <Layout>
+    <Layout {...props}>
       <div className={styles.blogLayout}>
         <ImageLoader
           className={styles.bannerImage}
@@ -130,6 +134,10 @@ export default function BlogLayout(props) {
         <div className={styles.heading}>
           <div className={styles.title}>{title}</div>
           <div className={styles.author}>by {author.name}</div>
+          <div className={styles.date}>
+            {new Date(date).toDateString()} • {Math.ceil(readingTime.minutes)}{" "}
+            minutes
+          </div>
           <ul className={styles.tagsContainer}>
             {tags.map((tagName) => {
               return (
@@ -139,10 +147,6 @@ export default function BlogLayout(props) {
               );
             })}
           </ul>
-          <div className={styles.date}>
-            {new Date(date).toDateString()} • {Math.ceil(readingTime.minutes)}{" "}
-            minutes
-          </div>
         </div>
         <div className={styles.content}>
           <MDXProvider components={components}>{children}</MDXProvider>

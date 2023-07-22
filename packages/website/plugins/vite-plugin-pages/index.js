@@ -87,6 +87,7 @@ export function pages({ baseDir, globals, postsDir }) {
           }
 
           return {
+            title: post.title,
             path: post.slug,
             component: post.locationOnDisk,
             layout: post.layout,

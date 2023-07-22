@@ -3,8 +3,11 @@ import { Link } from "react-router-dom";
 import { posts } from "virtual:pages.jsx";
 
 import styles from "./tags.module.css";
+import { useTitle } from "@utils/useTitle";
 
 export default function Tags() {
+  useTitle("Tags Page");
+
   const tags = posts
     .flatMap((post) => post.tags)
     .reduce((acc, curr) => {

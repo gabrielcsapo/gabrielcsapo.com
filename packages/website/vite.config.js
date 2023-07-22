@@ -72,7 +72,9 @@ export default defineConfig({
     }),
     react(),
     url(),
-    inspect(),
+    inspect({
+      build: true,
+    }),
     imagetools(),
     ViteImageOptimizer(),
     visualizer({

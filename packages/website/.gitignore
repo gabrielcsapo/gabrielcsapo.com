@@ -12,6 +12,7 @@ public/files
 node_modules
 dist
 dist-ssr
+.vite-inspect
 *.local
 
 # Editor directories and files

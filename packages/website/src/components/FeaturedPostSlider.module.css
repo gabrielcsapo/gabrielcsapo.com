@@ -16,6 +16,7 @@
 }
 
 .bannerImage {
+  object-fit: cover;
   border-radius: var(--bi-button-border-radius);
   background-color: #000;
   height: 100%;
@@ -68,6 +69,7 @@
 }
 
 .imageOverlay {
+  border-radius: 10px;
   z-index: 2;
   position: absolute;
   top: 0;

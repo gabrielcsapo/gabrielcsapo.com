@@ -14,7 +14,9 @@ const components = {
   },
 };
 
-export default function Layout({ children }) {
+export default function Layout(props) {
+  const { children } = props;
+
   return (
     <div className={styles.app}>
       <Navbar />

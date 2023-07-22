@@ -4,10 +4,13 @@ import { posts } from "virtual:pages.jsx";
 
 import FeaturedPostSlider from "@components/FeaturedPostSlider";
 import BlogCard from "@components/BlogCard";
+import { useTitle } from "@utils/useTitle";
 
 export default function Index() {
-  const favoritedPosts = posts?.filter((post) => {
-    return post?.favorited;
+  useTitle("Gabriel J. Csapo");
+
+  const featuredPost = posts?.filter((post) => {
+    return post?.featured;
   });
 
   return (
@@ -19,8 +22,8 @@ export default function Index() {
       </header> */}
 
       <div className={styles.content}>
-        {favoritedPosts && favoritedPosts.length > 0 && (
-          <FeaturedPostSlider posts={favoritedPosts} />
+        {featuredPost && featuredPost.length > 0 && (
+          <FeaturedPostSlider posts={featuredPost} />
         )}
         {posts
           ?.sort((a, b) => new Date(b.date) - new Date(a.date))

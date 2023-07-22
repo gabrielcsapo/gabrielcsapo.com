@@ -25,6 +25,7 @@ const FeaturedPostSliderCard = ({
         className={styles.bannerImage}
         alt={`${slug} image`}
         slug={slug}
+        lazy={false}
       />
       <a className={styles.content} href={slug ?? defaultSlug}>
         <div className={styles.featured}>
