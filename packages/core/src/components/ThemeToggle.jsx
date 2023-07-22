@@ -38,7 +38,12 @@ const ThemeToggle = () => {
   }, []);
 
   return (
-    <button type="button" className={styles.themeToggle} onClick={toggleTheme}>
+    <button
+      type="button"
+      aria-label="Toggle Theme"
+      className={styles.themeToggle}
+      onClick={toggleTheme}
+    >
       {currentTheme === "dark" ? <MoonIcon /> : <SunIcon />}
     </button>
   );

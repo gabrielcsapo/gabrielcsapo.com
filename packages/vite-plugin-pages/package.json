@@ -1,9 +1,0 @@
-{
-  "name": "@gabrielcsapo/vite-plugin-pages",
-  "version": "1.0.0",
-  "description": "",
-  "files": [
-    "dist"
-  ],
-  "type": "module"
-}

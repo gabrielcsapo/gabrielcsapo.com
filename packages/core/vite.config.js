@@ -3,11 +3,10 @@ import path from "path";
 import mdx from "@mdx-js/rollup";
 import react from "@vitejs/plugin-react-swc";
 import inspect from "vite-plugin-inspect";
-import generateSitemap from "vite-plugin-pages-sitemap";
 import url from "@rollup/plugin-url";
-// import pages from "@gabrielcsapo/vite-plugin-pages";
 import remarkImageImport from "@gabrielcsapo/remark-image-import";
 import { ViteImageOptimizer } from "vite-plugin-image-optimizer";
+import { imagetools } from "vite-imagetools";
 import remarkFrontmatter from "remark-frontmatter";
 import remarkDirective from "remark-directive";
 import remarkAdmonitions from "@gabrielcsapo/remark-admonitions";
@@ -335,7 +334,8 @@ export default defineConfig({
     react(),
     url(),
     inspect(),
-    ViteImageOptimizer({}),
+    imagetools(),
+    ViteImageOptimizer(),
   ],
   resolve: {
     alias: {

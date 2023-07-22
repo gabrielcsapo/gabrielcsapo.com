@@ -55,9 +55,9 @@ const remarkImageImport = () => (tree, file) => {
 
   visit(tree, "image", (node, index, parent) => {
     if (node.url.startsWith("./images/")) {
-      const imagePath = path.resolve(dir, node.url);
+      const imagePath = path.resolve(dir, node.url) + "?format=webp";
       const importName = generateAlphabetHash(imagePath);
-      const importNode = createImport(importName, node.url);
+      const importNode = createImport(importName, imagePath);
 
       tree.children.push(importNode);
 
@@ -69,7 +69,6 @@ const remarkImageImport = () => (tree, file) => {
             name: "src",
             value: {
               type: "mdxJsxAttributeValueExpression",
-              value: "hello",
               data: {
                 estree: {
                   type: "Program",

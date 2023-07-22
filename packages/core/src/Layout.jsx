@@ -31,7 +31,11 @@ export default function Layout({ children }) {
       <footer className={styles.footer}>
         <p>© 2023 Gabriel J. Csapo. All Rights Reserved.</p>
         <p>
-          <a href="/feed.xml" className={styles.footerIcon}>
+          <a
+            href="/feed.xml"
+            className={styles.footerIcon}
+            aria-label="RSS Link"
+          >
             <RSSIcon />
           </a>{" "}
           |{" "}

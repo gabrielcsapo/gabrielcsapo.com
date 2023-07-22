@@ -82,7 +82,7 @@ export default function CodeBlock({
       <Highlight
         language={language}
         showLineNumbers={showLineNumbers}
-        theme={themes.github}
+        theme={themes.palenight}
         code={derivedCode}
       >
         {({ className, style, tokens, getLineProps, getTokenProps }) => (
