@@ -30,7 +30,7 @@ const PaginatedBlogList = ({ posts, itemsPerPage = 5 }) => {
     <div className={styles.paginatedBlogList}>
       <div className={styles.content}>
         {currentPosts.map((post) => (
-          <BlogCard key={post.element.slug} post={post} />
+          <BlogCard key={post.slug} post={post} />
         ))}
       </div>
       <div className={styles.pagination}>

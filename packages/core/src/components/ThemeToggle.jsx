@@ -7,7 +7,7 @@ import { useTheme } from "../ThemeProvider";
 
 const ThemeToggle = () => {
   const { theme, toggleTheme } = useTheme();
-  console.log(theme);
+
   return (
     <button
       type="button"

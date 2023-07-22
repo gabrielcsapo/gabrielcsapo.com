@@ -23,7 +23,7 @@ export default function Index() {
           <FeaturedPostSlider posts={favoritedPosts} />
         )}
         {posts?.slice(0, 4).map((post) => {
-          return <BlogCard key={post.path} post={post} />;
+          return <BlogCard key={post.slug} post={post} />;
         })}
       </div>
     </>

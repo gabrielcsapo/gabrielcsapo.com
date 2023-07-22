@@ -14,6 +14,7 @@ const routesStatements = routes.map((route, i) => {
 
   return (
     <Route
+      key={route.path}
       path={route.path}
       element={
         <Layout {...route?.props}>
