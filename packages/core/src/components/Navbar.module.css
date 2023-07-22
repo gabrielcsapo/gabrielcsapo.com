@@ -10,7 +10,7 @@
   z-index: var(--bi-z-index-fixed);
 }
 
-.navbar * {
+.navbar a {
   font-size: 1.125rem;
   letter-spacing: 0.3px;
   color: var(--bi-color-text);
