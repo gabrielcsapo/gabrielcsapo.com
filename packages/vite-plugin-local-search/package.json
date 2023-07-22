@@ -1,0 +1,14 @@
+{
+  "name": "@gabrielcsapo/vite-plugin-local-search",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "volta": {
+    "extends": "../../package.json"
+  },
+  "dependencies": {
+    "fast-glob": "^3.3.0",
+    "markdown-it": "^13.0.1",
+    "minisearch": "^6.1.0"
+  }
+}

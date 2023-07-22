@@ -11,6 +11,7 @@ import remarkFrontmatter from "remark-frontmatter";
 import remarkDirective from "remark-directive";
 import remarkAdmonitions from "@gabrielcsapo/remark-admonitions";
 import { rssPlugin } from "@gabrielcsapo/vite-plugin-rss";
+import { searchPlugin } from "@gabrielcsapo/vite-plugin-local-search";
 
 import fastGlob from "fast-glob";
 
@@ -330,6 +331,9 @@ export default defineConfig({
       globals: {
         siteName: "Gabriel J. Csapo",
       },
+    }),
+    searchPlugin({
+      baseDir: path.resolve(__dirname, "../../posts"),
     }),
     react(),
     url(),

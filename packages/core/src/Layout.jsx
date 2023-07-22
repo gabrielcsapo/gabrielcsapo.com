@@ -7,6 +7,7 @@ import RSSIcon from "@components/Icons/RSSIcon";
 import styles from "./Layout.module.css";
 
 import { globals } from "virtual:pages.jsx";
+import SearchInput from "./components/SearchInput";
 
 const components = {
   img: (props) => {
@@ -22,7 +23,11 @@ export default function Layout({ children }) {
           <Link to="/">{globals.siteName}</Link>
         </div>
         <ul className={styles.navbarLinks}></ul>
-        <ThemeToggle />
+        <div className={styles.navbarRight}>
+          <SearchInput />
+          <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+          <ThemeToggle />
+        </div>
       </nav>
 
       <MDXProvider components={components} children={children} />

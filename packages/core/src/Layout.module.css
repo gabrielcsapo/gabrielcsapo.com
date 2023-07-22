@@ -25,6 +25,10 @@
   margin-left: 20px;
 }
 
+.navbarRight {
+  display: flex;
+}
+
 .navbar a {
   color: var(--bi-color-text);
   text-decoration: none;

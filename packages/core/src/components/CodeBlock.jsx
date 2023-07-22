@@ -58,13 +58,9 @@ function CopyButton({ code, className }) {
   );
 }
 
-export default function CodeBlock({
-  children,
-  code,
-  language,
-  title,
-  showLineNumbers = false,
-}) {
+export default function CodeBlock(props) {
+  const { children, code, language, title, showLineNumbers = false } = props;
+
   const { theme } = useTheme();
   const derivedCode = code ?? children;
 
@@ -82,7 +78,7 @@ export default function CodeBlock({
     >
       {title && <div className={styles.codeBlockTitle}>{title}</div>}
       <Highlight
-        language={language}
+        language={language.replace("language-", "")}
         showLineNumbers={showLineNumbers}
         theme={theme === "light" ? themes.github : themes.dracula}
         code={derivedCode}

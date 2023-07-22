@@ -22,6 +22,11 @@ img {
   height: auto;
 }
 
+a.active {
+  padding-bottom: 5px;
+  border-bottom: 1px solid var(--bi-color-primary);
+}
+
 * {
   font-family: Source Sans Pro, Helvetica, Arial, sans-serif;
 }
