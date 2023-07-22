@@ -1,0 +1,52 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--bi-navbar-background-color);
+  box-shadow: var(--bi-navbar-shadow);
+  height: var(--bi-navbar-height);
+  padding: var(--bi-navbar-padding-vertical) var(--bi-navbar-padding-horizontal);
+  position: sticky;
+  top: 0px;
+  z-index: var(--bi-z-index-fixed);
+}
+
+.navbarBrand {
+  color: var(--bi-color-text);
+  font-size: 1.25rem;
+}
+
+.navbarLinks {
+  list-style: none;
+}
+
+.navbarLinks li {
+  display: inline-block;
+  margin-left: 20px;
+}
+
+.navbar a {
+  color: var(--bi-color-text);
+  text-decoration: none;
+}
+
+.footer {
+  text-align: center;
+  background-color: var(--bi-background-color);
+  color: var(--bi-font-color-base-inverse);
+  padding: 30px 0;
+}
+
+.footer a {
+  color: var(--bi-color-primary);
+}
+
+.footerIcon svg {
+  height: 24px;
+  width: 24px;
+}
+
+:root {
+  color: var(--bi-color-text);
+  background-color: var(--bi-background-color);
+}

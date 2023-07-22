@@ -1,0 +1,20 @@
+{
+  "name": "root",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "npm run dev --workspace=core",
+    "build": "npm run build --workspace=core",
+    "preview": "npm run preview --workspace=core"
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "author": "Gabriel J. Csapo <gabecsapo@gmail.com>",
+  "license": "ISC",
+  "dependencies": {},
+  "volta": {
+    "node": "18.14.0"
+  }
+}

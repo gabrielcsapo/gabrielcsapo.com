@@ -1,0 +1,387 @@
+@import "./assets/Fira_Code_v6.2/fira_code.css";
+@import "./global.scss";
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: var(--bi-background-color-inverse);
+  background-color: var(--bi-background-color);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+[data-theme="dark"] {
+  $bi-color-primary: #3100bd;
+  $bi-color-secondary: #1fca84;
+  $bi-color-success: #1fca84;
+  $bi-color-info: #20aef5;
+  $bi-color-warning: #ff7757;
+  $bi-color-danger: #ff5555;
+
+  --bi-color-primary: #3100bd;
+  --bi-color-secondary: #1fca84;
+  --bi-color-success: #1fca84;
+  --bi-color-info: #20aef5;
+  --bi-color-warning: #ff7757;
+  --bi-color-danger: #ff5555;
+  --bi-color-text: var(--bi-color-white);
+  --bi-background-color: var(--bi-color-black);
+  --bi-background-color-inverse: var(--bi-color-black);
+  --bi-background-color-secondary: #525860;
+
+  --bi-prism-color: #d4d4d4;
+  --bi-prism-background-color: #212121;
+
+  @each $name,
+    $color
+      in (
+        "primary": $bi-color-primary,
+        "secondary": $bi-color-secondary,
+        "success": $bi-color-success,
+        "info": $bi-color-info,
+        "warning": $bi-color-warning,
+        "danger": $bi-color-danger
+      )
+  {
+    --bi-color-#{$name}-dark: #{darken($color, 20%)};
+    --bi-color-#{$name}-darker: #{darken($color, 30%)};
+    --bi-color-#{$name}-darkest: #{darken($color, 40%)};
+    --bi-color-#{$name}-light: #{lighten($color, 20%)};
+    --bi-color-#{$name}-lighter: #{lighten($color, 30%)};
+    --bi-color-#{$name}-lightest: #{lighten($color, 40%)};
+    --bi-color-#{$name}-contrast-background: #{lighten($color, 80%)};
+    --bi-color-#{$name}-contrast-foreground: #{darken($color, 60%)};
+  }
+}
+
+[data-theme="light"] {
+  $bi-color-primary: #df299f;
+  $bi-color-secondary: #8d5c8e;
+  $bi-color-success: #1fca84;
+  $bi-color-info: #20aef5;
+  $bi-color-warning: #ff7757;
+  $bi-color-danger: #ff5555;
+
+  --bi-color-primary: #df299f;
+  --bi-color-secondary: #8d5c8e;
+  --bi-color-success: #1fca84;
+  --bi-color-info: #20aef5;
+  --bi-color-warning: #ff7757;
+  --bi-color-danger: #ff5555;
+  --bi-color-text: var(--bi-color-black);
+  --bi-background-color: var(--bi-color-white);
+  --bi-background-color-inverse: var(--bi-color-emphasis-0);
+  --bi-background-color-secondary: #525860;
+
+  --bi-prism-color: #393a34;
+  --bi-prism-background-color: #f6f8fa;
+
+  @each $name,
+    $color
+      in (
+        "primary": $bi-color-primary,
+        "secondary": $bi-color-secondary,
+        "success": $bi-color-success,
+        "info": $bi-color-info,
+        "warning": $bi-color-warning,
+        "danger": $bi-color-danger
+      )
+  {
+    --bi-color-#{$name}-dark: #{darken($color, 20%)};
+    --bi-color-#{$name}-darker: #{darken($color, 30%)};
+    --bi-color-#{$name}-darkest: #{darken($color, 40%)};
+    --bi-color-#{$name}-light: #{lighten($color, 20%)};
+    --bi-color-#{$name}-lighter: #{lighten($color, 30%)};
+    --bi-color-#{$name}-lightest: #{lighten($color, 40%)};
+    --bi-color-#{$name}-contrast-background: #{lighten($color, 80%)};
+    --bi-color-#{$name}-contrast-foreground: #{darken($color, 60%)};
+  }
+}
+
+:root {
+  --bi-color-scheme: light;
+
+  /* Colors. */
+  --bi-dark-value: 10%;
+  --bi-darker-value: 15%;
+  --bi-darkest-value: 30%;
+  --bi-light-value: 15%;
+  --bi-lighter-value: 30%;
+  --bi-lightest-value: 50%;
+
+  /*
+    This seems like a lot, but we want to ensure enough contrast.
+    Goal is to have a min score of 3 on https://www.myndex.com/APCA/fullmatrix
+    For fontWeight 400 + score 3, the cell must show a value < 16px (fontsize we use in places like alerts)
+    See also https://github.com/facebookincubator/infima/issues/55#issuecomment-884023075
+     */
+  --bi-contrast-background-value: 90%;
+  --bi-contrast-foreground-value: 70%;
+
+  $bi-color-black: #000;
+  $bi-color-white: #fff;
+
+  --bi-color-black: #000;
+  --bi-color-white: #fff;
+
+  /* Using slightly different values for dark mode */
+  --bi-contrast-background-dark-value: 70%;
+  --bi-contrast-foreground-dark-value: 90%;
+  --bi-color-gray-0: #fff;
+  --bi-color-gray-100: #{lighten($bi-color-black, 95%)};
+  --bi-color-gray-200: #{lighten($bi-color-black, 90%)};
+  --bi-color-gray-300: #{lighten($bi-color-black, 85%)};
+  --bi-color-gray-400: #{lighten($bi-color-black, 80%)};
+  --bi-color-gray-500: #{lighten($bi-color-black, 75%)};
+  --bi-color-gray-600: #{lighten($bi-color-black, 60%)};
+  --bi-color-gray-700: #{lighten($bi-color-black, 45%)};
+  --bi-color-gray-800: #{lighten($bi-color-black, 30%)};
+  --bi-color-gray-900: #{lighten($bi-color-black, 15%)};
+  --bi-color-gray-1000: #000;
+  --bi-color-emphasis-0: var(--bi-color-gray-0);
+  --bi-color-emphasis-100: var(--bi-color-gray-100);
+  --bi-color-emphasis-200: var(--bi-color-gray-200);
+  --bi-color-emphasis-300: var(--bi-color-gray-300);
+  --bi-color-emphasis-400: var(--bi-color-gray-400);
+  --bi-color-emphasis-500: var(--bi-color-gray-500);
+  --bi-color-emphasis-600: var(--bi-color-gray-600);
+  --bi-color-emphasis-700: var(--bi-color-gray-700);
+  --bi-color-emphasis-800: var(--bi-color-gray-800);
+  --bi-color-emphasis-900: var(--bi-color-gray-900);
+  --bi-color-emphasis-1000: var(--bi-color-gray-1000);
+  --bi-background-surface-color: var(--bi-background-color-inverse);
+  --bi-global-border-width: 1px;
+  --bi-global-radius: 0.4rem;
+  --bi-hover-overlay: rgba(0, 0, 0, 0.05);
+
+  /* Typography. */
+  --bi-font-color-base: var(--bi-background-color);
+  --bi-font-color-base-inverse: var(--bi-background-color-inverse);
+  --bi-font-color-secondary: var(--bi-background-color-secondary);
+  --bi-font-family-base: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu,
+    Cantarell, Noto Sans, sans-serif, BlinkMacSystemFont, "Segoe UI", Helvetica,
+    Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  --bi-font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
+  --bi-font-size-base: 100%;
+  --bi-font-weight-light: 300;
+  --bi-font-weight-normal: 400;
+  --bi-font-weight-semibold: 500;
+  --bi-font-weight-bold: 700;
+  --bi-font-weight-base: var(--bi-font-weight-normal);
+  --bi-line-height-base: 1.65;
+
+  /* Spacing. */
+  --bi-global-spacing: 1rem;
+  --bi-spacing-vertical: var(--bi-global-spacing);
+  --bi-spacing-horizontal: var(--bi-global-spacing);
+
+  /* Transitions. */
+  --bi-transition-fast: 200ms;
+  --bi-transition-slow: 400ms;
+  --bi-transition-timing-default: cubic-bezier(0.08, 0.52, 0.52, 1);
+
+  /* Shadows. */
+  --bi-global-shadow-lw: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+  --bi-global-shadow-md: 0 5px 40px rgba(0, 0, 0, 0.2);
+  --bi-global-shadow-tl: 0 12px 28px 0 rgba(0, 0, 0, 0.2),
+    0 2px 4px 0 rgba(0, 0, 0, 0.1);
+
+  /* Z-index. */
+  --bi-z-index-dropdown: 100;
+  --bi-z-index-fixed: 200;
+  --bi-z-index-overlay: 400;
+  --bi-container-width: 1140px;
+  --bi-container-width-xl: 1320px;
+  --bi-code-background: rgb(246, 247, 248);
+  --bi-code-border-radius: var(--bi-global-radius);
+  --bi-code-font-size: 90%;
+  --bi-code-padding-horizontal: 0.1rem;
+  --bi-code-padding-vertical: 0.1rem;
+  --bi-pre-background: var(--bi-code-background);
+  --bi-pre-border-radius: var(--bi-code-border-radius);
+  --bi-pre-color: inherit;
+  --bi-pre-line-height: 1.45;
+  --bi-pre-padding: 1rem;
+  --bi-heading-color: inherit;
+  --bi-heading-margin-top: 0;
+  --bi-heading-margin-bottom: var(--bi-spacing-vertical);
+  --bi-heading-font-family: var(--bi-font-family-base);
+  --bi-heading-font-weight: var(--bi-font-weight-bold);
+  --bi-heading-line-height: 1.25;
+  --bi-h1-font-size: 2rem;
+  --bi-h2-font-size: 1.5rem;
+  --bi-h3-font-size: 1.25rem;
+  --bi-h4-font-size: 1rem;
+  --bi-h5-font-size: 0.875rem;
+  --bi-h6-font-size: 0.85rem;
+  --bi-image-alignment-padding: 1.25rem;
+
+  /* Leading is the distance between two baselines */
+  /* TODO: add appropriate mobile leading */
+  --bi-leading-desktop: 1.25;
+  --bi-leading: calc(var(--bi-leading-desktop) * 1rem);
+  --bi-list-left-padding: 2rem;
+  --bi-list-margin: 1rem;
+  --bi-list-item-margin: 0.25rem;
+  --bi-list-paragraph-margin: 1rem;
+  --bi-table-cell-padding: 0.75rem;
+  --bi-table-background: transparent;
+  --bi-table-stripe-background: rgba(0, 0, 0, 0.03);
+  --bi-table-border-width: 1px;
+  --bi-table-border-color: var(--bi-color-emphasis-300);
+  --bi-table-head-background: inherit;
+  --bi-table-head-color: inherit;
+  --bi-table-head-font-weight: var(--bi-font-weight-bold);
+  --bi-table-cell-color: inherit;
+
+  /* Links. */
+  --bi-link-color: var(--bi-color-primary);
+  --bi-link-decoration: none;
+  --bi-link-hover-color: var(--bi-link-color);
+  --bi-link-hover-decoration: underline;
+
+  /* Paragraphs. */
+  --bi-paragraph-margin-bottom: var(--bi-leading);
+
+  /* Blockquotes. */
+  --bi-blockquote-font-size: var(--bi-font-size-base);
+  --bi-blockquote-border-left-width: 2px;
+  --bi-blockquote-padding-horizontal: var(--bi-spacing-horizontal);
+  --bi-blockquote-padding-vertical: 0;
+  --bi-blockquote-shadow: none;
+  --bi-blockquote-color: var(--bi-color-emphasis-800);
+  --bi-blockquote-border-color: var(--bi-color-emphasis-300);
+
+  /* Horizontal Rules. */
+  --bi-hr-background-color: var(--bi-color-emphasis-500);
+  --bi-hr-height: 1px;
+  --bi-hr-margin-vertical: 1.5rem;
+  --bi-scrollbar-size: 7px;
+  --bi-scrollbar-track-background-color: #f1f1f1;
+  --bi-scrollbar-thumb-background-color: #c0c0c0;
+  --bi-scrollbar-thumb-hover-background-color: #a7a7a7;
+  --bi-alert-background-color: inherit;
+
+  /* Set a default which will be overridden later. */
+  --bi-alert-border-color: inherit;
+
+  /* Set a default which will be overridden later. */
+  --bi-alert-border-radius: var(--bi-global-radius);
+  --bi-alert-border-width: 0px;
+
+  /* For users that want to easily add a border */
+  --bi-alert-border-left-width: 5px;
+  --bi-alert-color: var(--bi-font-color-base);
+  --bi-alert-padding-horizontal: var(--bi-spacing-horizontal);
+  --bi-alert-padding-vertical: var(--bi-spacing-vertical);
+  --bi-alert-shadow: var(--bi-global-shadow-lw);
+  --bi-avatar-intro-margin: 1rem;
+  --bi-avatar-intro-alignment: inherit;
+  --bi-avatar-photo-size: 3rem;
+  --bi-badge-background-color: inherit;
+
+  /* Set a default which will be overridden later. */
+  --bi-badge-border-color: inherit;
+
+  /* Set a default which will be overridden later. */
+  --bi-badge-border-radius: var(--bi-global-radius);
+  --bi-badge-border-width: var(--bi-global-border-width);
+  --bi-badge-color: var(--bi-color-white);
+  --bi-badge-padding-horizontal: calc(var(--bi-spacing-horizontal) * 0.5);
+  --bi-badge-padding-vertical: calc(var(--bi-spacing-vertical) * 0.25);
+  --bi-breadcrumb-border-radius: 1.5rem;
+  --bi-breadcrumb-spacing: 0.5rem;
+  --bi-breadcrumb-color-active: var(--bi-color-primary);
+  --bi-breadcrumb-item-background-active: var(--bi-hover-overlay);
+  --bi-breadcrumb-padding-horizontal: 0.8rem;
+  --bi-breadcrumb-padding-vertical: 0.4rem;
+  --bi-breadcrumb-size-multiplier: 1;
+  --bi-breadcrumb-separator: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 256 256"><g><g><polygon points="79.093,0 48.907,30.187 146.72,128 48.907,225.813 79.093,256 207.093,128"/></g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg>');
+  --bi-breadcrumb-separator-filter: none;
+  --bi-breadcrumb-separator-size: 0.5rem;
+  --bi-breadcrumb-separator-size-multiplier: 1.25;
+  --bi-button-background-color: inherit;
+  --bi-button-border-color: var(--bi-button-background-color);
+  --bi-button-border-width: var(--bi-global-border-width);
+  --bi-button-color: var(--bi-font-color-base-inverse);
+  --bi-button-font-weight: var(--bi-font-weight-bold);
+  --bi-button-padding-horizontal: 1.5rem;
+  --bi-button-padding-vertical: 0.375rem;
+  --bi-button-size-multiplier: 1;
+  --bi-button-transition-duration: var(--bi-transition-fast);
+  --bi-button-border-radius: calc(
+    var(--bi-global-radius) * var(--bi-button-size-multiplier)
+  );
+  --bi-button-group-spacing: 2px;
+  --bi-card-background-color: var(--bi-background-surface-color);
+  --bi-card-border-radius: calc(var(--bi-global-radius) * 2);
+  --bi-card-horizontal-spacing: var(--bi-global-spacing);
+  --bi-card-vertical-spacing: var(--bi-global-spacing);
+  --bi-toc-border-color: var(--bi-color-emphasis-300);
+  --bi-toc-link-color: var(--bi-background-color-secondary);
+  --bi-toc-padding-vertical: 0.5rem;
+  --bi-toc-padding-horizontal: 0.5rem;
+  --bi-dropdown-background-color: var(--bi-background-surface-color);
+  --bi-dropdown-font-weight: var(--bi-font-weight-semibold);
+  --bi-dropdown-link-color: var(--bi-font-color-base);
+  --bi-dropdown-hover-background-color: var(--bi-hover-overlay);
+  --bi-footer-background-color: var(--bi-color-emphasis-100);
+  --bi-footer-color: inherit;
+  --bi-footer-link-color: var(--bi-color-emphasis-700);
+  --bi-footer-link-hover-color: var(--bi-color-primary);
+  --bi-footer-link-horizontal-spacing: 0.5rem;
+  --bi-footer-padding-horizontal: calc(var(--bi-spacing-horizontal) * 2);
+  --bi-footer-padding-vertical: calc(var(--bi-spacing-vertical) * 2);
+  --bi-footer-title-color: inherit;
+  --bi-footer-logo-max-width: min(30rem, 90vw);
+  --bi-hero-background-color: var(--bi-background-surface-color);
+  --bi-hero-text-color: var(--bi-color-emphasis-800);
+  --bi-menu-color: var(--bi-color-emphasis-700);
+  --bi-menu-color-active: var(--bi-color-primary);
+  --bi-menu-color-background-active: var(--bi-hover-overlay);
+  --bi-menu-color-background-hover: var(--bi-hover-overlay);
+  --bi-menu-link-padding-horizontal: 0.75rem;
+  --bi-menu-link-padding-vertical: 0.375rem;
+  --bi-menu-link-sublist-icon: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16px" height="16px" viewBox="0 0 24 24"><path fill="rgba(0,0,0,0.5)" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path></svg>');
+  --bi-menu-link-sublist-icon-filter: none;
+  --bi-navbar-background-color: var(--bi-background-surface-color);
+  --bi-navbar-height: 3.75rem;
+  --bi-navbar-item-padding-horizontal: 0.75rem;
+  --bi-navbar-item-padding-vertical: 0.25rem;
+  --bi-navbar-link-color: var(--bi-font-color-base);
+  --bi-navbar-link-hover-color: var(--bi-color-primary);
+  --bi-navbar-link-active-color: var(--bi-link-color);
+  --bi-navbar-padding-horizontal: calc(var(--bi-spacing-horizontal) * 6);
+  --bi-navbar-padding-vertical: calc(var(--bi-spacing-vertical) * 0.5);
+  --bi-navbar-shadow: var(--bi-global-shadow-lw);
+  --bi-navbar-search-input-background-color: var(--bi-color-emphasis-200);
+  --bi-navbar-search-input-color: var(--bi-color-emphasis-800);
+  --bi-navbar-search-input-placeholder-color: var(--bi-color-emphasis-500);
+  --bi-navbar-search-input-icon: url('data:image/svg+xml;utf8,<svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" height="16px" width="16px"><path d="M6.02945,10.20327a4.17382,4.17382,0,1,1,4.17382-4.17382A4.15609,4.15609,0,0,1,6.02945,10.20327Zm9.69195,4.2199L10.8989,9.59979A5.88021,5.88021,0,0,0,12.058,6.02856,6.00467,6.00467,0,1,0,9.59979,10.8989l4.82338,4.82338a.89729.89729,0,0,0,1.29912,0,.89749.89749,0,0,0-.00087-1.29909Z" /></svg>');
+  --bi-navbar-sidebar-width: 83vw;
+  --bi-pagination-border-radius: var(--bi-global-radius);
+  --bi-pagination-color-active: var(--bi-color-primary);
+  --bi-pagination-font-size: 1rem;
+  --bi-pagination-item-active-background: var(--bi-hover-overlay);
+  --bi-pagination-page-spacing: 0.2em;
+  --bi-pagination-padding-horizontal: calc(var(--bi-spacing-horizontal) * 1);
+  --bi-pagination-padding-vertical: calc(var(--bi-spacing-vertical) * 0.25);
+  --bi-pagination-nav-border-radius: var(--bi-global-radius);
+  --bi-pagination-nav-color-hover: var(--bi-color-primary);
+  --bi-pills-color-active: var(--bi-color-primary);
+  --bi-pills-color-background-active: var(--bi-hover-overlay);
+  --bi-pills-spacing: 0.125rem;
+  --bi-tabs-color: var(--bi-font-color-secondary);
+  --bi-tabs-color-active: var(--bi-color-primary);
+  --bi-tabs-color-active-border: var(--bi-tabs-color-active);
+  --bi-tabs-padding-horizontal: 1rem;
+  --bi-tabs-padding-vertical: 1rem;
+}

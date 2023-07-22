@@ -1,0 +1,39 @@
+---
+title: Arduino - RGB Led
+slug: arduino-rgb-led
+tags: [Arduino, ESP8266, LED]
+authors: gabrielcsapo
+image: ./images/IMG_7776.jpg
+---
+
+import CodeBlock from "@theme/CodeBlock";
+import SketchSource from "!!raw-loader!./files/sketch.ino";
+
+This tutorial goes over how to control an RGB LED with an Arduino ESP8266 🚦
+
+<!-- truncate -->
+
+## Supplies
+
+- (1) LED - RGB Diffused Common Cathode
+- (3) Resistor 220 ohm
+- (4) Jumper wires
+- (1) ESP8266 Wi-Fi Microcontroller (NodeMCU v3)
+
+> For refrence I have included the pinout diagram for the ESP8266 Wi-Fi Microcontroller (NodeMCU v3) that I am using.
+
+![ESP8266 Wi-Fi Microcontroller (NodeMCU V3) Pinout](./images/image.png)
+
+## Setup
+
+![RGB Light Setup Diagram](./images/arduino_rgb_light.png)
+
+## Code
+
+> This project does not require any additional libraries. The Arduino standard lib is enough.
+
+<CodeBlock language="cpp" showLineNumbers={true}>
+  {SketchSource}
+</CodeBlock>
+
+![RGB Led running through the code provided](./images/IMG_7774.2020-08-07-10_07_47.gif)

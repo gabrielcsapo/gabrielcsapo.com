@@ -1,0 +1,83 @@
+.codeBlockTitle {
+  border-bottom: 1px solid var(--bi-color-emphasis-300);
+  padding: 0.75rem;
+}
+
+.codeBlockContainer {
+  position: relative;
+  border-radius: var(--bi-card-border-radius);
+  background-color: var(--bi-prism-background-color);
+  color: var(--bi-prism-color);
+}
+
+.codeBlockCode {
+  position: relative;
+  padding: 1.75rem;
+  font-family: "Fira Code";
+  white-space: pre-wrap;
+}
+
+.codeBlockCode * {
+  font-family: "Fira Code";
+}
+
+.buttonGroup {
+  display: flex;
+  column-gap: 0.2rem;
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.buttonGroup.visible {
+  opacity: 1;
+}
+
+.buttonGroup button {
+  color: var(--bi-prism-color);
+  padding: 10px;
+}
+
+.buttonGroup button:focus-visible,
+.buttonGroup button:hover {
+  opacity: 1 !important;
+}
+
+.copyButtonIcons {
+  position: relative;
+  width: 1.125rem;
+  height: 1.125rem;
+}
+
+.copyButtonIcon,
+.copyButtonSuccessIcon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  fill: currentColor;
+  opacity: inherit;
+  width: inherit;
+  height: inherit;
+  transition: all var(--bi-transition-fast) ease;
+}
+
+.copyButtonSuccessIcon {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.33);
+  opacity: 0;
+  color: #00d600;
+}
+
+.copyButtonCopied .copyButtonIcon {
+  transform: scale(0.33);
+  opacity: 0;
+}
+
+.copyButtonCopied .copyButtonSuccessIcon {
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+  transition-delay: 0.075s;
+}

@@ -1,0 +1,15 @@
+.hero {
+  text-align: center;
+  background-color: var(--bi-background-color);
+  color: var(--bi-color-text);
+  padding: 100px 0;
+}
+
+.content {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 60px 0 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+  justify-content: space-between;
+}

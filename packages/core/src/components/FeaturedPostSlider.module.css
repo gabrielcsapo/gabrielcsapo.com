@@ -1,0 +1,104 @@
+.featuredPostSlider {
+  box-sizing: content-box;
+  display: flex;
+  position: relative;
+  transition-property: transform;
+  z-index: 1;
+  height: 420px;
+  width: 766px;
+  color: var(--bi-color-white);
+  padding: 5px 15px;
+  transition: all 0.25s cubic-bezier(0.02, 0.01, 0.47, 1);
+}
+
+.featuredPostSlider:hover {
+  transform: translateY(-5px);
+}
+
+.bannerImage {
+  border-radius: var(--bi-button-border-radius);
+  background-color: #000;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 40px 20px 20px;
+  position: relative;
+  width: 100%;
+  z-index: 3;
+  color: var(--bi-color-white);
+}
+
+.content:hover {
+  color: var(--bi-color-white);
+}
+
+.featured {
+  color: var(--bi-color-black);
+  font-size: 12px;
+  font-weight: 600;
+  place-items: center;
+  display: flex;
+  position: absolute;
+  background-color: var(--bi-color-white);
+  border-radius: 25px;
+  padding: 2.5px 10px;
+  right: 25px;
+  top: 50px;
+}
+
+.featured svg {
+  width: 12px;
+  height: 12px;
+}
+
+.title {
+  font-size: 2.25em;
+  letter-spacing: 0.5px;
+  max-width: 80%;
+  font-weight: 400;
+}
+
+.dateAndTime {
+  align-items: center;
+  display: flex;
+  font-size: 0.875rem;
+  letter-spacing: 0.2px;
+}
+
+.buttons {
+  z-index: 10;
+  display: flex;
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  padding: 30px;
+}
+
+.buttons button {
+  display: block;
+  color: var(--bi-color-white);
+  margin: 0px 5px;
+  width: 25px;
+  height: 25px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.buttons button:disabled {
+  color: var(--bi-color-gray-500);
+}
+
+.buttons button svg {
+  height: 25px;
+  width: 25px;
+}
