@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "npm run dev --workspace=core",
-    "build": "npm run build --workspace=core",
-    "preview": "npm run preview --workspace=core"
+    "dev": "npm run dev --workspace=website",
+    "build": "npm run build --workspace=website",
+    "preview": "npm run preview --workspace=website"
   },
   "workspaces": [
     "packages/*"
