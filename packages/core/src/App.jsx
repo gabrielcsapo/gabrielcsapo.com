@@ -6,6 +6,8 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import { routes, getComponent } from "virtual:pages.jsx";
 
+import { ThemeProvider } from "./ThemeProvider";
+
 const routesStatements = routes.map((route, i) => {
   const Layout = getComponent(route.layout);
   const Component = getComponent(route.component);
@@ -24,10 +26,12 @@ const routesStatements = routes.map((route, i) => {
 
 export default function App() {
   return (
-    <Suspense>
-      <BrowserRouter>
-        <Routes>{routesStatements}</Routes>
-      </BrowserRouter>
-    </Suspense>
+    <ThemeProvider>
+      <Suspense>
+        <BrowserRouter>
+          <Routes>{routesStatements}</Routes>
+        </BrowserRouter>
+      </Suspense>
+    </ThemeProvider>
   );
 }

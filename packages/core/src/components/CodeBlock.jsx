@@ -4,6 +4,7 @@ import copy from "copy-text-to-clipboard";
 import clsx from "clsx";
 
 import styles from "./CodeBlock.module.css";
+import { useTheme } from "../ThemeProvider";
 
 function IconCopy(props) {
   return (
@@ -64,6 +65,7 @@ export default function CodeBlock({
   title,
   showLineNumbers = false,
 }) {
+  const { theme } = useTheme();
   const derivedCode = code ?? children;
 
   const [showButton, setShowButton] = useState(false);
@@ -82,7 +84,7 @@ export default function CodeBlock({
       <Highlight
         language={language}
         showLineNumbers={showLineNumbers}
-        theme={themes.palenight}
+        theme={theme === "light" ? themes.github : themes.dracula}
         code={derivedCode}
       >
         {({ className, style, tokens, getLineProps, getTokenProps }) => (
