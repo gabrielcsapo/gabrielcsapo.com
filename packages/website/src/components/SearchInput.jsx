@@ -157,7 +157,7 @@ const SearchInput = () => {
                 )
                 .map(({ title, link, sections }) => {
                   return (
-                    <section>
+                    <section key={link}>
                       <small>
                         <a className={styles.searchResultItemTitle} href={link}>
                           {title}
@@ -167,7 +167,10 @@ const SearchInput = () => {
                         {sections &&
                           sections?.map((section) => {
                             return (
-                              <li className={styles.searchResultItem}>
+                              <li
+                                className={styles.searchResultItem}
+                                key={section.link}
+                              >
                                 <a href={section.link}>{section.title}</a>
                                 <small>{section.link}</small>
                               </li>
