@@ -12,11 +12,11 @@ export default function Index() {
 
   return (
     <>
-      <header className={styles.hero}>
+      {/* <header className={styles.hero}>
         <h1>Welcome to My Blog</h1>
         <p>Explore exciting content on various topics.</p>
         <a href="/posts">Read Latest Posts</a>
-      </header>
+      </header> */}
 
       <div className={styles.content}>
         {favoritedPosts && favoritedPosts.length > 0 && (

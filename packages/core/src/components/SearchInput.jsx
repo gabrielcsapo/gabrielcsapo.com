@@ -53,6 +53,7 @@ function transformItems(items) {
 }
 
 const SearchInput = () => {
+  const [input, setInput] = useState("");
   const [isModalOpen, setModalOpen] = useState(false);
   const [searchResults, setSearchResults] = useState([]);
   const inputRef = useRef(null);
@@ -75,6 +76,9 @@ const SearchInput = () => {
           inputRef.current.focus();
         }, 100);
       }
+      if (e.key === "Escape") {
+        setModalOpen(false);
+      }
     };
 
     window.addEventListener("keydown", handleKeyDown);
@@ -95,6 +99,8 @@ const SearchInput = () => {
   const onSearch = async (e) => {
     await loadSearchIndex();
 
+    setInput(e.target.value);
+
     const searchResults = miniSearch.search(e.target.value);
 
     setSearchResults(transformItems(searchResults));
@@ -107,7 +113,10 @@ const SearchInput = () => {
           <FontAwesomeIcon icon={faMagnifyingGlass} />
         </span>
         <span className={styles.placeholderText}>Search</span>
-        <span className={styles.shortcut}>⌘K</span>
+        <span className={styles.shortcut}>
+          <span className={styles.key}>⌘</span>
+          <span className={styles.key}>K</span>
+        </span>
       </div>
 
       {isModalOpen && (
@@ -130,6 +139,17 @@ const SearchInput = () => {
                 style={{ width: "100%" }}
               />
             </div>
+            {!input && (
+              <div className={styles.emptyText}>
+                Please provide a search query to show results.
+              </div>
+            )}
+
+            {input && searchResults.length === 0 && (
+              <div className={styles.emptyText}>
+                No search results found for "{input}"
+              </div>
+            )}
             <ul className={styles.searchResultsList}>
               {searchResults
                 .filter(
