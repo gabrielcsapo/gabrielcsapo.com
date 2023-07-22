@@ -22,9 +22,18 @@ export default function Index() {
         {favoritedPosts && favoritedPosts.length > 0 && (
           <FeaturedPostSlider posts={favoritedPosts} />
         )}
-        {posts?.slice(0, 4).map((post) => {
-          return <BlogCard key={post.slug} post={post} />;
-        })}
+        {posts
+          ?.sort((a, b) => new Date(b.date) - new Date(a.date))
+          .slice(0, 4)
+          .map((post) => {
+            return (
+              <BlogCard
+                className={styles.postCard}
+                key={post.slug}
+                post={post}
+              />
+            );
+          })}
       </div>
     </>
   );

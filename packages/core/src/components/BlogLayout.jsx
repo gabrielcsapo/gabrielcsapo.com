@@ -1,12 +1,16 @@
 import React, { useRef } from "react";
 import { MDXProvider } from "@mdx-js/react";
 import mediumZoom from "medium-zoom";
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink, Link, useLocation } from "react-router-dom";
+import clsx from "clsx";
 
 import Layout from "../Layout";
 import CodeBlock from "./CodeBlock";
 import styles from "./BlogLayout.module.css";
-import clsx from "clsx";
+
+const ResponsiveTable = ({ children }) => {
+  return <table className={styles.table}>{children}</table>;
+};
 
 const FullWidthImage = (props) => {
   const { alt, src } = props;
@@ -32,11 +36,13 @@ const FullWidthImage = (props) => {
 
   return (
     <div className={styles.fullWidthImage}>
-      <picture>
-        <source srcSet={src} type="image/webp" />
-        <img alt={alt} ref={attachZoom} />
-      </picture>
-      {alt && <figcaption className={styles.imageCaption}>{alt}</figcaption>}
+      <div className={styles.fullWidthImageContent}>
+        <picture>
+          <source srcSet={src} type="image/webp" />
+          <img alt={alt} ref={attachZoom} />
+        </picture>
+        {alt && <figcaption className={styles.imageCaption}>{alt}</figcaption>}
+      </div>
     </div>
   );
 };
@@ -81,6 +87,7 @@ const components = {
   h4: (props) => <HeadingWithAnchor level={4} {...props} />,
   h5: (props) => <HeadingWithAnchor level={5} {...props} />,
   h6: (props) => <HeadingWithAnchor level={6} {...props} />,
+  table: ResponsiveTable,
   a: (props) => <CustomLink {...props} />,
   img: FullWidthImage,
   code: ({ className, children }) => {
@@ -106,6 +113,15 @@ export default function BlogLayout(props) {
         ></div>
         <div className={styles.heading}>
           <div className={styles.title}>{title}</div>
+          <ul className={styles.tagsContainer}>
+            {tags.map((tagName) => {
+              return (
+                <li key={tagName} className={styles.tagItem}>
+                  <Link to={`/tags/${tagName}`}>{tagName}</Link>
+                </li>
+              );
+            })}
+          </ul>
           <div className={styles.date}>{new Date(date).toDateString()}</div>
         </div>
         <div className={styles.content}>

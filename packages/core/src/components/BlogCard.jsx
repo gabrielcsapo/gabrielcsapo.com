@@ -1,14 +1,16 @@
 import React from "react";
+import clsx from "clsx";
+
 import { timeSince } from "@utils/index";
 
 import styles from "./BlogCard.module.css";
 
-const BlogCard = ({ post }) => {
+const BlogCard = ({ post, className }) => {
   const { tags, title, image, author, date, slug, defaultSlug, readingTime } =
     post;
 
   return (
-    <a className={styles.blogCard} href={slug ?? defaultSlug}>
+    <a className={clsx(className, styles.blogCard)} href={slug ?? defaultSlug}>
       <div className={styles.image}>
         <img src={image} alt="Article" />
       </div>

@@ -19,6 +19,7 @@
   display: flex;
   flex-direction: column;
   width: calc(33.33333% - 10px);
+  min-width: 380px;
   border-radius: 10px;
   margin-bottom: 40px;
   border-width: var(--bi-global-border-width);
@@ -84,6 +85,7 @@ h2 {
 .image img {
   width: 100%;
   height: 220px;
+  object-fit: cover;
   margin-bottom: -10px;
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;

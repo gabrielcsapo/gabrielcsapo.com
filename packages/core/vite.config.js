@@ -7,6 +7,7 @@ import url from "@rollup/plugin-url";
 import remarkImageImport from "@gabrielcsapo/remark-image-import";
 import { ViteImageOptimizer } from "vite-plugin-image-optimizer";
 import { imagetools } from "vite-imagetools";
+import remarkGfm from "remark-gfm";
 import remarkFrontmatter from "remark-frontmatter";
 import remarkDirective from "remark-directive";
 import remarkAdmonitions from "@gabrielcsapo/remark-admonitions";
@@ -326,6 +327,7 @@ export default defineConfig({
   plugins: [
     mdx({
       remarkPlugins: [
+        remarkGfm,
         remarkDirective,
         remarkFrontmatter,
         remarkImageImport,

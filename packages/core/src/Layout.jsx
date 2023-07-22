@@ -22,7 +22,9 @@ export default function Layout({ children }) {
         <div className={styles.navbarBrand}>
           <Link to="/">{globals.siteName}</Link>
         </div>
-        <ul className={styles.navbarLinks}></ul>
+        <ul className={styles.navbarLinks}>
+          <Link to="/posts">Posts</Link>
+        </ul>
         <div className={styles.navbarRight}>
           <SearchInput />
           <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>

@@ -68,9 +68,8 @@
   background: var(--bi-navbar-background-color);
   border-radius: 5px;
   padding: 20px;
-  width: 80%;
+  width: 60%;
   height: 60vh;
-  max-width: 500px;
   z-index: 1000;
 }
 
