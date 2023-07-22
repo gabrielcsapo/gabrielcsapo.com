@@ -11,6 +11,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const argv = yargs(hideBin(process.argv))
   .command("build", "Build the Vite application")
   .command("serve", "Serve the Vite application")
+  .command("start", "Starts a built Vite application")
   .command("preview", "Previews a built server")
   .option("directory", {
     alias: "d",

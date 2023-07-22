@@ -3,11 +3,11 @@ import path from "path";
 import mdx from "@mdx-js/rollup";
 import react from "@vitejs/plugin-react-swc";
 import inspect from "vite-plugin-inspect";
-import generateSitemap from "vite-plugin-pages-sitemap";
 import url from "@rollup/plugin-url";
 import remarkImageImport from "@gabrielcsapo/remark-image-import";
 import remarkFrontmatter from "remark-frontmatter";
 import MiniSearch from "minisearch";
+import macrosPlugin from "vite-plugin-babel-macros";
 
 // we are generating fake data here instead of all the real data
 const pages = (options) => {
@@ -88,6 +88,7 @@ export default defineConfig({
     react(),
     url(),
     inspect(),
+    macrosPlugin(),
   ],
   resolve: {
     alias: {

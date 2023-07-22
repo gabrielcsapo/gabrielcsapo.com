@@ -1,9 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import {
-  faArrowRightLong,
-  faArrowLeftLong,
-} from "@fortawesome/free-solid-svg-icons";
+import { icon } from "@fortawesome/fontawesome-svg-core/import.macro";
 
 import BlogCard from "@components/BlogCard";
 import IconButton from "@components/IconButton";
@@ -48,14 +45,14 @@ const Index = () => {
       <div className={styles.pagination}>
         <IconButton
           onClick={() => changePage(currentPage - 1)}
-          icon={faArrowLeftLong}
+          icon={icon({ name: "arrow-left-long", style: "solid" })}
         />
         <span>
           Page {currentPage} of {totalPages}
         </span>
         <IconButton
           onClick={() => changePage(currentPage + 1)}
-          icon={faArrowRightLong}
+          icon={icon({ name: "arrow-right-long", style: "solid" })}
         />
       </div>
     </div>

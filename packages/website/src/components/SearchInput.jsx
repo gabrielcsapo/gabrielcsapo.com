@@ -3,7 +3,8 @@ import React, { useEffect, useRef, useState } from "react";
 import MiniSearch from "minisearch";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+
+import { icon } from "@fortawesome/fontawesome-svg-core/import.macro";
 
 import styles from "./SearchInput.module.css";
 
@@ -110,7 +111,9 @@ const SearchInput = () => {
     <>
       <div className={styles.container} onClick={handleModalOpen}>
         <span className={styles.icon}>
-          <FontAwesomeIcon icon={faMagnifyingGlass} />
+          <FontAwesomeIcon
+            icon={icon({ name: "magnifying-glass", style: "solid" })}
+          />
         </span>
         <span className={styles.placeholderText}>Search</span>
         <span className={styles.shortcut}>
@@ -128,7 +131,9 @@ const SearchInput = () => {
           <div className={styles.modal}>
             <div className={styles.searchInputContainer}>
               <span className={styles.icon}>
-                <FontAwesomeIcon icon={faMagnifyingGlass} />
+                <FontAwesomeIcon
+                  icon={icon({ name: "magnifying-glass", style: "solid" })}
+                />
               </span>
               <input
                 className={styles.input}

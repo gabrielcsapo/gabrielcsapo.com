@@ -1,10 +1,6 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faArrowLeftLong,
-  faArrowRightLong,
-  faStar,
-} from "@fortawesome/free-solid-svg-icons";
+import { icon } from "@fortawesome/fontawesome-svg-core/import.macro";
 
 import { timeSince } from "@utils/index";
 
@@ -32,7 +28,7 @@ const FeaturedPostSliderCard = ({
       />
       <a className={styles.content} href={slug ?? defaultSlug}>
         <div className={styles.featured}>
-          <FontAwesomeIcon icon={faStar} />
+          <FontAwesomeIcon icon={icon({ name: "star", style: "solid" })} />
           &nbsp;Featured
         </div>
         <div className={styles.title}>{title}</div>
@@ -45,13 +41,13 @@ const FeaturedPostSliderCard = ({
           circle={false}
           disabled={!canGoBack}
           onClick={goBack}
-          icon={faArrowLeftLong}
+          icon={icon({ name: "arrow-left-long", style: "solid" })}
         />
         <IconButton
           circle={false}
           disabled={!canGoForward}
           onClick={goForth}
-          icon={faArrowRightLong}
+          icon={icon({ name: "arrow-right-long", style: "solid" })}
         />
       </div>
     </>

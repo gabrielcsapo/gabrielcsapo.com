@@ -38,7 +38,6 @@ export default function ImageLoader({ slug, className, alt }) {
   }, [slug]);
 
   async function loadImage() {
-    console.log("loading", slug);
     const potentialImage = await getPostImage(slug);
     setImage(potentialImage.default);
   }

@@ -1,12 +1,10 @@
 import React from "react";
-
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
+import { type IconDefinition } from "@fortawesome/free-brands-svg-icons";
 import clsx from "clsx";
 
 import styles from "./IconButton.module.css";
-import { type IconDefinition } from "@fortawesome/free-brands-svg-icons";
 
 interface IconButtonProps {
   to?: string;
