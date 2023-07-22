@@ -1,12 +1,18 @@
 .footer {
   text-align: center;
   background-color: var(--bi-background-color);
-  color: var(--bi-font-color-base-inverse);
   padding: 30px 0;
+  color: var(--bi-color-primary);
 }
 
-.footer a {
-  color: var(--bi-color-primary);
+.footerLinks {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+}
+
+.footerLinks li {
+  margin: 10px;
 }
 
 .footerIcon svg {

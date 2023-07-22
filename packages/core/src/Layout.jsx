@@ -5,6 +5,7 @@ import Navbar from "@components/Navbar";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRss } from "@fortawesome/free-solid-svg-icons";
+import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 
 import styles from "./Layout.module.css";
 
@@ -21,19 +22,37 @@ export default function Layout({ children }) {
 
       <MDXProvider components={components} children={children} />
 
-      {/* Footer */}
       <footer className={styles.footer}>
-        <p>© 2023 Gabriel J. Csapo. All Rights Reserved.</p>
-        <p>
-          <a
-            href="/feed.xml"
-            className={styles.footerIcon}
-            aria-label="RSS Link"
-          >
-            <FontAwesomeIcon icon={faRss} />
-          </a>{" "}
-          |{" "}
-        </p>
+        <div>© 2023 Gabriel J. Csapo. All Rights Reserved.</div>
+        <ul className={styles.footerLinks}>
+          <li>
+            <a
+              href="/feed.xml"
+              className={styles.footerIcon}
+              aria-label="RSS Link"
+            >
+              <FontAwesomeIcon icon={faRss} />
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://www.linkedin.com/in/gabrielcsapo"
+              className={styles.footerIcon}
+              aria-label="LinkedIn Link"
+            >
+              <FontAwesomeIcon icon={faLinkedin} />
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://github.com/gabrielcsapo"
+              className={styles.footerIcon}
+              aria-label="Github Link"
+            >
+              <FontAwesomeIcon icon={faGithub} />
+            </a>
+          </li>
+        </ul>
       </footer>
     </div>
   );
