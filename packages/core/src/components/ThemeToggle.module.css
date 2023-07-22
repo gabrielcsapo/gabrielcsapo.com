@@ -12,8 +12,8 @@
 }
 
 .themeToggle svg {
-  width: 100%;
-  height: 100%;
+  width: 15px;
+  height: 15px;
 }
 
 .themeToggle:hover {
