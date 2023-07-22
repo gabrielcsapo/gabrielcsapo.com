@@ -63,6 +63,10 @@
   transition: all var(--bi-transition-fast) ease;
 }
 
+.copyButtonIcon {
+  color: var(--bi-color-gray-800);
+}
+
 .copyButtonSuccessIcon {
   top: 50%;
   left: 50%;
