@@ -1,4 +1,4 @@
-name: Deploy docusaurus with GitHub Pages dependencies preinstalled
+name: Deploy website with GitHub Pages dependencies preinstalled
 
 on:
   # Runs on pushes targeting the default branch

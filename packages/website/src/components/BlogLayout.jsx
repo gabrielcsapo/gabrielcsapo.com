@@ -121,7 +121,29 @@ export default function BlogLayout(props) {
   const { tags, excerpt, title, author, date, slug, children, readingTime } =
     props;
 
+  const containerRef = React.useRef(null);
+
   useTitle(`Post: ${title}`, excerpt);
+
+  React.useEffect(() => {
+    const createUtterancesEl = () => {
+      if (typeof window !== undefined) {
+        const script = document.createElement("script");
+
+        script.src = "https://utteranc.es/client.js";
+        script.setAttribute("repo", "gabrielcsapo/gabrielcsapo.com");
+        script.setAttribute("issue-term", "pathname");
+        script.setAttribute("label", "comment");
+        script.setAttribute("theme", "preferred-color-scheme");
+        script.crossOrigin = "anonymous";
+        script.async = true;
+
+        containerRef.current.appendChild(script);
+      }
+    };
+
+    createUtterancesEl();
+  }, []);
 
   return (
     <Layout {...props}>
@@ -150,6 +172,8 @@ export default function BlogLayout(props) {
         </div>
         <div className={styles.content}>
           <MDXProvider components={components}>{children}</MDXProvider>
+
+          <div ref={containerRef} />
         </div>
       </div>
     </Layout>
