@@ -46,6 +46,8 @@
     "yargs": "^17.7.2"
   },
   "devDependencies": {
+    "@fortawesome/free-solid-svg-icons": "^6.4.0",
+    "@storybook/addon-a11y": "^7.0.26",
     "@storybook/addon-essentials": "^7.0.24",
     "@storybook/addon-interactions": "^7.0.24",
     "@storybook/addon-links": "^7.0.24",
@@ -61,6 +63,8 @@
     "sharp": "^0.32.1",
     "storybook": "^7.0.24",
     "storybook-dark-mode": "^3.0.0",
+    "typescript": "^5.1.6",
+    "typescript-plugin-css-modules": "^5.0.1",
     "vite-imagetools": "^5.0.5"
   },
   "volta": {

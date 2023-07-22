@@ -16,6 +16,9 @@ export const Example = {
     tags: [],
     title: "Arduino - Capacitive Soil Moisture Sensor",
     image: ExampleImage,
+    readingTime: {
+      minutes: "10",
+    },
     author: "Gabriel J. Csapo",
     date: new Date(),
     slug: "/foo",

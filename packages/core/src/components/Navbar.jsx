@@ -45,7 +45,11 @@ export default function Navbar() {
               </li>
             </ul>
             <div className={styles.navbarRight}>
-              <IconButton to="/tags" icon={faTag} />
+              <IconButton
+                to="/tags"
+                icon={faTag}
+                ariaLabel="Navigate to tags page"
+              />
               <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
               <SearchInput />
               <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>

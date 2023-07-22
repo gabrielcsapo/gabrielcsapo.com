@@ -6,7 +6,7 @@ import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
 
 import { routes, getComponent } from "virtual:pages.jsx";
 
-import { ThemeProvider } from "./ThemeProvider";
+import { ThemeProvider } from "@components/ThemeProvider";
 
 const ScrollToAnchor = () => {
   const { hash } = useLocation();

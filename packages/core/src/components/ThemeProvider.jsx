@@ -2,9 +2,9 @@ import React, { createContext, useState, useEffect, useContext } from "react";
 
 const ThemeContext = createContext();
 
-export const ThemeProvider = ({ children }) => {
+export const ThemeProvider = ({ children, theme }) => {
   const [currentTheme, setCurrentTheme] = useState(
-    localStorage.getItem("user-theme") || "light"
+    theme || localStorage.getItem("user-theme") || "light"
   );
 
   const setTheme = (theme) => {
@@ -13,7 +13,7 @@ export const ThemeProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    const userTheme = localStorage.getItem("user-theme");
+    const userTheme = theme ?? localStorage.getItem("user-theme");
     const handleThemeChange = (event) => {
       if (event.key === "user-theme") {
         setTheme(event.newValue);
@@ -38,7 +38,7 @@ export const ThemeProvider = ({ children }) => {
     return () => {
       window.removeEventListener("storage", handleThemeChange);
     };
-  }, []);
+  }, [theme]);
 
   const toggleTheme = () => {
     const newTheme = currentTheme === "light" ? "dark" : "light";
@@ -47,7 +47,9 @@ export const ThemeProvider = ({ children }) => {
   };
 
   return (
-    <ThemeContext.Provider value={{ theme: currentTheme, toggleTheme }}>
+    <ThemeContext.Provider
+      value={{ theme: currentTheme, toggleTheme, setTheme }}
+    >
       {children}
     </ThemeContext.Provider>
   );

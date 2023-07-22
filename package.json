@@ -12,13 +12,7 @@
     "packages/*"
   ],
   "author": "Gabriel J. Csapo <gabecsapo@gmail.com>",
-  "license": "ISC",
-  "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^6.4.0",
-    "@fortawesome/free-regular-svg-icons": "^6.4.0",
-    "@fortawesome/free-solid-svg-icons": "^6.4.0",
-    "@fortawesome/react-fontawesome": "^0.2.0"
-  },
+  "license": "MIT",
   "volta": {
     "node": "18.14.0"
   }
