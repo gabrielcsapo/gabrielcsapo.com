@@ -2,8 +2,8 @@ import styles from "./index.module.css";
 
 import { posts } from "virtual:pages.jsx";
 
-import FeaturedPostSlider from "../components/FeaturedPostSlider";
-import BlogCard from "../components/BlogCard";
+import FeaturedPostSlider from "@components/FeaturedPostSlider";
+import BlogCard from "@components/BlogCard";
 
 export default function Index() {
   const favoritedPosts = posts?.filter((post) => {

@@ -4,11 +4,11 @@ import { faBars, faTag } from "@fortawesome/free-solid-svg-icons";
 
 import ThemeToggle from "@components/ThemeToggle";
 import SearchInput from "@components/SearchInput";
+import IconButton from "@components/IconButton";
 
 import { globals } from "virtual:pages.jsx";
 
 import styles from "./Navbar.module.css";
-import IconButton from "./IconButton";
 
 export default function Navbar() {
   const [isNavbarVisible, setIsNavbarVisible] = useState(true);

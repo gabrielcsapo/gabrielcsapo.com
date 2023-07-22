@@ -1,8 +1,8 @@
 import React from "react";
 import { faMoon, faSun } from "@fortawesome/free-solid-svg-icons";
 
-import { useTheme } from "./ThemeProvider";
-import IconButton from "./IconButton";
+import { useTheme } from "@components/ThemeProvider";
+import IconButton from "@components/IconButton";
 
 const ThemeToggle = () => {
   const { theme, toggleTheme } = useTheme();

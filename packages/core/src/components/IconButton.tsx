@@ -13,7 +13,7 @@ interface IconButtonProps {
   icon: IconDefinition;
   onClick: () => void;
   ariaLabel: string;
-  className: string;
+  className?: string;
   circle?: boolean;
   disabled?: boolean;
 }

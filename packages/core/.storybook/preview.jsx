@@ -5,6 +5,7 @@ import { themes } from "@storybook/theming";
 import { useDarkMode } from "storybook-dark-mode";
 import { useEffect } from "react";
 
+import { BrowserRouter } from "react-router-dom";
 import { ThemeProvider } from "@components/ThemeProvider";
 
 /** @type { import('@storybook/react').Preview } */
@@ -17,9 +18,11 @@ const preview = {
         document.documentElement.dataset.theme = isDarkMode ? "dark" : "light";
       }, [isDarkMode]);
       return (
-        <ThemeProvider theme={isDarkMode ? "dark" : "light"}>
-          <Story />
-        </ThemeProvider>
+        <BrowserRouter>
+          <ThemeProvider theme={isDarkMode ? "dark" : "light"}>
+            <Story />
+          </ThemeProvider>
+        </BrowserRouter>
       );
     },
   ],

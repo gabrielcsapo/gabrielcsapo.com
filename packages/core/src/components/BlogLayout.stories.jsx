@@ -1,5 +1,4 @@
 import React from "react";
-import { BrowserRouter } from "react-router-dom";
 
 import BlogLayout from "./BlogLayout";
 
@@ -25,11 +24,9 @@ export const Example = {
   },
   render: (args) => {
     return (
-      <BrowserRouter>
-        <BlogLayout {...args}>
-          <ExamplePost />
-        </BlogLayout>
-      </BrowserRouter>
+      <BlogLayout {...args}>
+        <ExamplePost />
+      </BlogLayout>
     );
   },
 };

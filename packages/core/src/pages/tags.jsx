@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
-import styles from "./tags.module.css";
 
 import { posts } from "virtual:pages.jsx";
+
+import styles from "./tags.module.css";
 
 export default function Tags() {
   const tags = posts
