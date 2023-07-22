@@ -12,6 +12,7 @@ import remarkDirective from "remark-directive";
 import remarkAdmonitions from "@gabrielcsapo/remark-admonitions";
 import { rssPlugin } from "@gabrielcsapo/vite-plugin-rss";
 import { searchPlugin } from "@gabrielcsapo/vite-plugin-local-search";
+import fse from "fs-extra";
 
 import fastGlob from "fast-glob";
 
@@ -303,8 +304,23 @@ posts
     return post.absoluteImagePath;
   })
   .forEach((post) => {
+    const potentialFilesLocation = path.resolve(
+      path.dirname(post.locationOnDisk),
+      "files"
+    );
+    if (fs.existsSync(potentialFilesLocation)) {
+      fse.copySync(
+        potentialFilesLocation,
+        path.resolve(__dirname, "public", "files")
+      );
+    }
     fs.copyFileSync(post.absoluteImagePath, path.join("public", post.image));
   });
+
+fse.copySync(
+  path.resolve(__dirname, "..", "..", "posts", "files"),
+  path.resolve(__dirname, "public", "files")
+);
 
 export default defineConfig({
   plugins: [

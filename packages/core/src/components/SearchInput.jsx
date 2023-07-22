@@ -62,7 +62,6 @@ const SearchInput = () => {
         fields: ["title", "text"],
         storeFields: ["title", "sectionTitle", "link"],
       });
-      console.log(miniSearch);
     }
   };
 

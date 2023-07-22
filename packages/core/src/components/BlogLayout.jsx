@@ -64,6 +64,16 @@ const HeadingWithAnchor = ({ level, children }) => {
   );
 };
 
+function CustomLink({ href, children }) {
+  if (href.indexOf("/files/") > -1) {
+    const assetFileLink = href.substring(href.indexOf("/files/"), href.length);
+
+    return <a href={assetFileLink}>{children}</a>;
+  }
+
+  return <a href={href}>{children}</a>;
+}
+
 const components = {
   h1: (props) => <HeadingWithAnchor level={1} {...props} />,
   h2: (props) => <HeadingWithAnchor level={2} {...props} />,
@@ -71,6 +81,7 @@ const components = {
   h4: (props) => <HeadingWithAnchor level={4} {...props} />,
   h5: (props) => <HeadingWithAnchor level={5} {...props} />,
   h6: (props) => <HeadingWithAnchor level={6} {...props} />,
+  a: (props) => <CustomLink {...props} />,
   img: FullWidthImage,
   code: ({ className, children }) => {
     const language = className ? className.replace("langauge-", "") : "";
