@@ -33,25 +33,3 @@
   align-items: center;
   margin-top: 2rem;
 }
-
-.paginationButton {
-  transition: background var(--bi-transition-fast);
-  align-items: center;
-  border-radius: 50px;
-  display: grid;
-  justify-content: center;
-  height: 50px;
-  width: 50px;
-  cursor: pointer;
-}
-
-.paginationButton svg {
-  width: 24px;
-  height: 24px;
-}
-
-.paginationButton:hover {
-  background: var(--bi-color-emphasis-300);
-  color: var(--bi-background-color);
-  border: 1px solid var(--bi-color-emphasis-300);
-}

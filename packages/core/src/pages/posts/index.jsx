@@ -1,8 +1,12 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import {
+  faArrowRightLong,
+  faArrowLeftLong,
+} from "@fortawesome/free-solid-svg-icons";
+
 import BlogCard from "@components/BlogCard";
-import ArrowLeftIcon from "@components/Icons/ArrowLeftIcon";
-import ArrowRightIcon from "@components/Icons/ArrowRightIcon";
+import IconButton from "@components/IconButton";
 
 import styles from "./index.module.css";
 
@@ -13,12 +17,16 @@ const ITEMS_PER_PAGE = 10;
 const Index = () => {
   const navigate = useNavigate();
 
+  const sortedPosts = posts?.sort(
+    (a, b) => new Date(b.date) - new Date(a.date)
+  );
+
   const searchParams = new URLSearchParams(window.location.search);
   const currentPage = parseInt(searchParams.get("page") || "1", 10);
 
-  const totalPages = Math.ceil(posts.length / ITEMS_PER_PAGE);
+  const totalPages = Math.ceil(sortedPosts.length / ITEMS_PER_PAGE);
 
-  const currentPosts = posts.slice(
+  const currentPosts = sortedPosts.slice(
     (currentPage - 1) * ITEMS_PER_PAGE,
     currentPage * ITEMS_PER_PAGE
   );
@@ -38,23 +46,17 @@ const Index = () => {
         ))}
       </div>
       <div className={styles.pagination}>
-        <button
-          className={styles.paginationButton}
-          type="button"
+        <IconButton
           onClick={() => changePage(currentPage - 1)}
-        >
-          <ArrowLeftIcon />
-        </button>
+          icon={faArrowLeftLong}
+        />
         <span>
           Page {currentPage} of {totalPages}
         </span>
-        <button
-          className={styles.paginationButton}
-          type="button"
+        <IconButton
           onClick={() => changePage(currentPage + 1)}
-        >
-          <ArrowRightIcon />
-        </button>
+          icon={faArrowRightLong}
+        />
       </div>
     </div>
   );
