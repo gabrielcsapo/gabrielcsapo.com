@@ -118,14 +118,15 @@ const components = {
 };
 
 export default function BlogLayout(props) {
+  const initialized = useRef(false);
   const { tags, excerpt, title, author, date, slug, children, readingTime } =
     props;
 
-  const containerRef = React.useRef(null);
+  const containerRef = useRef(null);
 
   useTitle(`Post: ${title}`, excerpt);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const createUtterancesEl = () => {
       if (typeof window !== undefined) {
         const script = document.createElement("script");
@@ -142,7 +143,11 @@ export default function BlogLayout(props) {
       }
     };
 
-    createUtterancesEl();
+    if (!initialized.current) {
+      initialized.current = true;
+
+      createUtterancesEl();
+    }
   }, []);
 
   return (
