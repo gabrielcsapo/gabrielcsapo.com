@@ -4,15 +4,17 @@ import mdx from "@mdx-js/rollup";
 import react from "@vitejs/plugin-react-swc";
 import inspect from "vite-plugin-inspect";
 import url from "@rollup/plugin-url";
-import remarkImageImport from "@gabrielcsapo/remark-image-import";
 import { ViteImageOptimizer } from "vite-plugin-image-optimizer";
 import { imagetools } from "vite-imagetools";
 import remarkGfm from "remark-gfm";
 import remarkFrontmatter from "remark-frontmatter";
 import remarkDirective from "remark-directive";
-import remarkAdmonitions from "@gabrielcsapo/remark-admonitions";
-import { rssPlugin } from "@gabrielcsapo/vite-plugin-rss";
-import { searchPlugin } from "@gabrielcsapo/vite-plugin-local-search";
+
+import remarkImageImport from "./plugins/remark-image-import";
+import remarkAdmonitions from "./plugins/remark-admonitions";
+import { rssPlugin } from "./plugins/vite-plugin-rss/src/index";
+import { searchPlugin } from "./plugins/vite-plugin-local-search";
+
 import fse from "fs-extra";
 
 import fastGlob from "fast-glob";
