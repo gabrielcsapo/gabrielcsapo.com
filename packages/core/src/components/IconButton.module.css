@@ -1,4 +1,5 @@
 .iconButton {
+  box-shadow: var(--bi-global-shadow-lw);
   border: var(--bi-button-border-width) solid var(--bi-color-gray-200);
   transition: background var(--bi-transition-fast);
   color: var(--bi-color-text);

@@ -3,6 +3,11 @@
   align-items: center;
   padding: 8px;
   border-radius: 10px;
+  box-shadow: var(--bi-global-shadow-lw);
+}
+
+.container * {
+  cursor: pointer;
 }
 
 .key {
