@@ -7,7 +7,6 @@ import generateSitemap from "vite-plugin-pages-sitemap";
 import url from "@rollup/plugin-url";
 import remarkImageImport from "@gabrielcsapo/remark-image-import";
 import remarkFrontmatter from "remark-frontmatter";
-import remarkFrontmatterAdditional from "@gabrielcsapo/remark-frontmatter-additional";
 
 // we are generating fake data here instead of all the real data
 const pages = (options) => {
@@ -34,11 +33,7 @@ const pages = (options) => {
 export default defineConfig({
   plugins: [
     mdx({
-      remarkPlugins: [
-        remarkFrontmatter,
-        remarkFrontmatterAdditional,
-        remarkImageImport,
-      ],
+      remarkPlugins: [remarkFrontmatter, remarkImageImport],
       providerImportSource: "@mdx-js/react",
       outputFormat: "program",
     }),

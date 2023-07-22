@@ -1,16 +1,36 @@
-import React from "react";
+import React, { useRef } from "react";
 import { MDXProvider } from "@mdx-js/react";
-import CodeBlock from "./CodeBlock";
+import mediumZoom from "medium-zoom";
 
 import Layout from "../Layout";
+import CodeBlock from "./CodeBlock";
 import styles from "./BlogLayout.module.css";
 
 const FullWidthImage = (props) => {
   const { alt } = props;
+  const zoomRef = useRef(null);
+
+  function getZoom() {
+    if (zoomRef.current === null) {
+      zoomRef.current = mediumZoom({});
+    }
+
+    return zoomRef.current;
+  }
+
+  function attachZoom(image) {
+    const zoom = getZoom();
+
+    if (image) {
+      zoom.attach(image);
+    } else {
+      zoom.detach();
+    }
+  }
 
   return (
     <div className={styles.fullWidthImage}>
-      <img {...props} />
+      <img {...props} ref={attachZoom} />
       {alt && <figcaption className={styles.imageCaption}>{alt}</figcaption>}
     </div>
   );

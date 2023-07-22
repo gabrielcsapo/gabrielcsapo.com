@@ -9,7 +9,6 @@ import ExampleImage from "./fixtures/test-post/images/IMG_3346.jpeg";
 export default {
   title: "Components/BlogLayout",
   component: BlogLayout,
-  tags: ["autodocs"],
 };
 
 export const Example = {
