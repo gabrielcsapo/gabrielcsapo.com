@@ -28,6 +28,7 @@ const FeaturedPostSlider = ({ posts }) => {
 
   return (
     <div className={styles.featuredPostSlider}>
+      <div className={styles.imageOverlay}></div>
       <img className={styles.bannerImage} src={image} alt="banner" />
       <a className={styles.content} href={slug ?? defaultSlug}>
         <div className={styles.featured}>

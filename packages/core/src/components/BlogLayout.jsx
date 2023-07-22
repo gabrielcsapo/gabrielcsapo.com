@@ -7,7 +7,7 @@ import CodeBlock from "./CodeBlock";
 import styles from "./BlogLayout.module.css";
 
 const FullWidthImage = (props) => {
-  const { alt } = props;
+  const { alt, src } = props;
   const zoomRef = useRef(null);
 
   function getZoom() {
@@ -30,7 +30,10 @@ const FullWidthImage = (props) => {
 
   return (
     <div className={styles.fullWidthImage}>
-      <img {...props} ref={attachZoom} />
+      <picture>
+        <source srcSet={src} type="image/webp" />
+        <img alt={alt} ref={attachZoom} />
+      </picture>
       {alt && <figcaption className={styles.imageCaption}>{alt}</figcaption>}
     </div>
   );
