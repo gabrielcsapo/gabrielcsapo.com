@@ -13,20 +13,16 @@
 .navbar * {
   font-size: 1.125rem;
   letter-spacing: 0.3px;
+  color: var(--bi-color-text);
 }
 
 .navbarBrand {
-  color: var(--bi-color-text);
   font-size: 1.25rem;
   flex-shrink: 0; /* Prevent the item from shrinking */
   white-space: nowrap; /* Prevent text from wrapping */
   overflow: hidden; /* Hide overflowing content */
   text-overflow: ellipsis; /* Display an ellipsis (...) for truncated content */
   margin-right: 15px;
-}
-
-.navbarLinks * {
-  color: var(--bi-color-text) !important;
 }
 
 .navbarLinks {

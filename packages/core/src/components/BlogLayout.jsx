@@ -62,7 +62,10 @@ const FullWidthImage = (props) => {
 const HeadingWithAnchor = ({ level, children }) => {
   const location = useLocation();
   const Tag = `h${level}`;
-  const slug = children.toLowerCase().replace(/\W+/g, "-");
+  const slug =
+    typeof children === "string"
+      ? children.toLowerCase().replace(/\W+/g, "-")
+      : children.props.children.toLowerCase().replace(/\W+/g, "-");
 
   return (
     <Tag id={slug}>

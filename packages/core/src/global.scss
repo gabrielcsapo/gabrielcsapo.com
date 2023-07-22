@@ -52,6 +52,51 @@ button {
   white-space: nowrap;
 }
 
+[data-theme="dark"] {
+  button {
+    background-color: var(--bi-color-white);
+    color: var(--bi-color-gray-800);
+  }
+
+  .button {
+    background-color: var(--bi-color-white);
+    color: var(--bi-color-gray-800);
+  }
+}
+
+[data-theme="light"] {
+  button {
+    background-color: var(--bi-color-white);
+    color: var(--bi-color-text);
+  }
+
+  .button {
+    background-color: var(--bi-color-white);
+    color: var(--bi-color-text);
+  }
+}
+
+.button {
+  display: flex;
+  border: var(--bi-button-border-width) solid var(--bi-color-gray-200);
+  border-radius: var(--bi-button-border-radius);
+  cursor: pointer;
+  font-size: calc(0.875rem * var(--bi-button-size-multiplier));
+  font-weight: var(--bi-button-font-weight);
+  line-height: 1.5;
+  padding: calc(
+      var(--bi-button-padding-vertical) * var(--bi-button-size-multiplier)
+    )
+    calc(var(--bi-button-padding-horizontal) * var(--bi-button-size-multiplier));
+  text-align: center;
+  transition-duration: var(--bi-button-transition-duration);
+  transition-property: color, background, border-color;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  white-space: nowrap;
+}
+
 .alert * {
   color: var(--bi-alert-foreground-color);
 }
@@ -136,16 +181,10 @@ blockquote::before {
   top: 0;
 }
 
-[data-theme="dark"] {
-  button {
-    background-color: var(--bi-color-white);
-    color: var(--bi-color-gray-800);
-  }
+.medium-zoom-overlay {
+  z-index: 200;
 }
 
-[data-theme="light"] {
-  button {
-    background-color: var(--bi-color-white);
-    color: var(--bi-color-text);
-  }
+.medium-zoom-image {
+  z-index: 300;
 }

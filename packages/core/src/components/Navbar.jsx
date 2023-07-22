@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
+import { faBars, faTag } from "@fortawesome/free-solid-svg-icons";
 
 import ThemeToggle from "@components/ThemeToggle";
 import SearchInput from "@components/SearchInput";
@@ -9,6 +8,7 @@ import SearchInput from "@components/SearchInput";
 import { globals } from "virtual:pages.jsx";
 
 import styles from "./Navbar.module.css";
+import IconButton from "./IconButton";
 
 export default function Navbar() {
   const [isNavbarVisible, setIsNavbarVisible] = useState(true);
@@ -45,6 +45,8 @@ export default function Navbar() {
               </li>
             </ul>
             <div className={styles.navbarRight}>
+              <IconButton to="/tags" icon={faTag} />
+              <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
               <SearchInput />
               <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
               <ThemeToggle />
@@ -52,9 +54,7 @@ export default function Navbar() {
           </>
         )}
         {!isNavbarVisible && (
-          <button className={styles.expandButton} onClick={toggleNavbar}>
-            <FontAwesomeIcon icon={faBars} />
-          </button>
+          <IconButton onClick={toggleNavbar} icon={faBars} />
         )}
       </nav>
       {!isNavbarVisible && isExpanded && (
