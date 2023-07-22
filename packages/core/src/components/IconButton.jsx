@@ -5,7 +5,13 @@ import clsx from "clsx";
 
 import styles from "./IconButton.module.css";
 
-export default function IconButton({ to, icon, onClick }) {
+export default function IconButton({
+  to,
+  icon,
+  onClick,
+  circle = true,
+  disabled = false,
+}) {
   if (to) {
     return (
       <Link className={clsx("button", styles.iconButton)} to={to}>
@@ -15,7 +21,12 @@ export default function IconButton({ to, icon, onClick }) {
   }
 
   return (
-    <button className={styles.iconButton} type="button" onClick={onClick}>
+    <button
+      className={circle ? styles.iconButtonCircle : styles.iconButton}
+      type="button"
+      onClick={onClick}
+      disabled={disabled}
+    >
       <FontAwesomeIcon icon={icon} />
     </button>
   );

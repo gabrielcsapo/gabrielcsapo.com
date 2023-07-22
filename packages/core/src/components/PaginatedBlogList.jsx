@@ -3,8 +3,11 @@ import { useNavigate } from "react-router-dom";
 import BlogCard from "./BlogCard";
 
 import styles from "./PaginatedBlogList.module.css";
-import ArrowLeftIcon from "./Icons/ArrowLeftIcon";
-import ArrowRightIcon from "./Icons/ArrowRightIcon";
+import IconButton from "./IconButton";
+import {
+  faArrowLeftLong,
+  faArrowRightLong,
+} from "@fortawesome/free-solid-svg-icons";
 
 const PaginatedBlogList = ({ posts, itemsPerPage = 5 }) => {
   const navigate = useNavigate();
@@ -34,23 +37,17 @@ const PaginatedBlogList = ({ posts, itemsPerPage = 5 }) => {
         ))}
       </div>
       <div className={styles.pagination}>
-        <button
-          className={styles.paginationButton}
-          type="button"
+        <IconButton
           onClick={() => changePage(currentPage - 1)}
-        >
-          <ArrowLeftIcon />
-        </button>
+          icon={faArrowLeftLong}
+        />
         <span>
           Page {currentPage} of {totalPages}
         </span>
-        <button
-          className={styles.paginationButton}
-          type="button"
+        <IconButton
           onClick={() => changePage(currentPage + 1)}
-        >
-          <ArrowRightIcon />
-        </button>
+          icon={faArrowRightLong}
+        />
       </div>
     </div>
   );

@@ -44,8 +44,8 @@ const FullWidthImage = (props) => {
   }
 
   return (
-    <div className={isFullWidth && styles.fullWidthImage}>
-      <div className={isFullWidth && styles.fullWidthImageContent}>
+    <div className={isFullWidth ? styles.fullWidthImage : ""}>
+      <div className={isFullWidth ? styles.fullWidthImageContent : ""}>
         <picture>
           <source
             srcSet={typeof src === "object" ? src.img.src : src}

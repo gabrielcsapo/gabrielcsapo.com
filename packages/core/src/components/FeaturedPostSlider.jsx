@@ -1,14 +1,17 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faStar } from "@fortawesome/free-solid-svg-icons";
+import {
+  faArrowLeftLong,
+  faArrowRightLong,
+  faStar,
+} from "@fortawesome/free-solid-svg-icons";
 
 import { timeSince } from "@utils/index";
 
 import styles from "./FeaturedPostSlider.module.css";
 
-import ArrowRightIcon from "./Icons/ArrowRightIcon";
-import ArrowLeftIcon from "./Icons/ArrowLeftIcon";
 import ImageLoader from "./ImageLoader";
+import IconButton from "./IconButton";
 
 const FeaturedPostSliderCard = ({
   post,
@@ -38,12 +41,18 @@ const FeaturedPostSliderCard = ({
         </div>
       </a>
       <div className={styles.buttons}>
-        <button type="button" onClick={goBack} disabled={!canGoBack}>
-          <ArrowLeftIcon />
-        </button>
-        <button type="button" onClick={goForth} disabled={!canGoForward}>
-          <ArrowRightIcon />
-        </button>
+        <IconButton
+          circle={false}
+          disabled={!canGoBack}
+          onClick={goBack}
+          icon={faArrowLeftLong}
+        />
+        <IconButton
+          circle={false}
+          disabled={!canGoForward}
+          onClick={goForth}
+          icon={faArrowRightLong}
+        />
       </div>
     </>
   );
