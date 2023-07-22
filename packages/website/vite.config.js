@@ -20,8 +20,6 @@ import { pages } from "./plugins/vite-plugin-pages";
 
 import { getFrontMatter } from "./plugins/common";
 
-import fse from "fs-extra";
-
 import fastGlob from "fast-glob";
 
 const rssPostsData = [];
@@ -40,28 +38,6 @@ function findAllBlogPostsWithMeta() {
 }
 
 findAllBlogPostsWithMeta();
-
-// TODO: This should really be handled by the pages plugin
-function copyAllBlogPostsFilesToPublic() {
-  const postsPath = fastGlob.sync("../../posts/**/*.mdx");
-  for (const postPath of postsPath) {
-    const postDirectory = path.dirname(postPath);
-    const potentialFilesDirectory = path.resolve(postDirectory, "files");
-    if (fse.existsSync(potentialFilesDirectory)) {
-      fse.copySync(
-        potentialFilesDirectory,
-        path.resolve(__dirname, "public", "files")
-      );
-    }
-  }
-
-  fse.copySync(
-    path.resolve(__dirname, "..", "..", "posts", "files"),
-    path.resolve(__dirname, "public", "files")
-  );
-}
-
-copyAllBlogPostsFilesToPublic();
 
 export default defineConfig({
   plugins: [
@@ -86,6 +62,7 @@ export default defineConfig({
     }),
     pages({
       baseDir: __dirname,
+      postsDir: path.resolve(__dirname, "../../posts"),
       globals: {
         siteName: "Gabriel J. Csapo",
       },

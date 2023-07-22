@@ -1,4 +1,5 @@
 import fs from "fs";
+import fse from "fs-extra";
 import path from "path";
 import fastGlob from "fast-glob";
 
@@ -7,9 +8,10 @@ import { generateAlphabetHash, getFrontMatter } from "../common";
 const virtualModuleId = "virtual:pages.jsx";
 const resolvedVirtualModuleId = "\0" + virtualModuleId;
 
-function findAllBlogPosts() {
-  const postsPath = fastGlob.sync("../../posts/**/*.mdx", {
+function findAllBlogPosts(postsDir) {
+  const postsPath = fastGlob.sync("**/*.mdx", {
     absolute: true,
+    cwd: postsDir,
   });
   return postsPath.map((postPath) => {
     return getFrontMatter(postPath);
@@ -51,10 +53,7 @@ async function getRoutesFromDir(dir, baseDir) {
   return results.flat().filter((route) => route !== undefined);
 }
 
-export function pages(options) {
-  const baseDir = options.baseDir;
-  const globals = options.globals;
-
+export function pages({ baseDir, globals, postsDir }) {
   return {
     name: "vite-plugin-routes",
     resolveId(id) {
@@ -64,9 +63,29 @@ export function pages(options) {
     },
     async load(id) {
       if (id === resolvedVirtualModuleId) {
+        const potentialTopLevelFilesDirectory = path.resolve(postsDir, "files");
+        if (fse.existsSync(potentialTopLevelFilesDirectory)) {
+          fse.copySync(
+            potentialTopLevelFilesDirectory,
+            path.resolve(baseDir, "public", "files")
+          );
+        }
+
         const hashes = {};
-        const posts = findAllBlogPosts();
+        const posts = findAllBlogPosts(postsDir);
         const generatedPostRoutes = posts.map((post) => {
+          const potentialFilesDirectory = path.resolve(
+            path.dirname(post.locationOnDisk),
+            "files"
+          );
+          // TODO: this should really be a part of the parsing of the markdown document
+          if (fse.existsSync(potentialFilesDirectory)) {
+            fse.copySync(
+              potentialFilesDirectory,
+              path.resolve(baseDir, "public", "files")
+            );
+          }
+
           return {
             path: post.slug,
             component: post.locationOnDisk,

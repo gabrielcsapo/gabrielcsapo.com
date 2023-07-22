@@ -9,3 +9,4 @@
   - optomized
     6197.16kB
     6mb
+- [ ] URL preview at build time would be cool. Being able to parse links and getting url previews and caching that would be interesting.
