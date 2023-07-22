@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 
+import { timeSince } from "@utils/index";
+
 import styles from "./FeaturedPostSlider.module.css";
 
 import ArrowRightIcon from "./Icons/ArrowRightIcon";
@@ -32,7 +34,7 @@ const FeaturedPostSliderCard = ({
         </div>
         <div className={styles.title}>{title}</div>
         <div className={styles.dateAndTime}>
-          {date} • {readingTime.text}
+          {timeSince(new Date(date))} • {readingTime.text}
         </div>
       </a>
       <div className={styles.buttons}>
