@@ -1,8 +1,10 @@
-import React, { useRef } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { MDXProvider } from "@mdx-js/react";
 import mediumZoom from "medium-zoom";
 import { NavLink, Link, useLocation } from "react-router-dom";
 import clsx from "clsx";
+
+import { getPostImage } from "virtual:pages.jsx";
 
 import Layout from "../Layout";
 import CodeBlock from "./CodeBlock";
@@ -102,15 +104,24 @@ const components = {
 };
 
 export default function BlogLayout(props) {
-  const { tags, title, image, author, date, slug, children } = props;
+  const [image, setImage] = useState();
+  const { tags, title, author, date, slug, children, readingTime } = props;
+
+  useEffect(() => {
+    async function fetchImage() {
+      const potentialImage = await getPostImage(slug);
+      setImage(potentialImage.default);
+    }
+    fetchImage();
+  }, []);
 
   return (
     <Layout>
       <div className={styles.blogLayout}>
-        <div
-          className={styles.bannerImage}
-          style={{ backgroundImage: `url(${image})` }}
-        ></div>
+        <picture className={styles.bannerImage}>
+          <source srcSet={image} type="image/webp" />
+          <img alt={`${slug} image`} />
+        </picture>
         <div className={styles.heading}>
           <div className={styles.title}>{title}</div>
           <ul className={styles.tagsContainer}>

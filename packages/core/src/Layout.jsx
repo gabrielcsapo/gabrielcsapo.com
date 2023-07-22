@@ -1,13 +1,12 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { MDXProvider } from "@mdx-js/react";
-import ThemeToggle from "@components/ThemeToggle";
-import RSSIcon from "@components/Icons/RSSIcon";
+
+import Navbar from "@components/Navbar";
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faRss } from "@fortawesome/free-solid-svg-icons";
 
 import styles from "./Layout.module.css";
-
-import { globals } from "virtual:pages.jsx";
-import SearchInput from "./components/SearchInput";
 
 const components = {
   img: (props) => {
@@ -18,19 +17,7 @@ const components = {
 export default function Layout({ children }) {
   return (
     <div className={styles.app}>
-      <nav className={styles.navbar}>
-        <div className={styles.navbarBrand}>
-          <Link to="/">{globals.siteName}</Link>
-        </div>
-        <ul className={styles.navbarLinks}>
-          <Link to="/posts">Posts</Link>
-        </ul>
-        <div className={styles.navbarRight}>
-          <SearchInput />
-          <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-          <ThemeToggle />
-        </div>
-      </nav>
+      <Navbar />
 
       <MDXProvider components={components} children={children} />
 
@@ -43,7 +30,7 @@ export default function Layout({ children }) {
             className={styles.footerIcon}
             aria-label="RSS Link"
           >
-            <RSSIcon />
+            <FontAwesomeIcon icon={faRss} />
           </a>{" "}
           |{" "}
         </p>

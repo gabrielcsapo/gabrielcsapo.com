@@ -114,10 +114,8 @@ function getFrontMatter(filePath) {
       path.dirname(filePath),
       frontmatter.image
     );
-    frontmatter.image = `/images/${
-      generateAlphabetHash(absoluteImagePath) + path.extname(absoluteImagePath)
-    }`;
-    frontmatter.absoluteImagePath = absoluteImagePath;
+    frontmatter.image =
+      absoluteImagePath + "?w=300;500;700;900;1200&format=webp&as=srcset";
   }
 
   if (frontmatter.layout) {
@@ -248,6 +246,18 @@ function pages(options) {
           )),
           ...generatedPostRoutes,
         ];
+        const imageHashes = {};
+        const imageImports = posts
+          .filter((post) => post.image)
+          .map((post) => {
+            const imageHash = generateAlphabetHash(post.slug);
+            imageHashes[post.slug] = imageHash;
+
+            return `const ${imageHash} = async function() {
+              return import("${post.image}");
+            }`;
+          })
+          .join("\n");
 
         const layoutImports = routes
           .map((route) => {
@@ -278,45 +288,36 @@ function pages(options) {
 
           ${layoutImports}
           ${imports}
+          ${imageImports}
 
-          const lookupMap = {
+          const componentLookupMap = {
             ${Object.keys(hashes)
               .map((k) => `"${k}": ${hashes[k]},`)
               .join("\n")}
           };
 
+          const imageLookupMap = {
+            ${Object.keys(imageHashes)
+              .map((k) => `"${k}": ${imageHashes[k]},`)
+              .join("\n")}
+          }
+
           export const routes = ${JSON.stringify(routes)};
           export const posts = ${JSON.stringify(posts)};
           export const globals = ${JSON.stringify(globals || {})};
 
+          export async function getPostImage(slug) {
+            return await imageLookupMap[slug]?.();
+          };
+
           export function getComponent(name) {
-            return lookupMap[name];
+            return componentLookupMap[name];
           };
         `;
       }
     },
   };
 }
-
-const posts = findAllBlogPosts();
-
-posts
-  .filter((post) => {
-    return post.absoluteImagePath;
-  })
-  .forEach((post) => {
-    const potentialFilesLocation = path.resolve(
-      path.dirname(post.locationOnDisk),
-      "files"
-    );
-    if (fs.existsSync(potentialFilesLocation)) {
-      fse.copySync(
-        potentialFilesLocation,
-        path.resolve(__dirname, "public", "files")
-      );
-    }
-    fs.copyFileSync(post.absoluteImagePath, path.join("public", post.image));
-  });
 
 fse.copySync(
   path.resolve(__dirname, "..", "..", "posts", "files"),

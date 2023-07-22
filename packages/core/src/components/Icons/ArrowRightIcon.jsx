@@ -1,10 +1,6 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowRightLong } from "@fortawesome/free-solid-svg-icons";
+
 export default function ArrowRightIcon() {
-  return (
-    <svg viewBox="0 63.925 50 42.877" width="50" height="42.877">
-      <path
-        fill="currentColor"
-        d="M 48.954 87.886 C 50.349 86.49 50.349 84.225 48.954 82.83 L 31.096 64.971 C 29.7 63.576 27.435 63.576 26.04 64.971 C 24.644 66.367 24.644 68.632 26.04 70.027 L 37.815 81.792 L 3.572 81.792 C 1.596 81.792 0 83.388 0 85.363 C 0 87.339 1.596 88.935 3.572 88.935 L 37.804 88.935 L 26.051 100.699 C 24.656 102.094 24.656 104.36 26.051 105.755 C 27.446 107.15 29.712 107.15 31.107 105.755 L 48.965 87.897 L 48.954 87.886 Z"
-      ></path>
-    </svg>
-  );
+  return <FontAwesomeIcon icon={faArrowRightLong} />;
 }

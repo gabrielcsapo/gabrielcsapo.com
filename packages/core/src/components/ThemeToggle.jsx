@@ -1,8 +1,8 @@
 import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMoon, faSun } from "@fortawesome/free-solid-svg-icons";
 
 import styles from "./ThemeToggle.module.css";
-import MoonIcon from "./Icons/MoonIcon";
-import SunIcon from "./Icons/SunIcon";
 import { useTheme } from "../ThemeProvider";
 
 const ThemeToggle = () => {
@@ -15,7 +15,11 @@ const ThemeToggle = () => {
       className={styles.themeToggle}
       onClick={toggleTheme}
     >
-      {theme === "dark" ? <MoonIcon /> : <SunIcon />}
+      {theme === "dark" ? (
+        <FontAwesomeIcon icon={faMoon} />
+      ) : (
+        <FontAwesomeIcon icon={faSun} />
+      )}
     </button>
   );
 };

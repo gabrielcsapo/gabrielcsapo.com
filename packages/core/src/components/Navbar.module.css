@@ -1,0 +1,43 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  background-color: var(--bi-navbar-background-color);
+  box-shadow: var(--bi-navbar-shadow);
+  height: var(--bi-navbar-height);
+  padding: var(--bi-navbar-padding-vertical) var(--bi-navbar-padding-horizontal);
+  position: sticky;
+  top: 0px;
+  z-index: var(--bi-z-index-fixed);
+}
+
+.navbarBrand {
+  color: var(--bi-color-text);
+  font-size: 1.25rem;
+  flex-shrink: 0; /* Prevent the item from shrinking */
+  white-space: nowrap; /* Prevent text from wrapping */
+  overflow: hidden; /* Hide overflowing content */
+  text-overflow: ellipsis; /* Display an ellipsis (...) for truncated content */
+  margin-right: 15px;
+}
+
+.navbarLinks {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
+.navbarLinksItem {
+  display: inline-block;
+  margin-left: 20px;
+}
+
+.navbarRight {
+  display: flex;
+  float: right;
+}
+
+.navbarLink {
+  color: var(--bi-color-text);
+  text-decoration: none;
+}
