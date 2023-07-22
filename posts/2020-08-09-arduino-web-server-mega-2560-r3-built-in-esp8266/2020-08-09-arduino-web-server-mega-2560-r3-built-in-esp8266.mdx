@@ -1,19 +1,18 @@
 ---
 title: Arduino - Web Server (Mega 2560 R3 built-in ESP8266)
-slug: arduino-web-server-mega-2560-r3-built-in-esp8266
+slug: /posts/arduino-web-server-mega-2560-r3-built-in-esp8266
 tags: [Arduino, Mega2560, ESP8266, GYP-21P]
 excerpt: This tutorial goes over how to use the Mega 2560 R3 built-in ESP8266 and create a web server by flashing the onboard ESP8266 with AT firmware which only requires programming only the ATmega2560. 📶
 authors: gabrielcsapo
 image: ./images/IMG_7782-1.jpg
+layout: "../../packages/core/src/components/BlogLayout.jsx"
 ---
 
-import CodeBlock from "@theme/CodeBlock";
-import ReadingDataSketchSource from "!!raw-loader!./files/reading_data_sketch.ino";
-import BasicWebServerSketchSource from "!!raw-loader!./files/reading_data_sketch.ino";
+import CodeBlock from "@components/CodeBlock";
+import ReadingDataSketchSource from "./files/reading_data_sketch.ino?raw";
+import BasicWebServerSketchSource from "./files/reading_data_sketch.ino?raw";
 
 This tutorial goes over how to use the Mega 2560 R3 built-in ESP8266 and create a web server by flashing the onboard ESP8266 with AT firmware which only requires programming the ATmega2560. 📶
-
-<!-- truncate -->
 
 ## Supplies
 
@@ -21,7 +20,7 @@ This tutorial goes over how to use the Mega 2560 R3 built-in ESP8266 and create 
 
 This board has a lot of spotty information circulating the internet. It is important to know that this board contains two chips and because of that requires uploading two different programs to each of the chips. The onboard ESP8266 has 4MiB of flash memory, and the ATmega2560 has 256kb. For my use cases, I wanted to take advantage of only having to upload my program to one chip. The way I accomplished this is by flashing the ESP8266 chip with AT firmware so that the ATmega2560 could communicate with it using the `Mega2560+ESP8266` DIP switch configuration that provides access via the onboard `Serial3` communication.
 
-> The board is sold by multiple sellers and schematics can be found for it here <https://robotdyn.com/mega-wifi-r3-atmega2560-esp8266-flash-32mb-usb-ttl-ch340g-micro-usb.html>
+> The board is sold by multiple sellers and schematics can be found for it here [https://robotdyn.com/mega-wifi-r3-atmega2560-esp8266-flash-32mb-usb-ttl-ch340g-micro-usb.html](https://robotdyn.com/mega-wifi-r3-atmega2560-esp8266-flash-32mb-usb-ttl-ch340g-micro-usb.html)
 
 The following chart represents the DIP switch configurations that can be used on the board. I will post the specific configurations that are used in the sections below. These DIP switches are not very durable, as they fall apart if they are switched frequently.
 
@@ -54,7 +53,7 @@ Gets the list of devices connected to your Mac
 
 If you have the mega2560 connected to power, please disconnected it and as you reconnect it back to power, please press the mode button. This procedure will make the ESP8266 goes into flashing mode.
 
-Ensure that you download <https://github.com/espressif/ESP8266_NONOS_SDK/releases/tag/version_3.0.4> and cd into the extracted folder. This contains the AT firmware version 1.7.4.0.
+Ensure that you download [https://github.com/espressif/ESP8266_NONOS_SDK/releases/tag/version_3.0.4](https://github.com/espressif/ESP8266_NONOS_SDK/releases/tag/version_3.0.4) and cd into the extracted folder. This contains the AT firmware version 1.7.4.0.
 
 > Ensure that if you have a serial monitor open for this device that you close it so that esptool can open up a connection with it.
 
@@ -76,7 +75,7 @@ Opening up a serial monitor session with the device, you should see the followin
 
 ![](./images/Screen-Shot-2020-08-09-at-1.54.16-PM.png)
 
-> For more commands that AT can respond to, please visit <https://www.espressif.com/sites/default/files/documentation/4a-esp8266_at_instruction_set_en.pdf>.
+> For more commands that AT can respond to, please visit [https://www.espressif.com/sites/default/files/documentation/4a-esp8266_at_instruction_set_en.pdf](https://www.espressif.com/sites/default/files/documentation/4a-esp8266_at_instruction_set_en.pdf).
 
 ## Creating Web Server
 

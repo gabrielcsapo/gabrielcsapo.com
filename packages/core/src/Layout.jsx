@@ -2,14 +2,13 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { MDXProvider } from "@mdx-js/react";
 import ThemeToggle from "@components/ThemeToggle";
+import RSSIcon from "@components/Icons/RSSIcon";
 
 import styles from "./Layout.module.css";
 
-import { globals } from "virtual:pages";
-import RSSIcon from "./components/Icons/RSSIcon";
+import { globals } from "virtual:pages.jsx";
 
 const components = {
-  // Define custom components here if needed
   img: (props) => {
     return React.createElement("img", { ...props });
   },

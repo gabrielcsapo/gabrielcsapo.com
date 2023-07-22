@@ -11,7 +11,7 @@ import remarkFrontmatterAdditional from "@gabrielcsapo/remark-frontmatter-additi
 
 // we are generating fake data here instead of all the real data
 const pages = (options) => {
-  const virtualModuleId = "virtual:pages";
+  const virtualModuleId = "virtual:pages.jsx";
   const resolvedVirtualModuleId = "\0" + virtualModuleId;
 
   return {

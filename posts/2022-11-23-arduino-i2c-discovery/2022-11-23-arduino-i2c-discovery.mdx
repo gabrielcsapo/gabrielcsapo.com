@@ -1,20 +1,19 @@
 ---
 title: Arduino - I2C Discovery
-slug: arduino-i2c-discovery
+slug: /posts/arduino-i2c-discovery
 tags: [Arduino, SSD1306, GY-21P]
 excerpt: This tutorial explains how to discover i2c devices such as the SSD1306 and GY-21P.
 authors: gabrielcsapo
+favorited: true
 image: ./images/arduino-i2c-discovery.jpg
 ---
 
-import CodeBlock from "@theme/CodeBlock";
-import SketchSource from "!!raw-loader!./files/sketch.ino";
+import CodeBlock from "@components/CodeBlock";
+import SketchSource from "./files/sketch.ino?raw";
 
 This tutorial explains how to discover i2c devices such as the SSD1306 and GY-21P.
 
 From a high level overview, i2c allows to create a signal line of communication between multiple devices without having to physically address them. This is extremely useful for projects that might not have many ports on the device, but need to manage multiple peripherals.
-
-<!-- truncate -->
 
 :::tip
 [Sparkfun has a great in depth look at what i2c is](https://learn.sparkfun.com/tutorials/i2c/all)

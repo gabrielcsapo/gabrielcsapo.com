@@ -29,8 +29,8 @@ const components = {
   },
 };
 
-export const BlogLayout = (props) => {
-  const { tag, title, image, author, date, slug } = props?.children?.props;
+export default function BlogLayout(props) {
+  const { tags, title, image, author, date, slug, children } = props;
 
   return (
     <Layout>
@@ -44,9 +44,9 @@ export const BlogLayout = (props) => {
           <div className={styles.date}>{new Date(date).toDateString()}</div>
         </div>
         <div className={styles.content}>
-          <MDXProvider components={components}>{props.children}</MDXProvider>
+          <MDXProvider components={components}>{children}</MDXProvider>
         </div>
       </div>
     </Layout>
   );
-};
+}

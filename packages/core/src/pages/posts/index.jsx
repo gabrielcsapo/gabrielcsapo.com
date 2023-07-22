@@ -6,33 +6,12 @@ import ArrowRightIcon from "@components/Icons/ArrowRightIcon";
 
 import styles from "./index.module.css";
 
-import { routes } from "virtual:pages";
+import { posts } from "virtual:pages.jsx";
 
 const ITEMS_PER_PAGE = 10;
 
 const Index = () => {
   const navigate = useNavigate();
-
-  const posts = routes
-    .find((route) => {
-      return route.path === "posts";
-    })
-    ?.children.map((page) => {
-      if (
-        page?.children &&
-        page?.children[0] &&
-        page.path === page?.children[0].pathOnDisk.replace(".mdx", "")
-      ) {
-        return page?.children[0]?.pathOnDisk.indexOf(".mdx") > -1
-          ? page?.children[0]
-          : undefined;
-      }
-
-      return page;
-    })
-    .filter((page) => {
-      return page !== undefined;
-    });
 
   const searchParams = new URLSearchParams(window.location.search);
   const currentPage = parseInt(searchParams.get("page") || "1", 10);
@@ -55,7 +34,7 @@ const Index = () => {
     <div className={styles.paginatedBlogList}>
       <div className={styles.content}>
         {currentPosts.map((post) => (
-          <BlogCard key={post.element.slug} post={post} />
+          <BlogCard key={post.slug} post={post} />
         ))}
       </div>
       <div className={styles.pagination}>

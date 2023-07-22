@@ -24,8 +24,7 @@ const FeaturedPostSlider = ({ posts }) => {
   const canGoForward = currentIndex < posts.length - 1;
 
   const currentPost = posts[currentIndex];
-  const { image, date, readingTime, title, slug, defaultSlug } =
-    currentPost.element;
+  const { image, date, readingTime, title, slug, defaultSlug } = currentPost;
 
   return (
     <div className={styles.featuredPostSlider}>

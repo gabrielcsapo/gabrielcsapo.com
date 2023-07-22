@@ -5,7 +5,7 @@ import styles from "./BlogCard.module.css";
 
 const BlogCard = ({ post }) => {
   const { tags, title, image, author, date, slug, defaultSlug, readingTime } =
-    post.element;
+    post;
 
   return (
     <a className={styles.blogCard} href={slug ?? defaultSlug}>

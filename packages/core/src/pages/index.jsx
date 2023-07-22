@@ -1,23 +1,14 @@
 import styles from "./index.module.css";
 
-import { routes } from "virtual:pages";
+import { posts } from "virtual:pages.jsx";
 
 import FeaturedPostSlider from "../components/FeaturedPostSlider";
 import BlogCard from "../components/BlogCard";
 
 export default function Index() {
-  const posts = routes
-    .find((route) => {
-      return route.path === "posts";
-    })
-    ?.children.filter((page) => {
-      return page;
-    });
-  const favoritedPosts = posts.filter((post) => {
-    return post?.element?.favorited;
+  const favoritedPosts = posts?.filter((post) => {
+    return post?.favorited;
   });
-
-  console.log(favoritedPosts);
 
   return (
     <>
@@ -28,8 +19,10 @@ export default function Index() {
       </header>
 
       <div className={styles.content}>
-        <FeaturedPostSlider posts={favoritedPosts} />
-        {posts.slice(0, 4).map((post) => {
+        {favoritedPosts && favoritedPosts.length > 0 && (
+          <FeaturedPostSlider posts={favoritedPosts} />
+        )}
+        {posts?.slice(0, 4).map((post) => {
           return <BlogCard key={post.path} post={post} />;
         })}
       </div>
