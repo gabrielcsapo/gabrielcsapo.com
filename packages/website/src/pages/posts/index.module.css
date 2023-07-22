@@ -1,0 +1,35 @@
+.paginatedBlogList {
+  padding: 60px 0 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.blogItem {
+  margin-bottom: 1.5rem;
+}
+
+.blogItemMeta {
+  display: flex;
+  align-items: center;
+  font-size: 0.9rem;
+  color: #777;
+}
+
+.blogItemMeta span {
+  margin-right: 0.5rem;
+}
+
+.pagination {
+  margin: 0 auto;
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2rem;
+}

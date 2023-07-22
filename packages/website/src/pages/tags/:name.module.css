@@ -1,0 +1,19 @@
+.tagContainer {
+  display: flex;
+  margin: 25px;
+  flex-direction: column;
+}
+
+.tagTitle {
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+.postContainer {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 60px 0 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+  justify-content: space-evenly;
+}

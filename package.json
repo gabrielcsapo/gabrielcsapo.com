@@ -1,34 +1,19 @@
 {
-  "name": "gabrielcsapo.com",
-  "version": "1.0.0",
+  "name": "root",
   "description": "> 📕 code samples and content mentioned on my blog https://www.gabrielcsapo.com",
+  "version": "0.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "npm run start --workspace website",
-    "build": "npm run build --workspace website",
-    "serve": "npm run serve --workspace website",
-    "lint": "prettier --write .",
-    "prepare": "husky install"
+    "dev": "npm run dev --workspace=website",
+    "build": "npm run build --workspace=website",
+    "preview": "npm run preview --workspace=website"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/gabrielcsapo/gabrielcsapo.com.git"
-  },
-  "author": "Gabriel J. Csapo <gabecsapo@gmail.com>",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/gabrielcsapo/gabrielcsapo.com/issues"
-  },
-  "homepage": "https://github.com/gabrielcsapo/gabrielcsapo.com#readme",
   "workspaces": [
-    "./packages/*"
+    "packages/*"
   ],
-  "devDependencies": {
-    "husky": "^8.0.2",
-    "prettier": "^2.8.4"
-  },
+  "author": "Gabriel J. Csapo <gabecsapo@gmail.com>",
+  "license": "MIT",
   "volta": {
-    "node": "18.7.0",
-    "npm": "9.1.2"
+    "node": "18.14.0"
   }
 }

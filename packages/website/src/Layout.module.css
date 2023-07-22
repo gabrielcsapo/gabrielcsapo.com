@@ -1,0 +1,26 @@
+.footer {
+  text-align: center;
+  background-color: var(--bi-background-color);
+  padding: 30px 0;
+  color: var(--bi-color-primary);
+}
+
+.footerLinks {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+}
+
+.footerLinks li {
+  margin: 10px;
+}
+
+.footerIcon svg {
+  height: 24px;
+  width: 24px;
+}
+
+:root {
+  color: var(--bi-color-text);
+  background-color: var(--bi-background-color);
+}

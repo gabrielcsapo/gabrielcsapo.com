@@ -1,0 +1,36 @@
+.iconButtonCircle {
+  box-shadow: var(--bi-global-shadow-lw);
+  border: var(--bi-button-border-width) solid var(--bi-color-gray-200);
+  transition: background var(--bi-transition-fast);
+  color: var(--bi-color-text);
+  align-items: center;
+  border-radius: 50px;
+  display: grid;
+  justify-content: center;
+  height: 40px;
+  width: 40px;
+  cursor: pointer;
+  padding: 0;
+}
+
+.iconButtonCircle:hover {
+  background: var(--bi-color-emphasis-300);
+  color: var(--bi-background-color);
+  border: 1px solid var(--bi-color-emphasis-300);
+}
+
+.iconButton {
+  transition: background var(--bi-transition-fast);
+  color: var(--bi-color-text);
+  align-items: center;
+  display: grid;
+  justify-content: center;
+  height: 40px;
+  width: 40px;
+  cursor: pointer;
+  padding: 0;
+}
+
+.iconButton:hover {
+  color: var(--bi-background-color);
+}
