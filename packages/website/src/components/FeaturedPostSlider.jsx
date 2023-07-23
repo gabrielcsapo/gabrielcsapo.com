@@ -56,6 +56,12 @@ const FeaturedPostSliderCard = ({
 };
 
 const FeaturedPostSlider = ({ posts }) => {
+  const sortedPosts = posts.sort((a, b) => {
+    var c = new Date(a.date);
+    var d = new Date(b.date);
+
+    return d - c;
+  });
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const goBack = () => {

@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "dev": "./bin/blog-it.js serve",
-    "build": "./bin/blog-it.js build",
+    "build": "./bin/blog-it.js build && cp dist/index.html dist/404.html",
     "preview": "./bin/blog-it.js preview",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
