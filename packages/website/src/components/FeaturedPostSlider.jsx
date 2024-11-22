@@ -7,7 +7,11 @@ import styles from "./FeaturedPostSlider.module.css";
 
 import ImageLoader from "./ImageLoader";
 import IconButton from "./IconButton";
-import { faStar } from "@fortawesome/free-solid-svg-icons";
+import {
+  faArrowLeftLong,
+  faArrowRightLong,
+  faStar,
+} from "@fortawesome/free-solid-svg-icons";
 
 const FeaturedPostSliderCard = ({
   post,
@@ -42,13 +46,13 @@ const FeaturedPostSliderCard = ({
           circle={false}
           disabled={!canGoBack}
           onClick={goBack}
-          icon={icon({ name: "arrow-left-long", style: "solid" })}
+          icon={faArrowLeftLong}
         />
         <IconButton
           circle={false}
           disabled={!canGoForward}
           onClick={goForth}
-          icon={icon({ name: "arrow-right-long", style: "solid" })}
+          icon={faArrowRightLong}
         />
       </div>
     </>

@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import styles from "./Layout.module.css";
 import { faRss } from "@fortawesome/free-solid-svg-icons";
+import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 
 const components = {
   img: (props) => {
@@ -41,9 +42,7 @@ export default function Layout(props) {
               className={styles.footerIcon}
               aria-label="LinkedIn Link"
             >
-              <FontAwesomeIcon
-                icon={icon({ name: "linkedin", style: "brands" })}
-              />
+              <FontAwesomeIcon icon={faLinkedin} />
             </a>
           </li>
           <li>
@@ -52,9 +51,7 @@ export default function Layout(props) {
               className={styles.footerIcon}
               aria-label="Github Link"
             >
-              <FontAwesomeIcon
-                icon={icon({ name: "github", style: "brands" })}
-              />
+              <FontAwesomeIcon icon={faGithub} />
             </a>
           </li>
         </ul>
