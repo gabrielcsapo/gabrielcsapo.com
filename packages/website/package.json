@@ -21,8 +21,6 @@
     "@mdx-js/rollup": "^3.1.0",
     "@rollup/plugin-url": "^8.0.2",
     "@vitejs/plugin-react-swc": "^3.7.1",
-    "babel-macros": "^2.0.0",
-    "babel-plugin-macros": "^3.1.0",
     "clsx": "^2.1.1",
     "copy-text-to-clipboard": "^3.2.0",
     "fast-glob": "^3.3.2",
@@ -47,7 +45,6 @@
     "vfile": "^6.0.3",
     "vite": "^5.4.11",
     "vite-imagetools": "^7.0.4",
-    "vite-plugin-babel-macros": "^1.0.6",
     "vite-plugin-image-optimizer": "^1.1.8",
     "vite-plugin-inspect": "^0.8.8",
     "vite-plugin-pages-sitemap": "^1.7.1",
@@ -74,11 +71,6 @@
     "storybook-dark-mode": "^4.0.2",
     "typescript": "^5.7.2",
     "typescript-plugin-css-modules": "^5.1.0"
-  },
-  "babelMacros": {
-    "fontawesome-svg-core": {
-      "license": "free"
-    }
   },
   "volta": {
     "extends": "../../package.json"

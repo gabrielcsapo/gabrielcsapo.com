@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { icon } from "@fortawesome/fontawesome-svg-core/import.macro";
 
 import { timeSince } from "@utils/index";
 
@@ -8,6 +7,7 @@ import styles from "./FeaturedPostSlider.module.css";
 
 import ImageLoader from "./ImageLoader";
 import IconButton from "./IconButton";
+import { faStar } from "@fortawesome/free-solid-svg-icons";
 
 const FeaturedPostSliderCard = ({
   post,
@@ -29,7 +29,7 @@ const FeaturedPostSliderCard = ({
       />
       <a className={styles.content} href={slug ?? defaultSlug}>
         <div className={styles.featured}>
-          <FontAwesomeIcon icon={icon({ name: "star", style: "solid" })} />
+          <FontAwesomeIcon icon={faStar} />
           &nbsp;Featured
         </div>
         <div className={styles.title}>{title}</div>

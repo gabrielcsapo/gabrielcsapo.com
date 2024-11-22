@@ -4,9 +4,9 @@ import { MDXProvider } from "@mdx-js/react";
 import Navbar from "@components/Navbar";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { icon } from "@fortawesome/fontawesome-svg-core/import.macro";
 
 import styles from "./Layout.module.css";
+import { faRss } from "@fortawesome/free-solid-svg-icons";
 
 const components = {
   img: (props) => {
@@ -32,7 +32,7 @@ export default function Layout(props) {
               className={styles.footerIcon}
               aria-label="RSS Link"
             >
-              <FontAwesomeIcon icon={icon({ name: "rss" })} />
+              <FontAwesomeIcon icon={faRss} />
             </a>
           </li>
           <li>

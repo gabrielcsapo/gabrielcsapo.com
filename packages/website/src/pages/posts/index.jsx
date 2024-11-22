@@ -1,6 +1,5 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { icon } from "@fortawesome/fontawesome-svg-core/import.macro";
 
 import BlogCard from "@components/BlogCard";
 import IconButton from "@components/IconButton";
@@ -9,6 +8,10 @@ import styles from "./index.module.css";
 
 import { posts } from "virtual:pages.jsx";
 import { useTitle } from "@utils/useTitle";
+import {
+  faArrowLeftLong,
+  faArrowRightLong,
+} from "@fortawesome/free-solid-svg-icons";
 
 const ITEMS_PER_PAGE = 10;
 
@@ -48,14 +51,14 @@ const Index = () => {
       <div className={styles.pagination}>
         <IconButton
           onClick={() => changePage(currentPage - 1)}
-          icon={icon({ name: "arrow-left-long", style: "solid" })}
+          icon={faArrowLeftLong}
         />
         <span>
           Page {currentPage} of {totalPages}
         </span>
         <IconButton
           onClick={() => changePage(currentPage + 1)}
-          icon={icon({ name: "arrow-right-long", style: "solid" })}
+          icon={faArrowRightLong}
         />
       </div>
     </div>

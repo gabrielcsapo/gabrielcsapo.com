@@ -10,7 +10,6 @@ import { imagetools } from "vite-imagetools";
 import remarkGfm from "remark-gfm";
 import remarkFrontmatter from "remark-frontmatter";
 import remarkDirective from "remark-directive";
-import macrosPlugin from "vite-plugin-babel-macros";
 
 import remarkImageImport from "./plugins/remark-image-import";
 import remarkAdmonitions from "./plugins/remark-admonitions";
@@ -81,7 +80,6 @@ export default defineConfig({
       emitFile: true,
       filename: "stats.html",
     }),
-    macrosPlugin(),
   ],
   resolve: {
     alias: {
@@ -91,5 +89,8 @@ export default defineConfig({
   },
   build: {
     outDir: path.resolve(__dirname, "dist"),
+  },
+  esbuild: {
+    jsx: "automatic",
   },
 });

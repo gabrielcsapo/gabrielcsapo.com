@@ -4,9 +4,8 @@ import MiniSearch from "minisearch";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-import { icon } from "@fortawesome/fontawesome-svg-core/import.macro";
-
 import styles from "./SearchInput.module.css";
+import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
 let miniSearch;
 
@@ -111,9 +110,7 @@ const SearchInput = () => {
     <>
       <div className={styles.container} onClick={handleModalOpen}>
         <span className={styles.icon}>
-          <FontAwesomeIcon
-            icon={icon({ name: "magnifying-glass", style: "solid" })}
-          />
+          <FontAwesomeIcon icon={faMagnifyingGlass} />
         </span>
         <span className={styles.placeholderText}>Search</span>
         <span className={styles.shortcut}>
@@ -131,9 +128,7 @@ const SearchInput = () => {
           <div className={styles.modal}>
             <div className={styles.searchInputContainer}>
               <span className={styles.icon}>
-                <FontAwesomeIcon
-                  icon={icon({ name: "magnifying-glass", style: "solid" })}
-                />
+                <FontAwesomeIcon icon={faMagnifyingGlass} />
               </span>
               <input
                 className={styles.input}
