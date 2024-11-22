@@ -4,9 +4,9 @@
   "version": "0.0.0",
   "main": "index.js",
   "scripts": {
-    "dev": "npm run dev --workspace=website",
-    "build": "npm run build --workspace=website",
-    "preview": "npm run preview --workspace=website"
+    "dev": "yarn workspace website dev",
+    "build": "yarn workspace website build",
+    "preview": "yarn workspace website preview"
   },
   "workspaces": [
     "packages/*"
@@ -14,6 +14,7 @@
   "author": "Gabriel J. Csapo <gabecsapo@gmail.com>",
   "license": "MIT",
   "volta": {
-    "node": "18.14.0"
+    "node": "18.14.0",
+    "yarn": "4.5.0"
   }
 }

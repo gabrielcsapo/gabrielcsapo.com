@@ -29,8 +29,8 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v1
       - uses: volta-cli/action@v1
-      - run: npm install
-      - run: npm run build
+      - run: yarn
+      - run: yarn build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:

@@ -10,9 +10,10 @@
     "build-storybook": "storybook build"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^6.4.0",
-    "@fortawesome/free-brands-svg-icons": "^6.4.0",
-    "@fortawesome/free-regular-svg-icons": "^6.4.0",
+    "@fortawesome/fontawesome-svg-core": "~6.5.2",
+    "@fortawesome/free-brands-svg-icons": "~6.5.2",
+    "@fortawesome/free-regular-svg-icons": "~6.5.2",
+    "@fortawesome/free-solid-svg-icons": "~6.5.2",
     "@fortawesome/react-fontawesome": "^0.2.0",
     "@mdx-js/loader": "^2.3.0",
     "@mdx-js/mdx": "^2.3.0",
@@ -54,7 +55,6 @@
     "yargs": "^17.7.2"
   },
   "devDependencies": {
-    "@fortawesome/free-solid-svg-icons": "^6.4.0",
     "@storybook/addon-a11y": "^7.0.26",
     "@storybook/addon-essentials": "^7.0.24",
     "@storybook/addon-interactions": "^7.0.24",
