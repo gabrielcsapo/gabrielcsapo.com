@@ -50,11 +50,13 @@ export default function ImageLoader({ slug, className, alt, lazy }) {
 
   return (
     <picture className={className}>
-      {image.sources["webp"].map((image, index, images) => {
+      {image.sources["webp"].split(",").map((image, index, images) => {
+        const parts = image.trim().split(" ");
+
         return (
           <source
-            key={image.src}
-            srcSet={`${image.src} ${image.w}w`}
+            key={image.trim()}
+            srcSet={image.trim()}
             media={
               index !== images.length - 1 ? `(max-width: ${image.w}px)` : ""
             }
