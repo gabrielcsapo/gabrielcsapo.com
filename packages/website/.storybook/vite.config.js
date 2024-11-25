@@ -4,8 +4,11 @@ import mdx from "@mdx-js/rollup";
 import react from "@vitejs/plugin-react-swc";
 import inspect from "vite-plugin-inspect";
 import url from "@rollup/plugin-url";
-import remarkImageImport from "@gabrielcsapo/remark-image-import";
+import remarkGfm from "remark-gfm";
+import remarkDirective from "remark-directive";
 import remarkFrontmatter from "remark-frontmatter";
+import remarkImageImport from "../plugins/remark-image-import";
+import remarkAdmonitions from "../plugins/remark-admonitions";
 import MiniSearch from "minisearch";
 
 // we are generating fake data here instead of all the real data
@@ -74,9 +77,16 @@ const localSearch = () => {
 export default defineConfig({
   plugins: [
     mdx({
-      remarkPlugins: [remarkFrontmatter, remarkImageImport],
+      mdxExtensions: [".psx"],
+      remarkPlugins: [
+        remarkGfm,
+        remarkDirective,
+        remarkFrontmatter,
+        remarkImageImport,
+        remarkAdmonitions,
+      ],
       providerImportSource: "@mdx-js/react",
-      outputFormat: "program",
+      outputFormat: "function-body",
     }),
     localSearch(),
     pages({
@@ -87,13 +97,15 @@ export default defineConfig({
     react(),
     url(),
     inspect(),
-    macrosPlugin(),
   ],
   resolve: {
     alias: {
       "@components": path.resolve(__dirname, "..", "src", "components"),
       "@utils": path.resolve(__dirname, "..", "src", "utils"),
     },
+  },
+  optimizeDeps: {
+    include: ["react/jsx-runtime"],
   },
   build: {
     outDir: path.resolve(__dirname, "..", "dist"),

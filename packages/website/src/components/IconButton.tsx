@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { type IconDefinition } from "@fortawesome/free-brands-svg-icons";
 import clsx from "clsx";
@@ -27,17 +27,19 @@ export default function IconButton({
 }: IconButtonProps) {
   if (to) {
     return (
-      <Link
-        className={clsx(
-          "button",
-          circle ? styles.iconButtonCircle : styles.iconButton,
-          className
-        )}
+      <NavLink
+        className={({ isActive }) =>
+          clsx(
+            circle ? styles.iconButtonCircle : styles.iconButton,
+            className,
+            isActive ? styles.active : styles.default
+          )
+        }
         to={to}
         aria-label={ariaLabel}
       >
         <FontAwesomeIcon icon={icon} />
-      </Link>
+      </NavLink>
     );
   }
 

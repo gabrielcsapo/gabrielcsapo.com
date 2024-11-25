@@ -107,6 +107,15 @@
   color: var(--bi-background-color);
 }
 
+.tagItem:hover {
+  background-color: var(--bi-color-primary);
+  color: var(--bi-color-white);
+}
+
+.tagItem:hover a {
+  color: var(--bi-color-white);
+}
+
 .table {
   width: 100%;
   border-collapse: collapse;

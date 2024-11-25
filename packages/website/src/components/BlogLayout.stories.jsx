@@ -23,6 +23,7 @@ export const Example = {
     slug: "/foo",
   },
   render: (args) => {
+    console.log(ExamplePost);
     return (
       <BlogLayout {...args}>
         <ExamplePost />

@@ -26,7 +26,8 @@
 }
 
 .tagLink:hover {
-  background-color: #dcdcdc;
+  background-color: var(--bi-color-primary);
+  color: var(--bi-color-white);
 }
 
 .tagName {

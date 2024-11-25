@@ -5,6 +5,12 @@
   color: var(--bi-color-primary);
 }
 
+[data-theme="dark"] {
+  .footer * {
+    color: var(--bi-color-text);
+  }
+}
+
 .footerLinks {
   list-style: none;
   display: flex;
