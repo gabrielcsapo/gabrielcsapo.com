@@ -14,7 +14,7 @@
   "author": "Gabriel J. Csapo <gabecsapo@gmail.com>",
   "license": "MIT",
   "volta": {
-    "node": "18.14.0",
+    "node": "23.3.0",
     "yarn": "4.5.0"
   }
 }
