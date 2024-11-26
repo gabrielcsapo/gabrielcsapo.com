@@ -75,7 +75,7 @@ export function getFrontMatter(filePath) {
               currentSentenceCount += nodeSentences.length;
             } else {
               sentences = sentences.concat(
-                nodeSentences.slice(0, remainingSentences)
+                nodeSentences.slice(0, remainingSentences),
               );
               currentSentenceCount = sentenceCount;
             }
@@ -113,7 +113,7 @@ export function getFrontMatter(filePath) {
   if (frontmatter.image) {
     const absoluteImagePath = path.resolve(
       path.dirname(filePath),
-      frontmatter.image
+      frontmatter.image,
     );
     frontmatter.image =
       absoluteImagePath + "?w=300;500;700;900;1200&format=webp&as=picture";
@@ -122,7 +122,7 @@ export function getFrontMatter(filePath) {
   if (frontmatter.layout) {
     frontmatter.layout = path.resolve(
       path.dirname(filePath),
-      frontmatter.layout
+      frontmatter.layout,
     );
   } else {
     frontmatter.layout = path.resolve("./src/components/BlogLayout");

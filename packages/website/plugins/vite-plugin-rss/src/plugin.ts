@@ -37,10 +37,10 @@ function devPlugin(opts: OptionsMeta | OptionsDefine): Plugin {
         ) {
           if (opts.mode === "meta") {
             const devServerModuleIds = Array.from(
-              server.moduleGraph.idToModuleMap.keys()
+              server.moduleGraph.idToModuleMap.keys(),
             );
             const moduleInfo = devServerModuleIds.map((id) =>
-              server.pluginContainer.getModuleInfo(id)
+              server.pluginContainer.getModuleInfo(id),
             );
 
             items = moduleInfo
@@ -51,7 +51,7 @@ function devPlugin(opts: OptionsMeta | OptionsDefine): Plugin {
           const renderedXML = createRssFeed(
             opts.channel,
             items ?? [],
-            fileName
+            fileName,
           );
 
           const fileContent = Buffer.from(renderedXML, "utf8");

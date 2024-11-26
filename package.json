@@ -6,13 +6,17 @@
   "scripts": {
     "dev": "yarn workspace website dev",
     "build": "yarn workspace website build",
-    "preview": "yarn workspace website preview"
+    "preview": "yarn workspace website preview",
+    "lint": "prettier --write . --ignore-unknown"
   },
   "workspaces": [
     "packages/*"
   ],
   "author": "Gabriel J. Csapo <gabecsapo@gmail.com>",
   "license": "MIT",
+  "devDependencies": {
+    "prettier": "^3.3.3"
+  },
   "volta": {
     "node": "23.3.0",
     "yarn": "4.5.0"

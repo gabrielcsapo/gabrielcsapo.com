@@ -21,7 +21,7 @@ const argv = yargs(hideBin(process.argv))
   })
   .demandCommand(
     1,
-    "You need to provide a command (either build, serve or preview)"
+    "You need to provide a command (either build, serve or preview)",
   )
   .help().argv;
 

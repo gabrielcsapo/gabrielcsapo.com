@@ -34,7 +34,7 @@ async function getRoutesFromDir(dir, baseDir) {
       return getRoutesFromDir(path.join(dir, entry.name), baseDir);
     } else if (entry.name.endsWith(".jsx")) {
       const routePath = getSlug(
-        path.resolve(dir, entry.name).replace(baseDir + "/pages", "")
+        path.resolve(dir, entry.name).replace(baseDir + "/pages", ""),
       );
       // we are going to find the closet layout or use the default layout
       const layout =
@@ -67,7 +67,7 @@ export function pages({ baseDir, globals, postsDir }) {
         if (fse.existsSync(potentialTopLevelFilesDirectory)) {
           fse.copySync(
             potentialTopLevelFilesDirectory,
-            path.resolve(baseDir, "public", "files")
+            path.resolve(baseDir, "public", "files"),
           );
         }
 
@@ -76,13 +76,13 @@ export function pages({ baseDir, globals, postsDir }) {
         const generatedPostRoutes = posts.map((post) => {
           const potentialFilesDirectory = path.resolve(
             path.dirname(post.locationOnDisk),
-            "files"
+            "files",
           );
           // TODO: this should really be a part of the parsing of the markdown document
           if (fse.existsSync(potentialFilesDirectory)) {
             fse.copySync(
               potentialFilesDirectory,
-              path.resolve(baseDir, "public", "files")
+              path.resolve(baseDir, "public", "files"),
             );
           }
 
@@ -97,7 +97,7 @@ export function pages({ baseDir, globals, postsDir }) {
         const routes = [
           ...(await getRoutesFromDir(
             path.resolve(baseDir, "src/pages/"),
-            path.resolve(baseDir, "src/")
+            path.resolve(baseDir, "src/"),
           )),
           ...generatedPostRoutes,
         ];
@@ -119,13 +119,13 @@ export function pages({ baseDir, globals, postsDir }) {
             hashes[route.layout] = generateAlphabetHash(route.layout);
 
             return `const ${generateAlphabetHash(
-              route.layout
+              route.layout,
             )} = React.lazy(() => import('${route.layout}'));`;
           })
           .reduce(
             (unique, item) =>
               unique.includes(item) ? unique : [...unique, item],
-            []
+            [],
           )
           .join("\n");
         const imports = routes
@@ -133,7 +133,7 @@ export function pages({ baseDir, globals, postsDir }) {
             hashes[route.component] = generateAlphabetHash(route.component);
 
             return `const ${generateAlphabetHash(
-              route.component
+              route.component,
             )} = React.lazy(() => import('${route.component}'));`;
           })
           .join("\n");

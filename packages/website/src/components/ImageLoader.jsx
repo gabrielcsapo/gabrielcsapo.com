@@ -20,7 +20,7 @@ export default function ImageLoader({ slug, className, alt, lazy }) {
             observer.unobserve(imgRef.current);
           }
         },
-        { threshold: 0.1 }
+        { threshold: 0.1 },
       );
 
       if (imgRef.current) {

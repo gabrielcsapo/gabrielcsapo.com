@@ -12,7 +12,7 @@ let miniSearch;
 const MarkedText = ({ text }) => {
   const markedText = text?.replace(
     /<mark>(.*?)<\/mark>/g,
-    `<span class="${styles.marked}">$1</span>`
+    `<span class="${styles.marked}">$1</span>`,
   );
 
   return <div dangerouslySetInnerHTML={{ __html: markedText }} />;
@@ -153,7 +153,7 @@ const SearchInput = () => {
             <ul className={styles.searchResultsList}>
               {searchResults
                 .filter(
-                  (result) => result.sections && result.sections.length > 0
+                  (result) => result.sections && result.sections.length > 0,
                 )
                 .map(({ title, link, sections }) => {
                   return (

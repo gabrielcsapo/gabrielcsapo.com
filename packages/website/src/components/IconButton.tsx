@@ -32,7 +32,7 @@ export default function IconButton({
           clsx(
             circle ? styles.iconButtonCircle : styles.iconButton,
             className,
-            isActive ? styles.active : styles.default
+            isActive ? styles.active : styles.default,
           )
         }
         to={to}
@@ -47,7 +47,7 @@ export default function IconButton({
     <button
       className={clsx(
         circle ? styles.iconButtonCircle : styles.iconButton,
-        className
+        className,
       )}
       type="button"
       aria-label={ariaLabel}

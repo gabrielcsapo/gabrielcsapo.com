@@ -19,7 +19,7 @@ const PaginatedBlogList = ({ posts, itemsPerPage = 5 }) => {
 
   const currentPosts = posts.slice(
     (currentPage - 1) * itemsPerPage,
-    currentPage * itemsPerPage
+    currentPage * itemsPerPage,
   );
 
   const changePage = (page) => {

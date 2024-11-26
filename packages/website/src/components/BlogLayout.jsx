@@ -75,7 +75,7 @@ const HeadingWithAnchor = ({ level, children }) => {
         className={() => {
           return clsx(
             location.hash === `#${slug}` ? "active" : "inactive",
-            styles.headers
+            styles.headers,
           );
         }}
       >

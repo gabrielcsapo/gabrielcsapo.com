@@ -21,7 +21,7 @@ export default function remarkAdmonitions() {
 
         data.hProperties = h(
           `${tagName}.admonition.admonition-${node.name}.alert.alert--secondary`,
-          node.attributes
+          node.attributes,
         ).properties;
       }
     });

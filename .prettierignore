@@ -1,3 +1,3 @@
-.docusaurus
+dist
+.vite-inspect
 node_modules
-build

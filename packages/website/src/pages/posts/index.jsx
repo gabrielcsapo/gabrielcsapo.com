@@ -24,14 +24,14 @@ const Index = () => {
   useTitle(`Post archive: page #${currentPage}`);
 
   const sortedPosts = posts?.sort(
-    (a, b) => new Date(b.date) - new Date(a.date)
+    (a, b) => new Date(b.date) - new Date(a.date),
   );
 
   const totalPages = Math.ceil(sortedPosts.length / ITEMS_PER_PAGE);
 
   const currentPosts = sortedPosts.slice(
     (currentPage - 1) * ITEMS_PER_PAGE,
-    currentPage * ITEMS_PER_PAGE
+    currentPage * ITEMS_PER_PAGE,
   );
 
   const changePage = (page) => {
