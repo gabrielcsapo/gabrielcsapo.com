@@ -1,0 +1,146 @@
+@import "tailwindcss";
+
+/* Enable class-based dark mode (toggled via .dark on <html>) */
+@custom-variant dark (&:where(.dark, .dark *));
+
+@font-face {
+  font-family: "Fira Code";
+  src: url("./assets/Fira_Code_v6.2/woff/FiraCode-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Fira Code";
+  src: url("./assets/Fira_Code_v6.2/woff/FiraCode-Bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@theme {
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+  --font-mono: "Fira Code", "SF Mono", "Cascadia Code", monospace;
+
+  /* Sky blue primary — friendly, inviting */
+  --color-primary-50: #f0f9ff;
+  --color-primary-100: #e0f2fe;
+  --color-primary-200: #bae6fd;
+  --color-primary-300: #7dd3fc;
+  --color-primary-400: #38bdf8;
+  --color-primary-500: #0ea5e9;
+  --color-primary-600: #0284c7;
+  --color-primary-700: #0369a1;
+  --color-primary-800: #075985;
+  --color-primary-900: #0c4a6e;
+
+  /* Warm neutral surfaces — not pure black */
+  --color-surface-50: #fafaf9;
+  --color-surface-100: #f5f5f4;
+  --color-surface-200: #e7e5e4;
+  --color-surface-300: #d6d3d1;
+  --color-surface-400: #a8a29e;
+  --color-surface-500: #78716c;
+  --color-surface-600: #57534e;
+  --color-surface-700: #44403c;
+  --color-surface-800: #292524;
+  --color-surface-900: #1c1917;
+  --color-surface-950: #0c0a09;
+}
+
+/* Base styles */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-surface-50 text-surface-900 font-sans antialiased;
+  @apply dark:bg-surface-950 dark:text-surface-100;
+}
+
+/* Prose-like base typography for blog content */
+.prose {
+  @apply max-w-none;
+
+  & h1 {
+    @apply text-3xl font-bold tracking-tight mt-10 mb-4 text-surface-900 dark:text-white;
+  }
+  & h2 {
+    @apply text-2xl font-semibold tracking-tight mt-8 mb-3 text-surface-900 dark:text-white;
+  }
+  & h3 {
+    @apply text-xl font-semibold mt-6 mb-2 text-surface-900 dark:text-white;
+  }
+  & h4,
+  & h5,
+  & h6 {
+    @apply text-lg font-medium mt-4 mb-2 text-surface-900 dark:text-white;
+  }
+  & p {
+    @apply text-lg leading-relaxed mb-6 text-surface-700 dark:text-surface-300;
+  }
+  & a {
+    @apply text-primary-600 dark:text-primary-400 underline decoration-primary-300 dark:decoration-primary-700 underline-offset-2 hover:decoration-primary-500 dark:hover:decoration-primary-400 transition-colors;
+  }
+  & ul,
+  & ol {
+    @apply pl-6 mb-6 space-y-2;
+  }
+  & li {
+    @apply text-lg text-surface-700 dark:text-surface-300;
+  }
+  & blockquote {
+    @apply border-l-2 border-primary-300 dark:border-primary-700 pl-4 italic text-surface-600 dark:text-surface-400 my-6;
+  }
+  & img {
+    @apply w-full h-auto rounded-lg my-6;
+  }
+  & table {
+    @apply w-full border-collapse my-6;
+  }
+  & th {
+    @apply text-left font-semibold p-3 border-b border-surface-200 dark:border-surface-700;
+  }
+  & td {
+    @apply p-3 border-b border-surface-100 dark:border-surface-800;
+  }
+  & hr {
+    @apply border-surface-200 dark:border-surface-800 my-8;
+  }
+  & code:not(pre code) {
+    @apply bg-surface-100 dark:bg-surface-800 px-1.5 py-0.5 rounded text-sm font-mono;
+  }
+}
+
+/* Admonition styles */
+.admonition {
+  @apply border-l-4 rounded-r-lg p-4 my-6 bg-surface-50 dark:bg-surface-900;
+}
+.admonition.note {
+  @apply border-primary-500;
+}
+.admonition.tip {
+  @apply border-green-500;
+}
+.admonition.info {
+  @apply border-blue-500;
+}
+.admonition.warning {
+  @apply border-amber-500;
+}
+.admonition.danger {
+  @apply border-red-500;
+}
+.admonition-heading {
+  @apply font-semibold mb-2 text-surface-900 dark:text-surface-100;
+}
+.admonition-content p {
+  @apply text-surface-700 dark:text-surface-300 mb-0;
+}
+
+/* Medium zoom overlay */
+.medium-zoom-overlay {
+  z-index: 999;
+}
+.medium-zoom-image--opened {
+  z-index: 1000;
+}

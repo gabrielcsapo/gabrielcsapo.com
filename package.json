@@ -1,24 +1,71 @@
 {
-  "name": "root",
-  "description": "> 📕 code samples and content mentioned on my blog https://www.gabrielcsapo.com",
+  "name": "gabrielcsapo.com",
   "version": "0.0.0",
-  "main": "index.js",
-  "scripts": {
-    "dev": "yarn workspace website dev",
-    "build": "yarn workspace website build",
-    "preview": "yarn workspace website preview",
-    "lint": "prettier --write . --ignore-unknown"
-  },
-  "workspaces": [
-    "packages/*"
-  ],
-  "author": "Gabriel J. Csapo <gabecsapo@gmail.com>",
+  "description": "Personal site and blog for Gabriel J. Csapo",
   "license": "MIT",
+  "author": "Gabriel J. Csapo <gabecsapo@gmail.com>",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build && cp dist/index.html dist/404.html",
+    "preview": "vite preview",
+    "lint": "oxlint .",
+    "format": "oxfmt --write .",
+    "format:check": "oxfmt --check ."
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^7.1.0",
+    "@fortawesome/free-brands-svg-icons": "^7.1.0",
+    "@fortawesome/free-regular-svg-icons": "^7.1.0",
+    "@fortawesome/free-solid-svg-icons": "^7.1.0",
+    "@fortawesome/react-fontawesome": "^3.2.0",
+    "@mdx-js/loader": "^3.1.1",
+    "@mdx-js/mdx": "^3.1.1",
+    "@mdx-js/react": "^3.1.1",
+    "@mdx-js/rollup": "^3.1.1",
+    "@rollup/plugin-url": "^8.0.2",
+    "@tailwindcss/vite": "^4.1.18",
+    "@vitejs/plugin-react-swc": "^4.2.3",
+    "clsx": "^2.1.1",
+    "copy-text-to-clipboard": "^3.2.2",
+    "fast-glob": "^3.3.3",
+    "framer-motion": "^12.33.0",
+    "fs-extra": "^11.3.3",
+    "gray-matter": "^4.0.3",
+    "hastscript": "^9.0.1",
+    "markdown-it": "^14.1.0",
+    "medium-zoom": "^1.1.0",
+    "minisearch": "^7.2.0",
+    "prism-react-renderer": "^2.4.1",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "react-router-dom": "^7.13.0",
+    "reading-time": "^1.5.0",
+    "remark-directive": "^4.0.0",
+    "remark-frontmatter": "^5.0.0",
+    "remark-gfm": "^4.0.1",
+    "rollup-plugin-visualizer": "^6.0.5",
+    "tailwindcss": "^4.1.18",
+    "unist-builder": "^4.0.0",
+    "unist-util-visit": "^5.1.0",
+    "vfile": "^6.0.3",
+    "vite": "^7.3.1",
+    "vite-imagetools": "^9.0.2",
+    "vite-plugin-image-optimizer": "^2.0.3",
+    "vite-plugin-inspect": "^11.3.3",
+    "vite-plugin-pages-sitemap": "^1.7.1",
+    "xml-js": "^1.6.11",
+    "yaml": "^2.8.2",
+    "yargs": "^18.0.0"
+  },
   "devDependencies": {
-    "prettier": "^3.3.3"
+    "oxfmt": "0.28.0",
+    "oxlint": "1.43.0",
+    "sharp": "^0.34.5",
+    "typescript": "^5.9.3",
+    "typescript-plugin-css-modules": "^5.2.0"
   },
   "volta": {
-    "node": "23.3.0",
-    "yarn": "4.5.0"
+    "node": "24.12.0"
   }
 }
