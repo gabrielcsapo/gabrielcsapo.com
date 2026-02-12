@@ -1,5 +1,4 @@
 import fs from "fs";
-import MarkdownIt from "markdown-it";
 import fastGlob from "fast-glob";
 import MiniSearch from "minisearch";
 
@@ -107,7 +106,6 @@ const buildDocs = async (HTML_FOLDER, options) => {
   return docs;
 };
 
-const md = new MarkdownIt();
 let MAX_PREVIEW_CHARS = 62; // Number of characters to show for a given search result
 
 export async function IndexSearch(HTML_FOLDER, options) {

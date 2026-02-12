@@ -14,10 +14,10 @@
     "format:check": "oxfmt --check ."
   },
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^7.1.0",
-    "@fortawesome/free-brands-svg-icons": "^7.1.0",
-    "@fortawesome/free-regular-svg-icons": "^7.1.0",
-    "@fortawesome/free-solid-svg-icons": "^7.1.0",
+    "@fortawesome/fontawesome-svg-core": "^7.2.0",
+    "@fortawesome/free-brands-svg-icons": "^7.2.0",
+    "@fortawesome/free-regular-svg-icons": "^7.2.0",
+    "@fortawesome/free-solid-svg-icons": "^7.2.0",
     "@fortawesome/react-fontawesome": "^3.2.0",
     "@mdx-js/loader": "^3.1.1",
     "@mdx-js/mdx": "^3.1.1",
@@ -29,11 +29,10 @@
     "clsx": "^2.1.1",
     "copy-text-to-clipboard": "^3.2.2",
     "fast-glob": "^3.3.3",
-    "framer-motion": "^12.33.0",
+    "framer-motion": "^12.34.0",
     "fs-extra": "^11.3.3",
     "gray-matter": "^4.0.3",
     "hastscript": "^9.0.1",
-    "markdown-it": "^14.1.0",
     "medium-zoom": "^1.1.0",
     "minisearch": "^7.2.0",
     "prism-react-renderer": "^2.4.1",
@@ -59,8 +58,8 @@
     "yargs": "^18.0.0"
   },
   "devDependencies": {
-    "oxfmt": "0.28.0",
-    "oxlint": "1.43.0",
+    "oxfmt": "0.32.0",
+    "oxlint": "1.47.0",
     "sharp": "^0.34.5",
     "typescript": "^5.9.3",
     "typescript-plugin-css-modules": "^5.2.0"
