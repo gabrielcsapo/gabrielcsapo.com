@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState, useCallback } from "react";
+import { createPortal } from "react-dom";
 import { useNavigate } from "react-router-dom";
 import MiniSearch from "minisearch";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -142,72 +143,74 @@ const SearchInput = () => {
         </kbd>
       </button>
 
-      {isModalOpen && (
-        <div className="fixed inset-0 z-[100] flex items-start justify-center pt-[15vh]">
-          <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" onClick={closeModal} />
-          <div
-            className="relative w-full max-w-lg mx-4 bg-white dark:bg-surface-900 rounded-xl shadow-2xl border border-surface-200 dark:border-surface-700 overflow-hidden"
-            onKeyDown={handleModalKeyDown}
-          >
-            <div className="flex items-center gap-3 px-4 py-3 border-b border-surface-200 dark:border-surface-700">
-              <FontAwesomeIcon icon={faMagnifyingGlass} className="w-4 h-4 text-surface-400" />
-              <input
-                ref={inputRef}
-                type="text"
-                placeholder="Search posts..."
-                value={input}
-                onChange={onSearch}
-                className="flex-1 bg-transparent text-surface-900 dark:text-white placeholder-surface-400 outline-none text-base"
-              />
-              <kbd className="px-1.5 py-0.5 text-[10px] font-mono bg-surface-100 dark:bg-surface-800 rounded text-surface-500 dark:text-surface-400">
-                ESC
-              </kbd>
-            </div>
+      {isModalOpen &&
+        createPortal(
+          <div className="fixed inset-0 z-[100] flex items-start justify-center pt-[15vh]">
+            <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" onClick={closeModal} />
+            <div
+              className="relative w-full max-w-lg mx-4 bg-white dark:bg-surface-900 rounded-xl shadow-2xl border border-surface-200 dark:border-surface-700 overflow-hidden"
+              onKeyDown={handleModalKeyDown}
+            >
+              <div className="flex items-center gap-3 px-4 py-3 border-b border-surface-200 dark:border-surface-700">
+                <FontAwesomeIcon icon={faMagnifyingGlass} className="w-4 h-4 text-surface-400" />
+                <input
+                  ref={inputRef}
+                  type="text"
+                  placeholder="Search posts..."
+                  value={input}
+                  onChange={onSearch}
+                  className="flex-1 bg-transparent text-surface-900 dark:text-white placeholder-surface-400 outline-none text-base"
+                />
+                <kbd className="px-1.5 py-0.5 text-[10px] font-mono bg-surface-100 dark:bg-surface-800 rounded text-surface-500 dark:text-surface-400">
+                  ESC
+                </kbd>
+              </div>
 
-            <div className="max-h-80 overflow-y-auto">
-              {!input && (
-                <div className="px-4 py-8 text-center text-sm text-surface-400">
-                  Type to search posts...
-                </div>
-              )}
-
-              {input && searchResults.length === 0 && (
-                <div className="px-4 py-8 text-center text-sm text-surface-400">
-                  No posts found for &ldquo;{input}&rdquo;
-                </div>
-              )}
-
-              {searchResults
-                .filter((result) => result.sections && result.sections.length > 0)
-                .map(({ title, link, sections }) => (
-                  <div key={link} className="py-2">
-                    <div className="px-4 py-1 text-xs font-medium text-surface-500 dark:text-surface-400 uppercase tracking-wider">
-                      {title}
-                    </div>
-                    {sections.map((section) => {
-                      const currentLinkIndex = linkIndex++;
-                      const isSelected = currentLinkIndex === selectedIndex;
-                      return (
-                        <button
-                          key={section.link}
-                          onClick={() => handleNavigate(section.link)}
-                          className={`w-full text-left px-4 py-2 flex items-center gap-3 text-sm transition-colors cursor-pointer ${
-                            isSelected
-                              ? "bg-primary-50 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300"
-                              : "text-surface-700 dark:text-surface-300 hover:bg-surface-50 dark:hover:bg-surface-800"
-                          }`}
-                        >
-                          <span className="text-surface-400">#</span>
-                          <span className="truncate">{section.title}</span>
-                        </button>
-                      );
-                    })}
+              <div className="max-h-80 overflow-y-auto">
+                {!input && (
+                  <div className="px-4 py-8 text-center text-sm text-surface-400">
+                    Type to search posts...
                   </div>
-                ))}
+                )}
+
+                {input && searchResults.length === 0 && (
+                  <div className="px-4 py-8 text-center text-sm text-surface-400">
+                    No posts found for &ldquo;{input}&rdquo;
+                  </div>
+                )}
+
+                {searchResults
+                  .filter((result) => result.sections && result.sections.length > 0)
+                  .map(({ title, link, sections }) => (
+                    <div key={link} className="py-2">
+                      <div className="px-4 py-1 text-xs font-medium text-surface-500 dark:text-surface-400 uppercase tracking-wider">
+                        {title}
+                      </div>
+                      {sections.map((section) => {
+                        const currentLinkIndex = linkIndex++;
+                        const isSelected = currentLinkIndex === selectedIndex;
+                        return (
+                          <button
+                            key={section.link}
+                            onClick={() => handleNavigate(section.link)}
+                            className={`w-full text-left px-4 py-2 flex items-center gap-3 text-sm transition-colors cursor-pointer ${
+                              isSelected
+                                ? "bg-primary-50 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300"
+                                : "text-surface-700 dark:text-surface-300 hover:bg-surface-50 dark:hover:bg-surface-800"
+                            }`}
+                          >
+                            <span className="text-surface-400">#</span>
+                            <span className="truncate">{section.title}</span>
+                          </button>
+                        );
+                      })}
+                    </div>
+                  ))}
+              </div>
             </div>
-          </div>
-        </div>
-      )}
+          </div>,
+          document.body,
+        )}
     </>
   );
 };
