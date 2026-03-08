@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -89,8 +89,20 @@ function WaveDivider({ className, flip }) {
   );
 }
 
-const CARDS_PER_PAGE = 2;
-const totalPages = Math.ceil(projects.length / CARDS_PER_PAGE);
+function useCardsPerPage() {
+  const [cardsPerPage, setCardsPerPage] = useState(
+    typeof window !== "undefined" && window.innerWidth < 640 ? 1 : 2,
+  );
+
+  useEffect(() => {
+    const mq = window.matchMedia("(min-width: 640px)");
+    const handler = (e) => setCardsPerPage(e.matches ? 2 : 1);
+    mq.addEventListener("change", handler);
+    return () => mq.removeEventListener("change", handler);
+  }, []);
+
+  return cardsPerPage;
+}
 
 function ProjectCard({ project }) {
   return (
@@ -131,18 +143,26 @@ function ProjectCard({ project }) {
 }
 
 function ProjectCarousel() {
+  const cardsPerPage = useCardsPerPage();
+  const totalPages = Math.ceil(projects.length / cardsPerPage);
   const [page, setPage] = useState(0);
+
+  // Reset page if it's out of bounds after a breakpoint change
+  useEffect(() => {
+    setPage((prev) => Math.min(prev, totalPages - 1));
+  }, [totalPages]);
 
   const paginate = (dir) => {
     setPage((prev) => (prev + dir + totalPages) % totalPages);
   };
 
-  // Card width: fills half the container minus gaps and peek space
-  // 2 cards + 2 gaps + peek = 100%, so card = (100% - 2*gap - peek) / 2
-  const cardWidth = `calc((100% - ${2 * CAROUSEL_GAP + CAROUSEL_PEEK}px) / 2)`;
+  const peek = cardsPerPage === 1 ? 24 : CAROUSEL_PEEK;
+  const cardWidth =
+    cardsPerPage === 1
+      ? `calc(100% - ${CAROUSEL_GAP + peek}px)`
+      : `calc((100% - ${2 * CAROUSEL_GAP + peek}px) / 2)`;
 
-  // Shift per page: 2 cards + 2 gaps = 100% - peek
-  const pageOffset = page === 0 ? 0 : `calc(${-page * 100}% + ${page * CAROUSEL_PEEK}px)`;
+  const pageOffset = page === 0 ? 0 : `calc(${-page * 100}% + ${page * peek}px)`;
 
   return (
     <div className="relative">
