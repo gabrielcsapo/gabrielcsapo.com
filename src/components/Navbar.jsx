@@ -1,3 +1,4 @@
+import InterfaceIcon from "@components/InterfaceIcon";
 import LinkedInLink from "@components/LinkedInLink";
 import { Link } from "react-router-dom";
 import { useTheme } from "./ThemeProvider";
@@ -16,7 +17,7 @@ export default function Navbar() {
             className="theme-button"
             aria-label={theme === "dark" ? "Use light theme" : "Use dark theme"}
           >
-            {theme === "dark" ? "◐" : "◑"}
+            <InterfaceIcon name={theme === "dark" ? "sun" : "moon"} />
           </button>
         </div>
       </nav>

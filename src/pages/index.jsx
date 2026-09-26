@@ -1,3 +1,4 @@
+import InterfaceIcon from "@components/InterfaceIcon";
 import LivingNetwork from "@components/LivingNetwork";
 import { useTitle } from "@utils/useTitle";
 
@@ -31,10 +32,10 @@ export default function Index() {
           </div>
           <div className="hero-links">
             <a className="button" href="mailto:gabecsapo@gmail.com">
-              Get in touch <span aria-hidden="true">↘</span>
+              Get in touch <InterfaceIcon name="arrow-down-right" size={16} />
             </a>
             <a className="text-link" href="/gabriel-csapo-resume.pdf">
-              View résumé <span aria-hidden="true">↗</span>
+              View résumé <InterfaceIcon name="arrow-up-right" size={16} />
             </a>
           </div>
         </div>

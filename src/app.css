@@ -645,3 +645,16 @@ h2 {
     margin-top: 26px;
   }
 }
+
+.theme-button {
+  display: inline-grid;
+  place-items: center;
+}
+.interface-icon {
+  flex-shrink: 0;
+}
+.text-link .interface-icon {
+  display: inline-block;
+  vertical-align: -3px;
+  margin-left: 16px;
+}

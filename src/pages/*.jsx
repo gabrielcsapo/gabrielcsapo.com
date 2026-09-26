@@ -1,3 +1,4 @@
+import InterfaceIcon from "@components/InterfaceIcon";
 import { Link } from "react-router-dom";
 import { useTitle } from "@utils/useTitle";
 export default function NotFound() {
@@ -15,7 +16,7 @@ export default function NotFound() {
       </h1>
       <p>Explore my current work in platform engineering.</p>
       <Link className="button" to="/">
-        Back to home <span aria-hidden="true">↗</span>
+        Back to home <InterfaceIcon name="arrow-up-right" size={16} />
       </Link>
     </section>
   );
