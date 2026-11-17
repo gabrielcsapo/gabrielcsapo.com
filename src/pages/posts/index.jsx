@@ -1,64 +1,40 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
-
-import BlogCard from "@components/BlogCard";
-import IconButton from "@components/IconButton";
-
-import { posts } from "virtual:pages.jsx";
+import { Link } from "react-router-dom";
+import { posts } from "virtual:posts";
+import { useNoIndex } from "@utils/useNoIndex";
 import { useTitle } from "@utils/useTitle";
-import { faArrowLeftLong, faArrowRightLong } from "@fortawesome/free-solid-svg-icons";
 
-const ITEMS_PER_PAGE = 10;
+const day = new Intl.DateTimeFormat("en-US", { month: "short", day: "numeric", timeZone: "UTC" });
 
-const Index = () => {
-  const searchParams = new URLSearchParams(window.location.search);
-  const currentPage = parseInt(searchParams.get("page") || "1", 10);
+// Posts arrive newest first; keep that order and gather them under their year.
+const years = [];
+for (const post of posts) {
+  const year = post.date.slice(0, 4);
+  if (years.at(-1)?.year !== year) years.push({ year, posts: [] });
+  years.at(-1).posts.push(post);
+}
 
-  const navigate = useNavigate();
-
-  useTitle(`Post archive: page #${currentPage}`);
-
-  const sortedPosts = posts?.sort((a, b) => new Date(b.date) - new Date(a.date));
-
-  const totalPages = Math.ceil(sortedPosts.length / ITEMS_PER_PAGE);
-
-  const currentPosts = sortedPosts.slice(
-    (currentPage - 1) * ITEMS_PER_PAGE,
-    currentPage * ITEMS_PER_PAGE,
-  );
-
-  const changePage = (page) => {
-    if (page >= 1 && page <= totalPages) {
-      searchParams.set("page", page);
-      navigate("?" + searchParams.toString());
-    }
-  };
-
+export default function Posts() {
+  useTitle("Posts — Gabriel J. Csapo", "Things I wrote down while building hardware projects.");
+  useNoIndex();
   return (
-    <div className="max-w-4xl mx-auto px-6 py-10">
-      <h1 className="text-2xl font-bold text-surface-900 dark:text-white mb-8">All Posts</h1>
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
-        {currentPosts.map((post) => (
-          <BlogCard key={post.slug} post={post} />
-        ))}
-      </div>
-      <div className="flex items-center justify-center gap-4">
-        <IconButton
-          onClick={() => changePage(currentPage - 1)}
-          icon={faArrowLeftLong}
-          disabled={currentPage <= 1}
-        />
-        <span className="text-sm text-surface-600 dark:text-surface-400">
-          Page {currentPage} of {totalPages}
-        </span>
-        <IconButton
-          onClick={() => changePage(currentPage + 1)}
-          icon={faArrowRightLong}
-          disabled={currentPage >= totalPages}
-        />
-      </div>
-    </div>
+    <section className="page wrap" aria-labelledby="posts-title">
+      <p className="kicker">Posts</p>
+      <h1 id="posts-title">
+        Things I <em>wrote down.</em>
+      </h1>
+      {years.map(({ year, posts }) => (
+        <section className="post-year" key={year} aria-label={year}>
+          <h2>{year}</h2>
+          <ul>
+            {posts.map((post) => (
+              <li key={post.slug}>
+                <Link to={`/${post.slug}`}>{post.title}</Link>
+                <time dateTime={post.date}>{day.format(new Date(post.date))}</time>
+              </li>
+            ))}
+          </ul>
+        </section>
+      ))}
+    </section>
   );
-};
-
-export default Index;
+}

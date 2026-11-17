@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "description": "Personal site and blog for Gabriel J. Csapo",
   "license": "MIT",
-  "author": "Gabriel J. Csapo <gabecsapo@gmail.com>",
+  "author": "Gabriel J. Csapo <gabrieljcsapo@gmail.com>",
   "type": "module",
   "scripts": {
     "dev": "vite",

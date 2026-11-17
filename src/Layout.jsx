@@ -10,11 +10,11 @@ export default function Layout({ children }) {
       <Navbar />
       <main id="main">{children}</main>
       <footer className="wrap footer">
-        <span>© {new Date().getFullYear()} Gabriel Csapo</span>
+        <span>© {new Date().getFullYear()} Gabriel J. Csapo · New York City area</span>
         <div>
           <SocialIconLink icon="github" href="https://github.com/gabrielcsapo" label="GitHub" />
           <LinkedInLink />
-          <SocialIconLink icon="email" href="mailto:gabecsapo@gmail.com" label="Email" />
+          <SocialIconLink icon="email" href="mailto:gabrieljcsapo@gmail.com" label="Email" />
         </div>
       </footer>
     </>

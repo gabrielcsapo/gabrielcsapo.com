@@ -1,5 +1,4 @@
 import InterfaceIcon from "@components/InterfaceIcon";
-import LinkedInLink from "@components/LinkedInLink";
 import { Link } from "react-router-dom";
 import { useTheme } from "./ThemeProvider";
 export default function Navbar() {
@@ -8,10 +7,9 @@ export default function Navbar() {
     <header className="site-header">
       <nav className="wrap nav" aria-label="Main navigation">
         <Link className="wordmark" to="/">
-          gc<span>.</span>
+          gjc<span>.</span>
         </Link>
         <div className="nav-links">
-          <LinkedInLink />
           <button
             onClick={toggleTheme}
             className="theme-button"

@@ -1,23 +1,21 @@
-import InterfaceIcon from "@components/InterfaceIcon";
 import { Link } from "react-router-dom";
 import { useTitle } from "@utils/useTitle";
 export default function NotFound() {
-  useTitle(
-    "Page not found — Gabriel Csapo",
-    "This page is no longer available. Explore Gabriel Csapo’s platform engineering work.",
-  );
+  useTitle("Page not found — Gabriel J. Csapo", "This page is no longer available.");
   return (
-    <section className="wrap contact">
-      <p className="eyebrow">404 / Page not found</p>
+    <section className="hero wrap">
+      <p className="kicker">404 · Page not found</p>
       <h1>
-        This page is no
+        This page
         <br />
-        longer available.
+        <em>moved on.</em>
       </h1>
-      <p>Explore my current work in platform engineering.</p>
-      <Link className="button" to="/">
-        Back to home <InterfaceIcon name="arrow-up-right" size={16} />
-      </Link>
+      <p className="lede">It’s no longer available, but the homepage is.</p>
+      <div className="hero-links">
+        <Link className="button" to="/">
+          Back to home
+        </Link>
+      </div>
     </section>
   );
 }
